@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::post('login', [AuthController::class, 'login_action'])->name('login.actio
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    //siswa
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::get('/siswaAdd', [SiswaController::class, 'add'])->name('siswa.add');
+    Route::post('/siswa/add', [SiswaController::class, 'addSiswa'])->name('siswa.addproses');
+    Route::get('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete');
 });
 
 Route::get('/route-cache', function () {
