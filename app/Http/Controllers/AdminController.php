@@ -7,85 +7,71 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class SiswaController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        $data['title'] = "Siswa";
-        $data['siswa'] = DB::select("select u.*, k.nama_kelas, j.nama_jurusan from users u left join kelas k on u.kelas_id=k.id left join jurusan j on u.jurusan_id=j.id where role = '2'");
-        return view('backend.siswa.index', $data);
+        $data['title'] = "Admin";
+        $data['admin'] = DB::select("select * from users where role != '2'");
+        return view('backend.admin.index', $data);
     }
     public function add()
     {
-        $data['title'] = "Tambah Siswa";
-        $data['kelas'] = DB::select("select * from kelas");
-        $data['jurusan'] = DB::select("select * from jurusan");
-        return view('backend.siswa.add', $data);
+        $data['title'] = "Tambah Admin";
+        return view('backend.admin.add', $data);
     }
-    public function addSiswa(Request  $request)
+    public function addProses(Request  $request)
     {
         $data = [
-            'nis' => $request->nis,
             'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
             'no_tlp' => $request->no_tlp,
-            'kelas_id' => $request->kelas_id,
-            'jurusan_id' => $request->jurusan_id,
             'tgl_lahir' => $request->tgl_lahir,
-            'no_ortu' => $request->no_ortu,
             'password' => Hash::make($request->password),
             'alamat' => $request->alamat,
-            'role' => 2,
+            'role' => $request->role,
             'created_at' => now()
         ];
         // dd($data);
         DB::table('users')->insert($data);
-        return redirect('siswa');
+        return redirect('admin');
     }
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $data['title'] = "Edit Siswa";
-        $data['siswa'] = DB::table('users')->where('id', $id)->first();
-        $data['kelas'] = DB::select("select * from kelas");
-        $data['jurusan'] = DB::select("select * from jurusan");
-        return view('backend.siswa.edit', $data);
+        $data['title'] = "Edit Admin";
+        $data['role'] = ['1', '3'];
+        $data['admin'] = DB::table('users')->where('id', $request->id)->first();
+        return view('backend.admin.edit', $data);
     }
     public function editProses(Request  $request)
     {
         if ($request->password == true) {
             $data = [
-                'nis' => $request->nis,
                 'nama_lengkap' => $request->nama_lengkap,
                 'email' => $request->email,
                 'no_tlp' => $request->no_tlp,
-                'kelas_id' => $request->kelas_id,
-                'jurusan_id' => $request->jurusan_id,
                 'tgl_lahir' => $request->tgl_lahir,
-                'no_ortu' => $request->no_ortu,
                 'password' => Hash::make($request->password),
                 'alamat' => $request->alamat,
-                'role' => 2,
+                'role' => $request->role,
                 'updated_at' => now()
             ];
         } else {
             $data = [
-                'nis' => $request->nis,
                 'nama_lengkap' => $request->nama_lengkap,
                 'email' => $request->email,
                 'no_tlp' => $request->no_tlp,
-                'kelas_id' => $request->kelas_id,
-                'jurusan_id' => $request->jurusan_id,
                 'tgl_lahir' => $request->tgl_lahir,
-                'no_ortu' => $request->no_ortu,
+                'password' => Hash::make($request->password),
                 'alamat' => $request->alamat,
-                'role' => 2,
+                'role' => $request->role,
                 'updated_at' => now()
             ];
         }
 
         // dd($data);
         DB::table('users')->where('id', $request->id)->update($data);
-        return redirect('siswa');
+        return redirect('admin');
     }
     public function delete($id)
     {
@@ -93,7 +79,7 @@ class SiswaController extends Controller
             // dd($id);
             DB::table('users')->where('id', $id)->delete();
             // Alert::success('Category was successful deleted!');
-            return redirect()->route('siswa');
+            return redirect()->route('admin');
         } catch (Exception $e) {
             return response([
                 'success' => false,

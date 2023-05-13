@@ -6,7 +6,7 @@
             <h5 class="mb-0" style="font-size: 40px">
                 <b>{{ $title }}</b>
             </h5>
-            <a href="/siswaAdd" type="button" class="btn rounded-pill btn-primary justify-content-end"
+            <a href="/adminAdd" type="button" class="btn rounded-pill btn-primary justify-content-end"
                 style="margin-left: 70%;">Add</a>
         </div>
         <div class="container mt-4 ">
@@ -14,11 +14,12 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nis</th>
+
                         <th>Nama Lengkap</th>
                         <th>Email</th>
-                        <th>Kelas</th>
-                        <th>Jurusan</th>
+                        <th>Nomor Telepon</th>
+                        <th>Role</th>
+
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -26,17 +27,21 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($siswa as $a)
+                    @foreach ($admin as $a)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td width="auto">{{ $a->nis }}</td>
                             <td width="auto">{{ $a->nama_lengkap }}</td>
                             <td width="auto">{{ $a->email }}</td>
-                            <td width="auto">{{ $a->nama_kelas }}</td>
-                            <td width="auto">{{ $a->nama_jurusan }}</td>
+                            <td width="auto">{{ $a->no_tlp }}</td>
+                            <td width="auto">
+                                @if ($a->role == 1)
+                                    Admin
+                                @else
+                                    Kepala Sekolah
+                                @endif
+                            </td>
                             <td>
-
-                                <a href="/siswa/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a>
+                                <a href="/admin/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#delete{{ $a->id }}">Delete</button>
                             </td>
@@ -46,7 +51,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="addNewDonaturLabel">Hapus Siswa
+                                                <h5 class="modal-title" id="addNewDonaturLabel">Hapus Admin
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -57,7 +62,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <a href="{{ url('/siswa/delete', $a->id) }} "
+                                                <a href="{{ url('/admin/delete', $a->id) }} "
                                                     class="btn btn-primary">Hapus</a>
                                             </div>
                                         </div>

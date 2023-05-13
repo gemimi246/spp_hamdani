@@ -29,15 +29,16 @@
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item ">
+                        <a href="/admin" class="menu-link">
+                            <div>Admin</div>
+                        </a>
+                    </li>
+                    <li class="menu-item ">
                         <a href="/siswa" class="menu-link">
                             <div>Siswa</div>
                         </a>
                     </li>
-                    {{-- <li class="menu-item ">
-                        <a href="/users" class="menu-link">
-                            <div>Users</div>
-                        </a>
-                    </li> --}}
+
                 </ul>
             </li>
 

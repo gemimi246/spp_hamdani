@@ -8,125 +8,105 @@
                     <h5 class="mb-0" style="font-size: 40px">{{ $title }}</h5>
                 </div>
                 <div class="card-body">
-                    <form action="/editBarang" method="POST" enctype="multipart/form-data">
+                    <form action="/siswa/editProses" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="id" value="{{ $barang->id }}" hidden>
+                        <input type="text" name="id" value="{{ $siswa->id }}" hidden>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="nama_barang">Nama Barang</label>
-                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang"
-                                        placeholder="Masukan Nama Barang" value="{{ $barang->nama_barang }}" />
+                                    <label class="form-label" for="nis">Nis</label>
+                                    <input type="text" class="form-control" id="nis" name="nis"
+                                        value="{{ $siswa->nis }}" placeholder="Masukan Nis" required />
                                 </div>
                             </div>
 
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="keyword">Category</label>
-                                    <select id="multicol-country" name="category_id" class="select2 form-select"
-                                        data-allow-clear="true">
-                                        <option selected="selected">
-                                            Pilih Category
-                                        </option>
-                                        @foreach ($category as $a)
-                                            <option value="{{ $a->id }}">
-                                                {{ $a->nama }}
+                                    <label class="form-label" for="full_name">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                        value="{{ $siswa->nama_lengkap }}" placeholder="Masukan Nama Lengkap" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ $siswa->email }}" placeholder="Masukan Email" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="no_tlp">Nomor Telepon</label>
+                                    <input type="text" class="form-control" id="no_tlp" name="no_tlp"
+                                        value="{{ $siswa->no_tlp }}" placeholder="Masukan Nomor Telepon" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="kelas_id">Kelas</label>
+                                    <select class="form-control" name="kelas_id" id="kelas_id" required>
+                                        <option value="">-- Pilih --</option>
+                                        @foreach ($kelas as $k)
+                                            <option value="{{ $k->id }}"
+                                                {{ $k->id == $siswa->kelas_id ? 'selected' : '' }}>{{ $k->nama_kelas }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="kelas_id">Jurusan</label>
+                                    <select class="form-control" name="jurusan_id" id="jurusan_id" required>
+                                        <option value="">-- Pilih --</option>
+                                        @foreach ($jurusan as $j)
+                                            <option value="{{ $j->id }}"
+                                                {{ $j->id == $siswa->jurusan_id ? 'selected' : '' }}>
+                                                {{ $j->nama_jurusan }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="tgl_lahir">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir"
+                                        value="{{ $siswa->tgl_lahir }}" placeholder="Masukan Tanggal Lahir" required />
+                                </div>
+                            </div>
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="jenis">Jenis</label>
-                                    <input type="text" class="form-control" id="jenis" name="jenis"
-                                        placeholder="Masukan Jenis" value="{{ $barang->jenis }}" />
+                                    <label class="form-label" for="no_ortu">Nomor Telepon Orangtua</label>
+                                    <input type="text" class="form-control" id="no_ortu" name="no_ortu"
+                                        value="{{ $siswa->no_ortu }}" placeholder="Masukan Nomor Telepon" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="harga">Harga</label>
-                                    <input type="text" class="form-control" id="harga" name="harga"
-                                        placeholder="Masukan Harga" value="{{ $barang->harga }}" />
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Masukan Password" />
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="ukuran">Ukuran</label>
-                                    <input type="text" class="form-control" id="ukuran" name="ukuran"
-                                        placeholder="Masukan Ukuran" value="{{ $barang->ukuran }}" />
+                                    <label class="form-label" for="alamat">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                        value="{{ $siswa->alamat }}" placeholder="Masukan Alamat" required />
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="stok">Stok</label>
-                                    <input type="number" class="form-control" id="stok" name="stok"
-                                        placeholder="Masukan Jenis"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                        value="{{ $barang->stok }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="keyword">Image</label>
-                                    <input type="file" class="form-control" id="image" name="image"
-                                        placeholder="Thumbnail" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <textarea name="deskripsi" id="editor1" cols="30" rows="10">{{ $barang->deskripsi }}</textarea>
                             </div>
 
                             <div class="col-md-12">
                                 <br>
-                                <button type="submit" class="btn btn-primary">Edit</button>
-                                <a href="/barang" type="button" class="btn btn-success">Kembali</a>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
                             </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('editor1', {
-            height: '500',
-            // Ensure that the Magic Line plugin, which is required for this sample, is loaded.
-            extraPlugins: 'magicline',
-            // Magic Line does not require any additional ACF settings.
-            // We set config.extraAllowedContent because HTML code in this sample contains
-            // a <div> element with custom styles that we would like to allow.
-            extraAllowedContent: 'div{border,background,text-align}',
-            removeButtons: 'PasteFromWord'
-
-        });
-
-        var rupiah = document.getElementById("harga");
-        rupiah.addEventListener("keyup", function(e) {
-            // tambahkan 'Rp.' pada saat form di ketik
-            // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-            rupiah.value = formatRupiah(this.value, "Rp. ");
-        });
-
-        /* Fungsi formatRupiah */
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            // tambahkan titik jika yang di input sudah menjadi angka ribuan
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-        }
-    </script>
 @endsection
