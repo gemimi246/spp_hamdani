@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TahunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
     Route::post('/siswa/editProses', [SiswaController::class, 'editProses'])->name('siswa.editProses');
     Route::get('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete');
+    //Tahun AJaran
+    Route::get('/tahun', [TahunController::class, 'view'])->name('tahun');
+    Route::get('/tahunAdd', [TahunController::class, 'add'])->name('tahun.add');
+    Route::post('/tahun/add', [TahunController::class, 'addProses'])->name('tahun.addproses');
+    Route::get('/tahun/edit/{id}', [TahunController::class, 'edit'])->name('tahun.edit');
+    Route::post('/tahun/editProses', [TahunController::class, 'editProses'])->name('tahun.editProses');
+    Route::get('/tahun/delete/{id}', [TahunController::class, 'delete'])->name('tahun.delete');
 });
 
 Route::get('/route-cache', function () {

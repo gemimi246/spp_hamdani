@@ -41,7 +41,12 @@
 
                 </ul>
             </li>
-
+            <li class="menu-item">
+                <a href="/pembayaran" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div>Pembayaran</div>
+                </a>
+            </li>
             <li class="menu-item ">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class='menu-icon tf-icons bx bx-cog'></i>
@@ -51,6 +56,13 @@
                     <li class="menu-item ">
                         <a href="/aplikasi" class="menu-link">
                             <div>Aplikasi</div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-sub">
+                    <li class="menu-item ">
+                        <a href="/tahun" class="menu-link">
+                            <div>Tahun Ajaran</div>
                         </a>
                     </li>
                 </ul>
