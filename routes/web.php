@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
 
     //getdropdown
     Route::get('/jenisPembayaran', [TagihanController::class, 'jenisPembayaran'])->name('jenisPembayaran');
+    Route::get('/getSiswa', [TagihanController::class, 'getSiswa'])->name('getSiswa');
 });
 
 Route::get('/route-cache', function () {

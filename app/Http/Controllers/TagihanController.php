@@ -41,7 +41,13 @@ class TagihanController extends Controller
     }
     public function jenisPembayaran()
     {
-        return DB::select("select id, pembayaran as jenis_pembayaran from jenis_pembayaran where active = 'ON'");
+        $data = DB::select("select id, pembayaran,  as jenis_pembayaran from jenis_pembayaran where status = 'ON'");
+        return response()->json($data);
+    }
+    public function getSiswa()
+    {
+        $data = DB::select("select id, pembayaran,  as jenis_pembayaran from tagihan where status = 'ON'");
+        return response()->json($data);
     }
 
     // public function cities(Request $request)
