@@ -66,6 +66,13 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="menu-sub">
+                    <li class="menu-item ">
+                        <a href="/tagihan" class="menu-link">
+                            <div>Tagihan</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     @elseif (request()->user()->role == 2)

@@ -23,7 +23,6 @@ class TahunController extends Controller
     {
         $data = [
             'tahun' => $request->tahun,
-            'besar_spp' => $request->besar_spp,
             'active' => $request->active,
             'created_at' => now()
         ];
@@ -42,7 +41,6 @@ class TahunController extends Controller
     {
         $data = [
             'tahun' => $request->tahun,
-            'besar_spp' => $request->besar_spp,
             'active' => $request->active,
             'updated_at' => now()
         ];

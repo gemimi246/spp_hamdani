@@ -30,13 +30,6 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="besar_spp">Besar Spp</label>
-                                    <input type="text" class="form-control" id="besar_spp" name="besar_spp"
-                                        placeholder="Masukan Besar Spp" required />
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
                                     <label class="form-label" for="active">Active</label>
                                     <select class="form-control" name="active" id="active" required>
                                         <option value="">-- Pilih --</option>

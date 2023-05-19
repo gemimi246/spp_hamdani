@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\TahunController;
 
 /*
@@ -51,6 +52,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tahun/edit/{id}', [TahunController::class, 'edit'])->name('tahun.edit');
     Route::post('/tahun/editProses', [TahunController::class, 'editProses'])->name('tahun.editProses');
     Route::get('/tahun/delete/{id}', [TahunController::class, 'delete'])->name('tahun.delete');
+    //tagihan
+    Route::get('/tagihan', [TagihanController::class, 'view'])->name('tagihan');
+    Route::get('/tagihanAdd', [TagihanController::class, 'add'])->name('tagihan.add');
+    Route::post('/tagihan/add', [TagihanController::class, 'addProses'])->name('tagihan.addproses');
+
+    //getdropdown
+    Route::get('/jenisPembayaran', [TagihanController::class, 'jenisPembayaran'])->name('jenisPembayaran');
 });
 
 Route::get('/route-cache', function () {
