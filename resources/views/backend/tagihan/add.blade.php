@@ -64,7 +64,7 @@
 <script>
     function onChangeSelect(url, id, name) {
         // send ajax request to get the cities of the selected province and append to the select tag
-        console.log(id);
+        // console.log(id);
         $.ajax({
             url: url,
             type: 'GET',
@@ -74,10 +74,10 @@
             success: function(data) {
                 $('#' + name).empty();
                 $('#' + name).append('<option>-- Pilih Salah Satu --</option>');
-                console.log(name);
+              
                 $.each(data, function(key, value) {
-
-                    $('#' + name).append('<option value="' + key.id + '">' + value.jenis_pembayaran + '</option>');
+//   console.log(value.id);
+                    $('#' + name).append('<option value="' + value.id + '">' + value.jenis_pembayaran + '</option>');
                 });
             }
         });
@@ -87,11 +87,11 @@
             onChangeSelect('{{ route("jenisPembayaran") }}', $(this).val(), 'jenis_pembayaran');
         });
     });
-    $(function() {
-        $('#thajaran_id').on('change', function() {
-            onChangeSelect('{{ route("jenisPembayaran") }}', $(this).val(), 'jenis_pembayaran');
-        });
-    });
+    // $(function() {
+    //     $('#jenis_pembayaran').on('change', function() {
+    //         onChangeSelect('{{ route("getSiswa") }}', $(this).val(), 'getSiswa');
+    //     });
+    // });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 

@@ -23,6 +23,7 @@ class TagihanController extends Controller
     }
     public function addProses(Request $request)
     {
+        // dd($request->all());
         foreach ($request->user_id as $k =>  $u) {
             // dd($u);
             $data[] = [
@@ -41,7 +42,7 @@ class TagihanController extends Controller
     }
     public function jenisPembayaran()
     {
-        $data = DB::select("select id, pembayaran,  as jenis_pembayaran from jenis_pembayaran where status = 'ON'");
+        $data = DB::select("select id, pembayaran as jenis_pembayaran from jenis_pembayaran where status = 'ON'");
         return response()->json($data);
     }
     public function getSiswa()

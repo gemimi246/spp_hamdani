@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>User</th>
                         <th>Tahun Ajaran</th>
                         <th>Jenis Pembayaran</th>
                         <th>Nilai</th>
@@ -29,6 +30,7 @@
                     @foreach ($tagihan as $a)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td width="auto">{{ $a->user_id }}</td>
                             <td width="auto">{{ $a->thajaran_id }}</td>
                             <td width="auto">{{ $a->jenis_pembayaran }}</td>
                             <td width="auto">{{ $a->nilai }}</td>
