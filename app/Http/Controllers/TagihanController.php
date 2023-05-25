@@ -45,10 +45,17 @@ class TagihanController extends Controller
         $data = DB::select("select id, pembayaran as jenis_pembayaran from jenis_pembayaran where status = 'ON'");
         return response()->json($data);
     }
-    public function getSiswa()
+    public function getSiswa(Request $request)
     {
-        $data = DB::select("select id, pembayaran,  as jenis_pembayaran from tagihan where status = 'ON'");
-        return response()->json($data);
+        // dd($request->all());
+        $getsiswa = DB::select("SELECT a.id, a.nama_lengkap FROM users a
+WHERE role = 2
+AND a.id NOT IN (
+    SELECT b.user_id FROM tagihan b
+    WHERE b.thajaran_id = '$request->thajaran_id' AND b.jenis_pembayaran = '$request->id'
+)
+ORDER BY a.nama_lengkap");
+        return response()->json($getsiswa);
     }
 
     // public function cities(Request $request)
