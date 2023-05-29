@@ -118,7 +118,7 @@
                                 <div class="form-body">
                                     <br><br> &nbsp;<input type="submit" name="bayar" value="BAYAR"
                                         class="btn btn-primary mb-2">
-                                    <a class="btn btn-info mb-2" href="#">Kembali</a>
+                                    <a class="btn btn-info mb-2" href="/pembayaran/search?&thajaran_id={{$thajaran_id}}&user_id={{$user_id}}">Kembali</a>
                                 </div>
                             </div>
 

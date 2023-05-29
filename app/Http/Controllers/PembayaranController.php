@@ -31,6 +31,12 @@ class PembayaranController extends Controller
     public function spp($id_tagihan)
     {
         $data['title'] = "Spp";
+        // $data['id_tagihan'] = $id_tagihan;
+
+        $getDataUser[0] = DB::select("select user_id, thajaran_id from tagihan t left join users u on t.user_id=u.id where t.id = '$id_tagihan'");
+        $data['user_id'] = $getDataUser[0][0]->user_id;
+        $data['thajaran_id'] = $getDataUser[0][0]->thajaran_id;
+        // dd($user_id[0][0]->user_id);
         $data['spp'] = DB::select("select s.* from spp s left join users u on u.id=s.user_id left join bulan b on b.id=s.bulan_id left join tagihan t on t.id=s.tagihan_id where t.id = '$id_tagihan'");
 
         return view('backend.pembayaran.spp', $data);
