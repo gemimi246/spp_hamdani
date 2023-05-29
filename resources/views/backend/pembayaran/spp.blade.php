@@ -111,9 +111,7 @@
                                         <option value="Online">Online</option>
                                         <option value="Manual">Bayar Ditempat</option>
                                     </select>
-                          
                             </div>
-
                             <div class="col-md-12">
                                 <div class="form-body">
                                     <br><br> &nbsp;<input type="submit" name="bayar" value="BAYAR"
