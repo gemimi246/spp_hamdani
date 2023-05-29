@@ -30,9 +30,9 @@
                     @foreach ($tagihan as $a)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td width="auto">{{ $a->user_id }}</td>
-                            <td width="auto">{{ $a->thajaran_id }}</td>
-                            <td width="auto">{{ $a->jenis_pembayaran }}</td>
+                            <td width="auto">{{ $a->nama_lengkap }}</td>
+                            <td width="auto">{{ $a->tahun }}</td>
+                            <td width="auto">{{ $a->pembayaran }}</td>
                             <td width="auto">{{ $a->nilai }}</td>
                             <td width="auto">{{ $a->status }}</td>
                             <td width="auto">{{ $a->created_at }}</td>

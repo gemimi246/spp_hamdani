@@ -8,52 +8,38 @@
                     <h5 class="mb-0" style="font-size: 40px">{{ $title }}</h5>
                 </div>
                 <div class="card-body">
-                    <form action="/tagihan/add" method="POST" enctype="multipart/form-data">
+                    <form action="/tagihan/search" method="GET" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="thajaran_id">Tahun Ajaran</label>
                                     <select class="form-control" name="thajaran_id" id="thajaran_id" required>
-                                        <option value="">-- Pilih --</option>
+                                        <option value="" selected>-- Pilih --</option>
                                         @foreach ($thajaran as $s)
                                             <option value="{{ $s->id }}">{{ $s->tahun }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="jenis_pembayaran">Jenis Pembayaran</label>
                                     <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran" required>
-                                        <option value="">-- Pilih --</option>
+                                        <option value="" selected>-- Pilih --</option>
+                                        
+                                        @foreach ($jnpembayaran as $j)
+                                            <option value="{{ $j->id }}">{{ $j->pembayaran }}</option>
+                                        @endforeach
 
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3 nis">
-                                    <label class="form-label" for="">Nis / Siswa</label>
-                                    <select class="form-control selectpicker" name="user_id[]" id="user_id"
-                                        data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple="multiple" 
-                                        required>
-
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="nilai">Nominal</label>
-                                    <input type="number" class="form-control" id="nilai" name="nilai"
-                                        placeholder="Masukan Nilai" required />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <br>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary">Cari</button>
                                 <a href="/tagihan" type="button" class="btn btn-success">Kembali</a>
                             </div>
                     </form>
@@ -61,80 +47,6 @@
             </div>
         </div>
     </div>
-    <script>
-        // $(document).ready(function() {
-        //     $(".selectpicker").selectpicker();
-        // });
 
-        function onChangeSelect(url, id, name) {
-            // send ajax request to get the cities of the selected province and append to the select tag
-            // console.log(id);
-            $.ajax({
-                url: url,
-                type: 'GET',
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    $('#' + name).empty();
-                    $('#' + name).append('<option>-- Pilih Salah Satu --</option>');
-
-                    $.each(data, function(key, value) {
-                        //   console.log(value.id);
-                        $('#' + name).append('<option value="' + value.id + '">' + value
-                            .jenis_pembayaran + '</option>');
-                    });
-                }
-            });
-        }
-        $(function() {
-            $('#thajaran_id').on('change', function() {
-                onChangeSelect('{{ route('jenisPembayaran') }}', $(this).val(), 'jenis_pembayaran');
-            });
-        });
-
-        function onChangeSelectPembayaran(url, id, name) {
-            // send ajax request to get the cities of the selected province and append to the select tag
-            // console.log(name);
-            $('.selectpicker').selectpicker();
-
-            $.ajax({
-                url: url,
-                type: 'GET',
-                data: {
-                    id: id,
-                    thajaran_id: $("#thajaran_id").val()
-                },
-                success: function(getsiswa) {
-                    $('.' + name).empty();
-                    // $('.' + name).append('<select class="form-control selectpicker getsiswaall" name="user_id[]" id="user_id" data-actions-box="true" data-virtual-scroll="false" data-live-search="true" multiple required>');
-                    // $('.' + name).append('<option>-- Pilih --</option>').selectpicker('refresh');;
-                    // console.log(getsiswa);
-                    // $('#'+ name).selectpicker('refresh');
-                    $.each(getsiswa, function(key, value) {
-                        //console.log(value.nama_lengkap);
-                        $('#user_id').append('<option class="string" value="' + value.id + '">' + value
-                            .nama_lengkap +
-                            '</option>');
-                        // $('.nis').find('nis').remove().end();
-
-                    });
-                    // $('#'+ name).selectpicker('refresh');
-                    $('.nis').selectpicker('refresh');
-                    // $('.string').selectpicker('destroy');
-
-                    //  $('.' + name).append('</select>');
-                    //   $('.' + name).empty();
-                }
-            });
-        }
-        $(function() {
-            $('#jenis_pembayaran').on('change', function() {
-                onChangeSelectPembayaran('{{ route('getSiswa') }}', $(this).val(), 'selectpicker');
-
-            });
-        });
-        
-    </script>
-
+       
 @endsection

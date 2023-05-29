@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\TahunController;
@@ -60,6 +61,12 @@ Route::middleware(['auth'])->group(function () {
     //getdropdown
     Route::get('/jenisPembayaran', [TagihanController::class, 'jenisPembayaran'])->name('jenisPembayaran');
     Route::get('/getSiswa', [TagihanController::class, 'getSiswa'])->name('getSiswa');
+    Route::get('/tagihan/search', [TagihanController::class, 'search'])->name('search');
+
+    //pembayaran
+    Route::get('/pembayaran', [PembayaranController::class, 'view'])->name('pembayaran');
+    Route::get('/pembayaran/search', [PembayaranController::class, 'search'])->name('pembayaran.search');
+    Route::get('/pembayaran/spp/{id}', [PembayaranController::class, 'spp'])->name('pembayaran.spp');
 });
 
 Route::get('/route-cache', function () {

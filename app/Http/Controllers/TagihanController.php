@@ -10,12 +10,12 @@ class TagihanController extends Controller
     public function view()
     {
         $data['title'] = "Tagihan";
-        $data['tagihan'] = DB::select("select t.*, ta.tahun from tagihan t left join tahun_ajaran ta on t.thajaran_id=ta.id");
+        $data['tagihan'] = DB::select("select t.*, ta.tahun, jp.pembayaran, u.nama_lengkap from tagihan t left join tahun_ajaran ta on t.thajaran_id=ta.id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join users u on u.id=t.user_id");
         return view('backend.tagihan.view', $data);
     }
     public function add()
     {
-        $data['title'] = "Tambah Tagihan";
+        $data['title'] = "Tagihan";
         $data['siswa'] = DB::select("select * from users where role = '2'");
         $data['thajaran'] = DB::select("select * from tahun_ajaran where active = 'ON'");
         $data['jnpembayaran'] = DB::select("select * from jenis_pembayaran where status = 'ON'");
@@ -45,18 +45,24 @@ class TagihanController extends Controller
         $data = DB::select("select id, pembayaran as jenis_pembayaran from jenis_pembayaran where status = 'ON'");
         return response()->json($data);
     }
-    public function getSiswa(Request $request)
+    public function search(Request $request)
     {
-        // dd($request->all());
-        $getsiswa = DB::select("SELECT a.id, a.nama_lengkap FROM users a
+        $data['title'] = "Tambah Tagihan";
+        $data['siswa'] = DB::select("SELECT a.id, a.nama_lengkap FROM users a
 WHERE role = 2
 AND a.id NOT IN (
     SELECT b.user_id FROM tagihan b
-    WHERE b.thajaran_id = '$request->thajaran_id' AND b.jenis_pembayaran = '$request->id'
+    WHERE b.thajaran_id = '$request->thajaran_id' AND b.jenis_pembayaran = '$request->jenis_pembayaran'
 )
 ORDER BY a.nama_lengkap");
-        return response()->json($getsiswa);
+        $data['thajaran_id'] = $request->thajaran_id;
+        $data['jenis_pembayaran'] = $request->jenis_pembayaran;
+        // dd($request->all());
+        // dd($data['siswa']);
+        // return response()->json($data);
+        return view('backend.tagihan.search', $data);
     }
+    
 
     // public function cities(Request $request)
     // {
