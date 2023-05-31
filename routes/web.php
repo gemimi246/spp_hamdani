@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SnapController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\TahunController;
 
@@ -67,6 +68,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembayaran', [PembayaranController::class, 'view'])->name('pembayaran');
     Route::get('/pembayaran/search', [PembayaranController::class, 'search'])->name('pembayaran.search');
     Route::get('/pembayaran/spp/{id}', [PembayaranController::class, 'spp'])->name('pembayaran.spp');
+
+    //spp
+    Route::post('/sppAddProses', [PembayaranController::class, 'sppAddProses'])->name('pembayaran.add.spp');
+
+    //midtrans
+    Route::post('/getToken', [SnapController::class, 'token'])->name('token');
+
 });
 
 Route::get('/route-cache', function () {
