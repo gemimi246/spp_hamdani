@@ -22,6 +22,8 @@
                             <input type="text" value="{{ $thajaran_id }}" name="thajaran_id" id="" hidden>
                             <input type="text" value="{{ $jenis_pembayaran }}" name="jenis_pembayaran" id=""
                                 hidden>
+                            <input type="text" value="{{ $kelas_id }}" name="kelas_id" id=""
+                                hidden>
                             <div class="col-md-6">
                                 <div class="mb-3 nis">
                                     <label class="form-label" for="">Nis / Siswa</label>

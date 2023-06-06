@@ -13,7 +13,7 @@
                         <div class="row">
 
 
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label" for="thajaran_id">Tahun Ajaran</label>
                                     <select class="form-control" name="thajaran_id" id="thajaran_id" required>
@@ -24,7 +24,18 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label" for="kelas_id">Kelas</label>
+                                    <select class="form-control" name="kelas_id" id="kelas_id" required>
+                                        <option value="" selected>-- Pilih --</option>
+                                        @foreach ($kelas as $s)
+                                            <option value="{{ $s->id }}">{{ $s->nama_kelas }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-3 nis">
                                     <label class="form-label" for="">Nis / Siswa</label>
                                     <select class="form-control selectpicker" name="user_id" id="user_id" required>

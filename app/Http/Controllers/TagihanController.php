@@ -10,13 +10,14 @@ class TagihanController extends Controller
     public function view()
     {
         $data['title'] = "Tagihan";
-        $data['tagihan'] = DB::select("select t.*, ta.tahun, jp.pembayaran, u.nama_lengkap from tagihan t left join tahun_ajaran ta on t.thajaran_id=ta.id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join users u on u.id=t.user_id");
+        $data['tagihan'] = DB::select("select t.*, k.nama_kelas, ta.tahun, jp.pembayaran, u.nama_lengkap from tagihan t left join tahun_ajaran ta on t.thajaran_id=ta.id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join users u on u.id=t.user_id left join kelas k on k.id=t.kelas_id");
         return view('backend.tagihan.view', $data);
     }
     public function add()
     {
         $data['title'] = "Tagihan";
         $data['siswa'] = DB::select("select * from users where role = '2'");
+        $data['kelas'] = DB::select("select * from kelas");
         $data['thajaran'] = DB::select("select * from tahun_ajaran where active = 'ON'");
         $data['jnpembayaran'] = DB::select("select * from jenis_pembayaran where status = 'ON'");
         return view('backend.tagihan.add', $data);
@@ -30,6 +31,7 @@ class TagihanController extends Controller
                 'user_id' => $u,
                 'thajaran_id' => $request->thajaran_id,
                 'jenis_pembayaran' => $request->jenis_pembayaran,
+                'kelas_id' => $request->kelas_id,
                 'nilai' => $request->nilai,
                 'status' => "ON",
                 'created_at' => now(),
@@ -48,8 +50,8 @@ class TagihanController extends Controller
     public function search(Request $request)
     {
         $data['title'] = "Tambah Tagihan";
-        $data['siswa'] = DB::select("SELECT a.id, a.nama_lengkap FROM users a
-WHERE role = 2
+        $data['siswa'] = DB::select("SELECT a.id, a.nama_lengkap, a.kelas_id FROM users a
+WHERE role = 2 and a.kelas_id = '$request->kelas_id'
 AND a.id NOT IN (
     SELECT b.user_id FROM tagihan b
     WHERE b.thajaran_id = '$request->thajaran_id' AND b.jenis_pembayaran = '$request->jenis_pembayaran'
@@ -57,6 +59,7 @@ AND a.id NOT IN (
 ORDER BY a.nama_lengkap");
         $data['thajaran_id'] = $request->thajaran_id;
         $data['jenis_pembayaran'] = $request->jenis_pembayaran;
+        $data['kelas_id'] = $request->kelas_id;
         // dd($request->all());
         // dd($data['siswa']);
         // return response()->json($data);

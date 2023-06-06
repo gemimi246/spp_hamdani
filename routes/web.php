@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SnapController;
@@ -74,6 +75,14 @@ Route::middleware(['auth'])->group(function () {
 
     //midtrans
     Route::post('/getToken', [SnapController::class, 'token'])->name('token');
+
+    //kelas
+    Route::get('/kelas', [KelasController::class, 'view'])->name('kelas');
+    Route::get('/kelas/add', [KelasController::class, 'add'])->name('kelas.add');
+    Route::post('/kelas/proses', [KelasController::class, 'addkelas'])->name('kelas.addKelas');
+    Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::post('/kelas/editProses', [KelasController::class, 'editProses'])->name('kelas.editProses');
+    Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 
 });
 

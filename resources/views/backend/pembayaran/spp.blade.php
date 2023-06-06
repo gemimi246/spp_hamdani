@@ -18,7 +18,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Tahun</th>
-                                <th>Pembayaran</th>
+                     
                                 <th>Nilai</th>
                                 <th>Status</th>
                                 <th>Created</th>
@@ -34,8 +34,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td width="auto">{{ $a->nama_lengkap }}</td>
                                     <td width="20%">{{ $a->nama_bulan }} {{ $a->tahun }}</td>
-                                    <td width="auto">{{ $a->pembayaran }}</td>
-                                    <td width="auto">{{ $a->nilai }}</td>
+                                    <td width="auto">Rp. {{ number_format($a->nilai) }}</td>
                                     <td width="auto">{{ $a->status }}</td>
                                     <td width="auto">{{ $a->created_at }}</td>
                                     <td>
@@ -87,6 +86,7 @@
                         @csrf
                         <input type="text" name="tagihan_id" id="" value="{{ $tagihan_id }}" hidden>
                         <input type="text" name="getNilai" id="" value="{{ $getNilai }}" hidden>
+                        <input type="text" name="kelas_id" id="" value="{{ $kelas_id }}" hidden>
                         {{-- midtrans --}}
                         <input type="hidden" name="_token" id="_token" value="{!! csrf_token() !!}">
                         <input type="hidden" name="result_type" id="result-type" value="">
@@ -127,7 +127,7 @@
                                     <br><br> &nbsp;<button type="submit" name="bayar" id="pay-button"
                                         class="btn btn-primary mb-2">BAYAR</button>
                                     <a class="btn btn-info mb-2"
-                                        href="/pembayaran/search?&thajaran_id={{ $thajaran_id }}&user_id={{ $user_id }}">Kembali</a>
+                                        href="/pembayaran/search?&thajaran_id={{ $thajaran_id }}&kelas_id={{$kelas_id}}&user_id={{ $user_id }}">Kembali</a>
                                 </div>
                             </div>
                     </form>
@@ -136,6 +136,7 @@
         </div>
     </div>
     </div>
+
     <script>
         $(document).ready(function() {
             $('#bulan').change(function() {

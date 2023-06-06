@@ -38,6 +38,11 @@
                             <div>Siswa</div>
                         </a>
                     </li>
+                    <li class="menu-item ">
+                        <a href="/kelas" class="menu-link">
+                            <div>Kelas</div>
+                        </a>
+                    </li>
 
                 </ul>
             </li>

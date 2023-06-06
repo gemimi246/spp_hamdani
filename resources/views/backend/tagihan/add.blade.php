@@ -26,6 +26,17 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
+                                    <label class="form-label" for="kelas_id">Kelas</label>
+                                    <select class="form-control" name="kelas_id" id="kelas_id" required>
+                                        <option value="" selected>-- Pilih --</option>
+                                        @foreach ($kelas as $s)
+                                            <option value="{{ $s->id }}">{{ $s->nama_kelas }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
                                     <label class="form-label" for="jenis_pembayaran">Jenis Pembayaran</label>
                                     <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran" required>
                                         <option value="" selected>-- Pilih --</option>
