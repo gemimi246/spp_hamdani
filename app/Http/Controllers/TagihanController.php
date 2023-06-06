@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,7 @@ class TagihanController extends Controller
                 'thajaran_id' => $request->thajaran_id,
                 'jenis_pembayaran' => $request->jenis_pembayaran,
                 'kelas_id' => $request->kelas_id,
-                'nilai' => $request->nilai,
+                'nilai' => str_replace('.', '', str_replace('Rp. ', '', $request->nilai)),
                 'status' => "ON",
                 'created_at' => now(),
             ];
@@ -65,10 +66,20 @@ ORDER BY a.nama_lengkap");
         // return response()->json($data);
         return view('backend.tagihan.search', $data);
     }
-    
 
-    // public function cities(Request $request)
-    // {
-    //     return \Indonesia::findProvince($request->id, ['cities'])->cities->pluck('name', 'id');
-    // }
+    public function delete($id)
+    {
+        try {
+            // dd($id);
+            DB::table('tagihan')->where('id', $id)->delete();
+            // Alert::success('Category was successful deleted!');
+            return redirect()->route('tagihan');
+        } catch (Exception $e) {
+            return response([
+                'success' => false,
+                'msg'     => 'Error : ' . $e->getMessage() . ' Line : ' . $e->getLine() . ' File : ' . $e->getFile()
+            ]);
+        }
+    }
+    
 }

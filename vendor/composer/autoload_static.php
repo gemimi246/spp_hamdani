@@ -532,6 +532,7 @@ class ComposerStaticInit33fdac0f0d9514fe47a3e9fcec1d53b3
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\KelasController' => __DIR__ . '/../..' . '/app/Http/Controllers/KelasController.php',
         'App\\Http\\Controllers\\PembayaranController' => __DIR__ . '/../..' . '/app/Http/Controllers/PembayaranController.php',
         'App\\Http\\Controllers\\SiswaController' => __DIR__ . '/../..' . '/app/Http/Controllers/SiswaController.php',
         'App\\Http\\Controllers\\SnapController' => __DIR__ . '/../..' . '/app/Http/Controllers/SnapController.php',

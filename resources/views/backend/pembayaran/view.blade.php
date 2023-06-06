@@ -13,18 +13,8 @@
                         <div class="row">
 
 
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label class="form-label" for="thajaran_id">Tahun Ajaran</label>
-                                    <select class="form-control" name="thajaran_id" id="thajaran_id" required>
-                                        <option value="" selected>-- Pilih --</option>
-                                        @foreach ($thajaran as $s)
-                                            <option value="{{ $s->id }}">{{ $s->tahun }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
+
+                            <div class="col-md-5">
                                 <div class="mb-3">
                                     <label class="form-label" for="kelas_id">Kelas</label>
                                     <select class="form-control" name="kelas_id" id="kelas_id" required>
@@ -35,7 +25,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <div class="mb-3 nis">
                                     <label class="form-label" for="">Nis / Siswa</label>
                                     <select class="form-control selectpicker" name="user_id" id="user_id" required>
@@ -73,33 +63,37 @@
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <tbody>
-                                            <?php foreach ($siswa as $u) { ?>
+
                                             <tr>
                                                 <td>Nis </td>
-                                                <td>: <?php echo $u->nis; ?></td>
+                                                <td>: <?php echo $siswa->nis; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Nama Lengkap</td>
-                                                <td>: <span id="nm-santri"><?php echo $u->nama_lengkap; ?></span></td>
+                                                <td>: <span id="nm-santri"><?php echo $siswa->nama_lengkap; ?></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kelas</td>
+                                                <td>: <?php echo $siswa->nama_kelas; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Email</td>
-                                                <td>: <?php echo $u->email; ?></td>
+                                                <td>: <?php echo $siswa->email; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Nomor Telephone</td>
-                                                <td>: <?php echo $u->no_tlp; ?></td>
+                                                <td>: <?php echo $siswa->no_tlp; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Lahir</td>
-                                                <td>: <?php echo $u->tgl_lahir; ?></td>
+                                                <td>: <?php echo $siswa->tgl_lahir; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Alamat</td>
-                                                <td>: <?php echo $u->alamat; ?></td>
+                                                <td>: <?php echo $siswa->alamat; ?></td>
                                             </tr>
 
-                                            <?php } ?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -148,7 +142,58 @@
                                                     <td>
 
                                                     <td>
-                                                        <a href="/pembayaran/spp/{{ $u->id}}" class="btn btn-primary">Bayar</a>
+                                                        <a href="/pembayaran/spp/{{ $u->id }}"
+                                                            class="btn btn-primary">Bayar</a>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card shadow mb-4 border-bottom-info" id="tagihanlainya" value="0">
+                            <!-- Card Header - Accordion -->
+                            <a href="#tagihanlainya" class="d-block bg-info border border-info card-header py-3"
+                                data-toggle="collapse" role="button" aria-expanded="true"
+                                aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-white">Tagihan Lainya</h6>
+                            </a>
+                            <!-- Card Content - Collapse -->
+
+                            <div class="collapse show" id="tagihanlainya">
+                                <div class="table-responsive">
+                                    <div class="card-body">
+                                        <table class="table table-striped" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>NO</th>
+                                                    <th>Tahun Ajaran</th>
+                                                    <th>Jenis Pembayaran</th>
+                                                    <th>Dibayar</th>
+                                                    <th>Status Bayar</th>
+                                                    <th>Bayar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                            $id = 1;
+
+                            foreach ($pembayaran_lainya as $u) {
+                            ?>
+                                                <tr>
+                                                    <td><?php echo $id++; ?></td>
+                                                    <td><?php echo $u->tahun; ?></td>
+                                                    <td><?php echo $u->pembayaran; ?></td>
+                                                    <td></td>
+                                                    <td>
+
+                                                    <td>
+                                                        <a href="/pembayaran/payment/{{ $u->id }}"
+                                                            class="btn btn-primary">Bayar</a>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -162,8 +207,11 @@
                 @else
                 @endif
 
-                
-        
+
+
+
+
+
             </div>
         </div>
     </div>

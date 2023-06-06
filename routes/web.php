@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tagihan', [TagihanController::class, 'view'])->name('tagihan');
     Route::get('/tagihanAdd', [TagihanController::class, 'add'])->name('tagihan.add');
     Route::post('/tagihan/add', [TagihanController::class, 'addProses'])->name('tagihan.addproses');
+    Route::get('/tagihan/delete/{id}', [TagihanController::class, 'delete'])->name('tagihan.delete');
 
     //getdropdown
     Route::get('/jenisPembayaran', [TagihanController::class, 'jenisPembayaran'])->name('jenisPembayaran');
@@ -69,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembayaran', [PembayaranController::class, 'view'])->name('pembayaran');
     Route::get('/pembayaran/search', [PembayaranController::class, 'search'])->name('pembayaran.search');
     Route::get('/pembayaran/spp/{id}', [PembayaranController::class, 'spp'])->name('pembayaran.spp');
+    Route::get('/pembayaran/payment/{id}', [PembayaranController::class, 'payment'])->name('pembayaran.payment');
 
     //spp
     Route::post('/sppAddProses', [PembayaranController::class, 'sppAddProses'])->name('pembayaran.add.spp');
