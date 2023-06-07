@@ -55,26 +55,25 @@
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class='menu-icon tf-icons bx bx-cog'></i>
-                    <div>Setting</div>
+                    {{-- <div>Setting</div> --}}
+                    <div data-i18n="Settings">Settings</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
                         <a href="/aplikasi" class="menu-link">
-                            <div>Aplikasi</div>
+                            <div data-i18n="Aplikasi">Aplikasi</div>
                         </a>
                     </li>
-                </ul>
-                <ul class="menu-sub">
+                
                     <li class="menu-item">
                         <a href="/tahun" class="menu-link">
-                            <div>Tahun Ajaran</div>
+                            <div data-i18n="Tahun Ajaran">Tahun Ajaran</div>
                         </a>
                     </li>
-                </ul>
-                <ul class="menu-sub">
+                
                     <li class="menu-item">
                         <a href="/tagihan" class="menu-link">
-                            <div>Tagihan</div>
+                            <div data-i18n="Tagihan">Tagihan</div>
                         </a>
                     </li>
                 </ul>
