@@ -220,7 +220,6 @@
                             $("#user_id").empty();
                             $("#user_id").append('<option>---Pilih Siswa---</option>');
                             $.each(res, function(kode, value) {
-                                // console.log(nama_lengkap.nama_lengkap);
                                 $("#user_id").append('<option value="' + value.id + '">' + value.nama_lengkap +
                                     '</option>');
                             });
