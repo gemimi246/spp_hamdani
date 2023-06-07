@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembayaran/search', [PembayaranController::class, 'search'])->name('pembayaran.search');
     Route::get('/pembayaran/spp/{id}', [PembayaranController::class, 'spp'])->name('pembayaran.spp');
     Route::get('/pembayaran/payment/{id}', [PembayaranController::class, 'payment'])->name('pembayaran.payment');
+    Route::get('/siswaByKelas/{id}', [PembayaranController::class, 'siswaByKelas'])->name('pembayaran.siswaByKelas');
 
     //spp
     Route::post('/sppAddProses', [PembayaranController::class, 'sppAddProses'])->name('pembayaran.add.spp');

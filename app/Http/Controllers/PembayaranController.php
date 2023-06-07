@@ -88,4 +88,10 @@ class PembayaranController extends Controller
         // dd($data['spp']);
         return view('backend.pembayaran.payment', $data);
     }
+    function siswaByKelas($kelas_id)
+    {
+        $query = DB::table('users')->where('kelas_id', $kelas_id)->get();
+
+        return response()->json($query);
+    }
 }

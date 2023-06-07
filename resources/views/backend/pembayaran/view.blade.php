@@ -28,12 +28,10 @@
                             <div class="col-md-5">
                                 <div class="mb-3 nis">
                                     <label class="form-label" for="">Nis / Siswa</label>
-                                    <select class="form-control selectpicker" name="user_id" id="user_id" required>
+                                    <select class="form-control" name="user_id" id="user_id" data-live-search="true" required>
                                         <option value="" selected>-- Pilih --</option>
 
-                                        @foreach ($getSiswa as $s)
-                                            <option value="{{ $s->id }}">{{ $s->nama_lengkap }}</option>
-                                        @endforeach
+
 
                                     </select>
                                 </div>
@@ -206,13 +204,34 @@
                     </div>
                 @else
                 @endif
-
-
-
-
-
-
             </div>
         </div>
     </div>
+    <script>
+        $('#kelas_id').change(function() {
+            var klsid = $(this).val();
+            if (klsid) {
+                $.ajax({
+                    type: "GET",
+                    url: "/siswaByKelas/" + klsid,
+                    dataType: 'JSON',
+                    success: function(res) {
+                        if (res) {
+                            $("#user_id").empty();
+                            $("#user_id").append('<option>---Pilih Siswa---</option>');
+                            $.each(res, function(kode, value) {
+                                // console.log(nama_lengkap.nama_lengkap);
+                                $("#user_id").append('<option value="' + value.id + '">' + value.nama_lengkap +
+                                    '</option>');
+                            });
+                        } else {
+                            $("#user_id").empty();
+                        }
+                    }
+                });
+            } else {
+                $("#user_id").empty();
+            }
+        });
+    </script>
 @endsection
