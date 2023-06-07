@@ -1,6 +1,7 @@
 @extends('backend.layout.base')
 
 @section('content')
+
     <div class="row">
         <div class="col-xl">
             <div class="card mb-4">
@@ -17,7 +18,7 @@
                             <div class="col-md-5">
                                 <div class="mb-3">
                                     <label class="form-label" for="kelas_id">Kelas</label>
-                                    <select class="form-control" name="kelas_id" id="kelas_id" required>
+                                    <select class="form-select" name="kelas_id" id="kelas_id" required>
                                         <option value="" selected>-- Pilih --</option>
                                         @foreach ($kelas as $s)
                                             <option value="{{ $s->id }}">{{ $s->nama_kelas }}</option>
@@ -26,14 +27,10 @@
                                 </div>
                             </div>
                             <div class="col-md-5">
-                                <div class="mb-3 nis">
+                                <div class="mb-3">
                                     <label class="form-label" for="">Nis / Siswa</label>
-                                    <select class="form-control" name="user_id" id="user_id" data-live-search="true" required>
-                                        <option value="" selected>-- Pilih --</option>
-
-
-
-                                    </select>
+                                    <select class="form-select" name="nis" id="nis"
+                                        aria-label="Default select example"></select>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -217,20 +214,22 @@
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {
-                            $("#user_id").empty();
-                            $("#user_id").append('<option>---Pilih Siswa---</option>');
+                            $("#nis").empty();
+                            $("#nis").append('<option>---Pilih Siswa---</option>');
                             $.each(res, function(kode, value) {
-                                $("#user_id").append('<option value="' + value.id + '">' + value.nama_lengkap +
+                                $("#nis").append('<option value="' + value.nis + '">' + value
+                                    .nama_lengkap +
                                     '</option>');
                             });
                         } else {
-                            $("#user_id").empty();
+                            $("#nis").empty();
                         }
                     }
                 });
             } else {
-                $("#user_id").empty();
+                $("#nis").empty();
             }
         });
     </script>
+
 @endsection

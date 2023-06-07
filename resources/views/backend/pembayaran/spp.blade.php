@@ -127,7 +127,7 @@
                                     <br><br> &nbsp;<button type="submit" name="bayar" id="pay-button"
                                         class="btn btn-primary mb-2">BAYAR</button>
                                     <a class="btn btn-info mb-2"
-                                        href="/pembayaran/search?&thajaran_id={{ $thajaran_id }}&kelas_id={{$kelas_id}}&user_id={{ $user_id }}">Kembali</a>
+                                        href="/pembayaran/search?&thajaran_id={{ $thajaran_id }}&kelas_id={{$kelas_id}}&nis={{ $nis }}">Kembali</a>
                                 </div>
                             </div>
                     </form>

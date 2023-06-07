@@ -22,7 +22,7 @@
 
 
     <!-- Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
-    <script>
+    {{-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -37,7 +37,7 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
-    </script>
+    </script> --}}
     <!-- End Google Tag Manager -->
 
 
@@ -67,7 +67,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
 
-    <link rel="stylesheet" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/dropzone/dropzone.css" />
+    {{-- <link rel="stylesheet" href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/libs/dropzone/dropzone.css" /> --}}
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <!-- Form Validation -->
@@ -81,6 +81,10 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/quill/editor.css') }}" />
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- laravel style -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
+     <link rel="stylesheet" href="{{ asset('assets/css/demo.css')}}" />
+
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
     <!-- beautify ignore:start -->
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -91,7 +95,7 @@
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="{{ asset('assets/js/config.js') }}"></script>
 
-  <script>
+  {{-- <script>
       window.templateCustomizer = new TemplateCustomizer({
           cssPath: '',
           themesPath: '',
@@ -118,11 +122,11 @@
               "layoutFooterFixed", "themes"
           ],
       });
-  </script>
+  </script> --}}
   <!-- beautify ignore:end -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    {{-- <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -131,13 +135,13 @@
         }
         gtag('js', new Date());
         gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
+    </script> --}}
 </head>
 
 <body>
 
     <!-- Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+    {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript> --}}
     <!-- End Google Tag Manager (noscript) -->
 
 
@@ -184,7 +188,7 @@
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <div class="drag-target"></div>
+
     </div>
     <!-- / Layout wrapper -->
     <!--/ Layout Content -->
@@ -253,6 +257,8 @@
     <script src="{{ asset('assets/js/form-layouts.js') }}"></script>
 
     <script src="{{ asset('assets/js/forms-editors.js') }}"></script>
+
+    <script src="{{ asset('assets/js/form-basic-inputs.js')}}"></script>
 
 
 </body>

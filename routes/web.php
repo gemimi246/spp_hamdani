@@ -75,9 +75,11 @@ Route::middleware(['auth'])->group(function () {
 
     //spp
     Route::post('/sppAddProses', [PembayaranController::class, 'sppAddProses'])->name('pembayaran.add.spp');
+    Route::post('/paymentAddProses', [PembayaranController::class, 'paymentAddProses'])->name('pembayaran.add.payment');
 
     //midtrans
     Route::post('/getToken', [SnapController::class, 'token'])->name('token');
+    Route::post('/getTokenPayment', [SnapController::class, 'payment'])->name('payment');
 
     //kelas
     Route::get('/kelas', [KelasController::class, 'view'])->name('kelas');

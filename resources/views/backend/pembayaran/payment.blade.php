@@ -9,26 +9,70 @@
                 </div>
                 @foreach ($payment as $p)
                     <div class="card-body">
-                        <form action="/kelas/proses" method="POST" enctype="multipart/form-data">
+                        <form action="/paymentAddProses" method="POST" id="payment-form" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="_token" id="_token" value="{!! csrf_token() !!}">
+                            <input type="hidden" name="result_type" id="result-type" value="">
+                            <input type="hidden" name="result_data" id="result-data" value="">
+
+                            <input type="text" name="tagihan_id" id="tagihan_id" value="{{$p->id}}" hidden>
+                            <input type="text" name="user_id" id="user_id" value="{{$p->user_id}}" hidden>
+                            <input type="text" name="kelas_id" id="kelas_id" value="{{$p->kelas_id}}" hidden>
+                            <input type="text" name="nis" id="nis" value="{{$p->nis}}" hidden>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="full_name">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" value="{{$p->nama_lengkap}}"
-                                            placeholder="Masukan Nama Kelas" required />
+                                        <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                            value="{{ $p->nama_lengkap }}" readonly placeholder="Masukan Nama Lengkap"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="full_name">Pembayaran</label>
-                                        <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{$p->pembayaran}}"
-                                            placeholder="Masukan Keterangan" required />
+                                        <input type="text" class="form-control" id="pembayaran" name="pembayaran"
+                                            value="{{ $p->pembayaran }}" readonly placeholder="Masukan pembayaran"
+                                            required />
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="full_name">Tahun</label>
+                                        <input type="text" class="form-control" id="tahun" name="tahun"
+                                            value="{{ $p->tahun }}" readonly placeholder="Masukan Tahun"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="full_name">Nilai</label>
+                                        <input type="text" class="form-control" id="nilai" name="nilai"
+                                            value="Rp. {{ number_format($p->nilai) }}" readonly
+                                            placeholder="Masukan Nilai" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="full_name">Status</label>
+                                        <input type="text" class="form-control" id="status" name="status"
+                                            value="{{ $p->status }}" readonly
+                                            placeholder="Masukan Status" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="full_name">Metode Pembayaran</label>
+                                        <select name="metode_pembayaran" id="metode_pembayaran" class="form-control" required>
+                                            <option value="">-- Pilih --</option>
+                                            <option value="Online">Online</option>
+                                            <option value="Manual">Manual</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
                                     <br>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="submit" id="pay-button" class="btn btn-primary">Bayar</button>
                                     <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
                                 </div>
                         </form>
@@ -38,4 +82,60 @@
 
         </div>
     </div>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-a3XBeF6t11TJ5LWQ"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $('#pay-button').click(function(event) {
+            event.preventDefault();
+            $(this).attr("disabled", "disabled");
+            // console.log($('#nilai').val().replace("Rp.", '').replace(",", '').replace(".", ''));
+            $.ajax({
+                method: "POST",
+                url: '/getTokenPayment',
+                cache: false,
+                data: {
+                    _token: $('#_token').val(),
+                    nama_lengkap: $('#nama_lengkap').val(),
+                    pembayaran: $('#pembayaran').val(),
+                    tahun: $('#tahun').val(),
+                    total: $('#nilai').val().replace("Rp.", '').replace(",", '').replace(".", ''),
+
+                },
+                success: function(data) {
+                    //location = data;
+                    console.log('token = ' + data);
+
+                    var resultType = document.getElementById('result-type');
+                    var resultData = document.getElementById('result-data');
+
+                    function changeResult(type, data) {
+                        $("#result-type").val(type);
+                        $("#result-data").val(JSON.stringify(data));
+                        //resultType.innerHTML = type;
+                        //resultData.innerHTML = JSON.stringify(data);
+                    }
+                    snap.pay(data, {
+
+                        onSuccess: function(result) {
+                            changeResult('success', result);
+                            console.log(result.status_message);
+                            console.log(result);
+                            $("#payment-form").submit();
+                        },
+                        onPending: function(result) {
+                            changeResult('pending', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        },
+                        onError: function(result) {
+                            changeResult('error', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

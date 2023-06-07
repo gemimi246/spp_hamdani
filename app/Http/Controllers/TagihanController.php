@@ -34,7 +34,7 @@ class TagihanController extends Controller
                 'jenis_pembayaran' => $request->jenis_pembayaran,
                 'kelas_id' => $request->kelas_id,
                 'nilai' => str_replace('.', '', str_replace('Rp. ', '', $request->nilai)),
-                'status' => "ON",
+                'status' => "Belum Lunas",
                 'created_at' => now(),
             ];
             // dd($data);
