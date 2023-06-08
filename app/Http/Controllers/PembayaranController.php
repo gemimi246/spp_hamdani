@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 class PembayaranController extends Controller
 {
-    //
+    
 
     public function view()
     {
