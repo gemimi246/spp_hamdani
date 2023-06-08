@@ -183,12 +183,21 @@
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
-                                                    <td></td>
-                                                    <td>
+                                                    <td>Rp. {{ number_format($u->nilai) }}</td>
+                                                    <td>{{ $u->status_payment }}</td>
 
                                                     <td>
+                                                        @if ($u->status_payment == 'Pending')
+                                                            <a href="{{ $u->pdf_url }}" class="btn btn-success"
+                                                                target="_blank">Invoice</a>
+                                                        @elseif ($u->status_payment == 'Lunas')
+                                                            <a href="#" class="btn btn-danger"
+                                                                target="_blank">Cetak</a>
+                                                        @else
                                                         <a href="/pembayaran/payment/{{ $u->id }}"
                                                             class="btn btn-primary">Bayar</a>
+                                                        @endif
+                                                        
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
-
 class PembayaranController extends Controller
 {
     //
@@ -23,16 +22,49 @@ class PembayaranController extends Controller
     }
     public function search(Request $request)
     {
+        // $this->load->helper('url');
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $getOrderId = DB::select("select p.*, u.nis, u.nama_lengkap from users u left join payment p on p.user_id=u.id where u.nis = '$request->nis' ORDER BY p.created_at DESC");
+        foreach ($getOrderId as $ord) {
+            if ($ord->order_id != null) {
+                $getDataMidtrans = \Midtrans\Transaction::status($ord->order_id);
+                if ($getDataMidtrans->status_code == 200) {
+                    $data = [
+                        'status' => "Lunas"
+                    ];
+                } elseif ($getDataMidtrans->status_code == 201) {
+                    $data = [
+                        'status' => "Pending"
+                    ];
+                } else {
+                    $data = [
+                        'status' => "Failed"
+                    ];
+                }
+                DB::table('payment')->where('order_id', $ord->order_id)->update($data);
+            }
+
+            // dd($status);
+        }
+        
         $data['title'] = "Pembayaran";
         $data['getSiswa'] = DB::select("select * from users where role = '2'");
         $data['thajaran'] = DB::select("select * from tahun_ajaran where active = 'ON'");
         $data['kelas'] = DB::select("select * from kelas");
-
-
-        // dd($request->all());
         $data['siswa'] = DB::table('users')->join('tagihan', 'users.id', '=', 'tagihan.user_id')->join('kelas', 'kelas.id', '=', 'tagihan.kelas_id')->where('users.nis', $request->nis)->where('users.kelas_id', $request->kelas_id)->first();
-        $data['pembayaran_bulanan'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran = '1'");
-        $data['pembayaran_lainya'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran != '1'");
+        $data['pembayaran_bulanan'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.status as status_payment_spp from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.user_id=u.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran = '1'");
+        // dd($data['pembayaran_bulanan']);
+        $data['pembayaran_lainya'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.order_id, p.pdf_url, p.metode_pembayaran, p.status as status_payment from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.tagihan_id=t.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran != '1'");
+        // dd($request->all());
+        
+        
         if ($data['pembayaran_bulanan'] == null) {
             Alert::warning('Peringatan', 'SISWA BELUM ADA TAGIHAN');
             return view('backend.pembayaran.view', $data);
@@ -40,7 +72,8 @@ class PembayaranController extends Controller
             return view('backend.pembayaran.view', $data);
         }
     }
-        // dd($data['siswa']);
+  
+       
         
     public function spp($id_tagihan)
     {
@@ -63,7 +96,7 @@ class PembayaranController extends Controller
     public function sppAddProses(Request $request)
     {
         $dataMidtrans = json_decode($request->result_data);
-        // dd($dataMidtrans);
+       
         foreach ($request->bulan as $key => $bu) {
             $data[] = [
                 'bulan_id' => $bu,
@@ -74,7 +107,7 @@ class PembayaranController extends Controller
                 'order_id' => $dataMidtrans->order_id,
                 'pdf_url' => $dataMidtrans->pdf_url,
                 'metode_pembayaran' => $request->metode_pembayaran,
-                'status' => "Belum Bayar",
+                'status' => "Pending",
                 'created_at' => now(),
             ];
         }
@@ -94,15 +127,16 @@ class PembayaranController extends Controller
     {
         // dd($request->all());
         $dataMidtrans = json_decode($request->result_data);
+        // dd();
         $data = [
             'user_id' => $request->user_id,
             'tagihan_id' => $request->tagihan_id,
             'kelas_id' => $request->kelas_id,
-            'nilai' => str_replace('.', '', str_replace('Rp. ', '', $request->nilai)),
-            'order_id' => $dataMidtrans->order_id,
-            'pdf_url' => $dataMidtrans->pdf_url,
+            'nilai' => str_replace(',', '', str_replace('Rp. ', '', $request->nilai)),
+            'order_id' => isset($dataMidtrans->order_id) == false ? null : $dataMidtrans->order_id,
+            'pdf_url' => isset($dataMidtrans->pdf_url) == false ? null : $dataMidtrans->pdf_url,
             'metode_pembayaran' => $request->metode_pembayaran,
-            'status' => $request->status,
+            'status' => $request->metode_pembayaran == "Online" ? "Pending" : 'Lunas',
             'created_at' => now(),
         ];
         // dd($data);
