@@ -1,7 +1,6 @@
 @extends('backend.layout.base')
 
 @section('content')
-
     <div class="row">
         <div class="col-md-9">
             <div class="card table-responsive">
@@ -18,9 +17,9 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Tahun</th>
-                     
                                 <th>Nilai</th>
                                 <th>Status</th>
+                                <th>Invoice</th>
                                 <th>Created</th>
                                 <th>Actions</th>
                             </tr>
@@ -36,14 +35,21 @@
                                     <td width="20%">{{ $a->nama_bulan }} {{ $a->tahun }}</td>
                                     <td width="auto">Rp. {{ number_format($a->nilai) }}</td>
                                     <td width="auto">{{ $a->status }}</td>
+                                    <td width="auto">
+                                        @if ($a->status == 'Pending')
+                                            <a href="{{ $a->pdf_url }}" class="btn btn-success" target="_blank">Invoice</a>
+                                            @elseif ($a->status == "Lunas")
+                                            <a href="#" class="btn btn-danger" target="_blank">Cetak</a>
+                                        @endif
+                                    </td>
                                     <td width="auto">{{ $a->created_at }}</td>
                                     <td>
 
-                                        <button type="button" class="btn rounded-pill btn-icon btn-outline-danger" data-bs-toggle="modal"
-                                            data-bs-target="#delete{{ $a->id }}">
+                                        <button type="button" class="btn rounded-pill btn-icon btn-outline-danger"
+                                            data-bs-toggle="modal" data-bs-target="#delete{{ $a->id }}">
                                             <span class="fa fa-trash"></span>
                                         </button>
-                                        
+
                                     </td>
                                     <div class="modal fade" id="delete{{ $a->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="deletemodal" aria-hidden="true">
@@ -116,10 +122,10 @@
                             </div>
                             <div class="col-md-12">
                                 <label>Pembayaran</label>
-                                <select id="metode-pembayaran" class="form-control" name="metode_pembayaran" required>
+                                <select id="metode_pembayaran" class="form-control" name="metode_pembayaran" required>
                                     <option value="">Pilih Metode Pembayaran</option>
                                     <option value="Online">Online</option>
-                                    <option value="Manual">Bayar Ditempat</option>
+                                    <option value="Manual">Manual</option>
                                 </select>
                             </div>
                             <div class="col-md-12">
@@ -127,7 +133,7 @@
                                     <br><br> &nbsp;<button type="submit" name="bayar" id="pay-button"
                                         class="btn btn-primary mb-2">BAYAR</button>
                                     <a class="btn btn-info mb-2"
-                                        href="/pembayaran/search?&kelas_id={{$kelas_id}}&nis={{ $nis }}">Kembali</a>
+                                        href="/pembayaran/search?&kelas_id={{ $kelas_id }}&nis={{ $nis }}">Kembali</a>
                                 </div>
                             </div>
                     </form>
@@ -154,52 +160,54 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript">
         $('#pay-button').click(function(event) {
-            event.preventDefault();
-            $(this).attr("disabled", "disabled");
-            var _total = $('#total').val();
-            $.ajax({
-                method: "POST",
-                url: '/getToken',
-                cache: false,
-                data: {
-                    _token: $('#_token').val(),
-                    total: _total.replace("Rp.", '').replace(".", '').replace(".", '')
+            if ($('#metode_pembayaran').val() == "Online") {
+                event.preventDefault();
+                $(this).attr("disabled", "disabled");
+                var _total = $('#total').val();
+                $.ajax({
+                    method: "POST",
+                    url: '/getToken',
+                    cache: false,
+                    data: {
+                        _token: $('#_token').val(),
+                        total: _total.replace("Rp.", '').replace(".", '').replace(".", '')
 
-                },
-                success: function(data) {
-                    //location = data;
-                    console.log('token = ' + data);
+                    },
+                    success: function(data) {
+                        //location = data;
+                        console.log('token = ' + data);
 
-                    var resultType = document.getElementById('result-type');
-                    var resultData = document.getElementById('result-data');
+                        var resultType = document.getElementById('result-type');
+                        var resultData = document.getElementById('result-data');
 
-                    function changeResult(type, data) {
-                        $("#result-type").val(type);
-                        $("#result-data").val(JSON.stringify(data));
-                        //resultType.innerHTML = type;
-                        //resultData.innerHTML = JSON.stringify(data);
-                    }
-                    snap.pay(data, {
-
-                        onSuccess: function(result) {
-                            changeResult('success', result);
-                            console.log(result.status_message);
-                            console.log(result);
-                            $("#payment-form").submit();
-                        },
-                        onPending: function(result) {
-                            changeResult('pending', result);
-                            console.log(result.status_message);
-                            $("#payment-form").submit();
-                        },
-                        onError: function(result) {
-                            changeResult('error', result);
-                            console.log(result.status_message);
-                            $("#payment-form").submit();
+                        function changeResult(type, data) {
+                            $("#result-type").val(type);
+                            $("#result-data").val(JSON.stringify(data));
+                            //resultType.innerHTML = type;
+                            //resultData.innerHTML = JSON.stringify(data);
                         }
-                    });
-                }
-            });
+                        snap.pay(data, {
+
+                            onSuccess: function(result) {
+                                changeResult('success', result);
+                                console.log(result.status_message);
+                                console.log(result);
+                                $("#payment-form").submit();
+                            },
+                            onPending: function(result) {
+                                changeResult('pending', result);
+                                console.log(result.status_message);
+                                $("#payment-form").submit();
+                            },
+                            onError: function(result) {
+                                changeResult('error', result);
+                                console.log(result.status_message);
+                                $("#payment-form").submit();
+                            }
+                        });
+                    }
+                });
+            }
         });
     </script>
 @endsection

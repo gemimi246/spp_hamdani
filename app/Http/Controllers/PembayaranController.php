@@ -53,16 +53,16 @@ class PembayaranController extends Controller
 
             // dd($status);
         }
-        
+        // dd($request->all());
         $data['title'] = "Pembayaran";
         $data['getSiswa'] = DB::select("select * from users where role = '2'");
         $data['thajaran'] = DB::select("select * from tahun_ajaran where active = 'ON'");
         $data['kelas'] = DB::select("select * from kelas");
         $data['siswa'] = DB::table('users')->join('tagihan', 'users.id', '=', 'tagihan.user_id')->join('kelas', 'kelas.id', '=', 'tagihan.kelas_id')->where('users.nis', $request->nis)->where('users.kelas_id', $request->kelas_id)->first();
-        $data['pembayaran_bulanan'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.status as status_payment_spp from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.user_id=u.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran = '1'");
+        $data['pembayaran_bulanan'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, (SELECT CASE WHEN COUNT(p.bulan_id) < 12 THEN 'Belum Lunas' ELSE 'Lunas' END AS status_payment_all FROM payment p WHERE p.tagihan_id = 24 AND p.status = 'Lunas') as status_payment_all, (SELECT SUM(p.nilai) as total FROM payment p WHERE p.tagihan_id = 24 AND p.status = 'Lunas') AS total from tagihan  t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.user_id=u.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran = '1'");
         // dd($data['pembayaran_bulanan']);
         $data['pembayaran_lainya'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.order_id, p.pdf_url, p.metode_pembayaran, p.status as status_payment from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.tagihan_id=t.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran != '1'");
-        // dd($request->all());
+        
         
         
         if ($data['pembayaran_bulanan'] == null) {
@@ -86,11 +86,11 @@ class PembayaranController extends Controller
         $data['nis'] = $getDataUser[0][0]->nis;
         $data['kelas_id'] = $getDataUser[0][0]->kelas_id;
         $data['tagihan_id'] = $id_tagihan;
-        $data['spp'] = DB::select("select s.*, u.nama_lengkap, ta.tahun, jp.pembayaran, b.nama_bulan from payment s left join users u on u.id=s.user_id left join bulan b on b.id=s.bulan_id left join tagihan t on t.id=s.tagihan_id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran where t.id = '$id_tagihan'");
+        $data['spp'] = DB::select("select s.*, u.nama_lengkap, ta.tahun, jp.pembayaran, b.nama_bulan from payment s left join users u on u.id=s.user_id left join bulan b on b.id=s.bulan_id left join tagihan t on t.id=s.tagihan_id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran where t.id = '$id_tagihan' order by bulan_id asc");
         $data['bulan'] = DB::select("SELECT id, nama_bulan FROM bulan WHERE id NOT IN (SELECT bulan_id FROM payment WHERE tagihan_id = '$id_tagihan')");
         $data['getNilai'] = DB::select("select nilai from tagihan where id = '$id_tagihan'")[0]->nilai;
 
-        // dd($data['getNilai']);
+        // dd($data['spp']);
         return view('backend.pembayaran.spp', $data);
     }
     public function sppAddProses(Request $request)
@@ -104,15 +104,19 @@ class PembayaranController extends Controller
                 'tagihan_id' => $request->tagihan_id,
                 'kelas_id' => $request->kelas_id,
                 'nilai' => $request->getNilai,
-                'order_id' => $dataMidtrans->order_id,
-                'pdf_url' => $dataMidtrans->pdf_url,
+                'order_id' => isset($dataMidtrans->order_id) == false ? null : $dataMidtrans->order_id,
+                'pdf_url' => isset($dataMidtrans->pdf_url) == false ? null : $dataMidtrans->pdf_url,
                 'metode_pembayaran' => $request->metode_pembayaran,
-                'status' => "Pending",
+                'status' => $request->metode_pembayaran == "Online" ? "Pending" : 'Lunas',
                 'created_at' => now(),
             ];
         }
         // dd($data);
         DB::table('payment')->insert($data);
+        if ($request->metode_pembayaran == "Manual") {
+            # code...
+        }
+        $request->metode_pembayaran == "Manual" ? Alert::success('Success', 'Pembayaran Berhasil') : Alert::warning('Peringatan', 'Segera melakukan pembayaran!!!');
         return redirect("/pembayaran/spp/$request->tagihan_id");
     }
     public function payment($id_tagihan)
@@ -141,6 +145,7 @@ class PembayaranController extends Controller
         ];
         // dd($data);
         DB::table('payment')->insert($data);
+        $request->metode_pembayaran == "Manual" ? Alert::success('Success', 'Pembayaran Berhasil') : Alert::warning('Peringatan', 'Segera melakukan pembayaran!!!');
         return redirect("/pembayaran/search?&kelas_id=$request->kelas_id&nis=$request->nis");
     }
     function siswaByKelas($kelas_id)
