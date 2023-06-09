@@ -197,11 +197,21 @@
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
-                                                    <td>Rp. {{ number_format($u->nilai) }}</td>
-                                                   <td class="text-center">
-                                                        @if ($u->status_payment == 'Belum Lunas')
+                                                    <td>
+                                                        @if ($u->status_payment == null)
+                                                        Rp. 0
+                                                        @else
+                                                        Rp. {{ number_format($u->nilai) }}
+                                                        @endif
+                                                    </td>
+                                                    {{-- <td>Rp. {{ number_format($u->nilai) }}</td> --}}
+                                                    <td class="text-center">
+                                                        @if ($u->status_payment == null)
                                                             <span class="badge bg-label-danger" style="width: 57%;">Belum
                                                                 Lunas</span>
+                                                        @elseif ($u->status_payment == "Pending")
+                                                        <span class="badge bg-label-info"
+                                                                style="width: 57%;">Pending</span>
                                                         @else
                                                             <span class="badge bg-label-primary"
                                                                 style="width: 57%;">Lunas</span>

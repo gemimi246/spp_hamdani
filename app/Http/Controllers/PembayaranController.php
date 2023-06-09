@@ -65,7 +65,7 @@ class PembayaranController extends Controller
         $data['pembayaran_lainya'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.order_id, p.pdf_url, p.metode_pembayaran, p.status as status_payment from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.tagihan_id=t.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran != '1'");
 
 
-
+        // dd($data['pembayaran_lainya']);
         if ($data['pembayaran_bulanan'] || $data['pembayaran_lainya'] == true) {
             
             return view('backend.pembayaran.view', $data);
