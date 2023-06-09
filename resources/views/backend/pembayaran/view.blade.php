@@ -135,11 +135,11 @@
                                                     <td>Rp. {{ number_format($u->total_bayar) }}</td>
                                                     <td class="text-center">
                                                         @if ($u->status_bayar == 'Belum Lunas')
-                                                            <button class="btn btn-danger" style="width: 57%;">Belum
-                                                                Lunas</button>
+                                                            <span class="badge bg-label-danger" style="width: 57%;">Belum
+                                                                Lunas</span>
                                                         @else
-                                                            <button class="btn btn-success"
-                                                                style="width: 57%;">Lunas</button>
+                                                            <span class="badge bg-label-primary"
+                                                                style="width: 57%;">Lunas</span>
                                                         @endif
                                                     </td>
 
@@ -183,7 +183,7 @@
                                                     <th>Tahun Ajaran</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
-                                                    <th>Status Bayar</th>
+                                                    <th class="text-center">Status Bayar</th>
                                                     <th>Bayar</th>
                                                 </tr>
                                             </thead>
@@ -198,7 +198,15 @@
                                                     <td><?php echo $u->tahun; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
                                                     <td>Rp. {{ number_format($u->nilai) }}</td>
-                                                    <td>{{ $u->status_payment }}</td>
+                                                   <td class="text-center">
+                                                        @if ($u->status_payment == 'Belum Lunas')
+                                                            <span class="badge bg-label-danger" style="width: 57%;">Belum
+                                                                Lunas</span>
+                                                        @else
+                                                            <span class="badge bg-label-primary"
+                                                                style="width: 57%;">Lunas</span>
+                                                        @endif
+                                                    </td>
 
                                                     <td>
                                                         @if ($u->status_payment == 'Pending')

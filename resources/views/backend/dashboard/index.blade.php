@@ -31,14 +31,14 @@
                                 {{ request()->user()->nama_lengkap }}
                             </h6>
                             <small class="d-block mb-3 text-nowrap">Total Pembayaran</small>
-                            <h5 class="card-title text-primary mb-1">Rp. 10.000.000</h5>
+                            <h5 class="card-title text-primary mb-1">Rp. {{number_format($totalById)}}</h5>
                             <small class="d-block mb-4 pb-1 text-muted">78% of target</small>
                             <a href="javascript:;" class="btn btn-sm btn-primary">View profile</a>
                         </div>
                     </div>
                     <div class="col-4 pt-3 ps-0">
-                        <img src="{{asset('storage/images/user/user.png')}}" width="120" height="100" style="margin-bottom: 30%;"
-                            class="rounded-start" alt="">
+                        <img src="{{ asset('storage/images/user/user.png') }}" width="120" height="100"
+                            style="margin-bottom: 30%;" class="rounded-start" alt="">
                     </div>
                 </div>
             </div>
@@ -99,80 +99,33 @@
                         <table class="table text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Category</th>
-                                    <th>Payment</th>
-                                    <th>Order Status</th>
-                                    <th>Actions</th>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Alamat</th>
+                                    <th class="text-center">Rank Payment</th>
+
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="../../demo/assets/img/icons/products/oneplus.png" alt="Oneplus"
-                                                height="32" width="32" class="me-2">
-                                            <div class="d-flex flex-column">
-                                                <span class="fw-semibold lh-1">OnePlus 7Pro</span>
-                                                <small class="text-muted">OnePlus</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-primary rounded-pill badge-center p-3 me-2"><i
-                                                class="bx bx-mobile-alt bx-xs"></i></span> Smart Phone</td>
-                                    <td>
-                                        <div class="text-muted lh-1"><span class="text-primary fw-semibold">$120</span>/499
-                                        </div>
-                                        <small class="text-muted">Partially Paid</small>
-                                    </td>
-                                    <td><span class="badge bg-label-primary">Confirmed</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                data-bs-toggle="dropdown"><i
-                                                    class="bx bx-dots-vertical-rounded"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-edit-alt me-1"></i> View Details</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-trash me-1"></i> Buy Again</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @php
+                                    $no = 1;
+                                    $rank = 1;
+                                @endphp
+                                @foreach ($rankpayment as $rp)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>
+                                            {{ $rp->nama_lengkap }}
+                                        </td>
+                                        <td>{{ $rp->nama_kelas }}</td>
+                                        <td>
+                                            {{ $rp->alamat }}
+                                        </td>
+                                        <td class="text-center"><span class="badge bg-label-primary ">{{ $rank++ }}</span></td>
 
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="../../demo/assets/img/icons/products/logitech-mx.png" alt="Logitech"
-                                                height="32" width="32" class="me-2">
-                                            <div class="d-flex flex-column">
-                                                <span class="fw-semibold lh-1">Logitech MX</span>
-                                                <small class="text-muted">Logitech</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-warning rounded-pill badge-center p-3 me-2"><i
-                                                class="bx bx-mouse bx-xs"></i></span> Mouse</td>
-                                    <td>
-                                        <div class="lh-1"><span class="text-primary fw-semibold">$89</span></div>
-                                        <small class="text-muted">Fully Paid</small>
-                                    </td>
-                                    <td><span class="badge bg-label-primary">Completed</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                data-bs-toggle="dropdown"><i
-                                                    class="bx bx-dots-vertical-rounded"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-edit-alt me-1"></i> View Details</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-trash me-1"></i> Buy Again</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
