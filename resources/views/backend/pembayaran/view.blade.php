@@ -97,7 +97,8 @@
                     </div>
             
                 @endif
-                @if ($pembayaran_bulanan || $pembayaran_lainya != null)
+               
+                @if ($pembayaran_bulanan != null)
                     <div class="card-body">
                         <div class="card shadow mb-4 border-bottom-warning" id="tagihanbulanan" value="0">
                             <!-- Card Header - Accordion -->
@@ -161,6 +162,10 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if ($pembayaran_lainya != null)
+                        
+                 
                     <div class="card-body">
                         <div class="card shadow mb-4 border-bottom-info" id="tagihanlainya" value="0">
                             <!-- Card Header - Accordion -->
@@ -220,7 +225,6 @@
                             </div>
                         </div>
                     </div>
-                @else
                 @endif
             </div>
         </div>
