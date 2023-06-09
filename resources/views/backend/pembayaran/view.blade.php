@@ -95,9 +95,8 @@
                             </div>
                         </div>
                     </div>
-            
                 @endif
-               
+
                 @if ($pembayaran_bulanan != null)
                     <div class="card-body">
                         <div class="card shadow mb-4 border-bottom-warning" id="tagihanbulanan" value="0">
@@ -137,9 +136,11 @@
                                                     <td>Rp. {{ number_format($u->total_bayar) }}</td>
                                                     <td class="text-center">
                                                         @if ($u->status_bayar == 'Belum Lunas')
-                                                            <button class="btn btn-danger" style="width: 57%;">Belum Lunas</button>
+                                                            <button class="btn btn-danger" style="width: 57%;">Belum
+                                                                Lunas</button>
                                                         @else
-                                                            <button class="btn btn-success" style="width: 57%;">Lunas</button>
+                                                            <button class="btn btn-success"
+                                                                style="width: 57%;">Lunas</button>
                                                         @endif
                                                     </td>
 
@@ -149,8 +150,7 @@
                                                             <a href="/pembayaran/spp/{{ $u->id }}"
                                                                 class="btn btn-primary">Bayar</a>
                                                         @else
-                                                            <a href="#"
-                                                                class="btn btn-warning">Cetak</a>
+                                                            <a href="#" class="btn btn-warning">Cetak</a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -162,10 +162,8 @@
                             </div>
                         </div>
                     </div>
-                    @endif
-                    @if ($pembayaran_lainya != null)
-                        
-                 
+                @endif
+                @if ($pembayaran_lainya != null)
                     <div class="card-body">
                         <div class="card shadow mb-4 border-bottom-info" id="tagihanlainya" value="0">
                             <!-- Card Header - Accordion -->

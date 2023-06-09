@@ -17,7 +17,8 @@ class PembayaranController extends Controller
         $data['kelas'] = DB::select("select * from kelas");
         $data['siswa'] = "";
         $data['pembayaran_bulanan'] = "";
-        $data['pembayaran_lainya '] = "";
+        $data['pembayaran_lainya'] = [];
+        
         return view('backend.pembayaran.view', $data);
     }
     public function search(Request $request)
