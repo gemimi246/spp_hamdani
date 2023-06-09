@@ -21,7 +21,7 @@
                         <th>Logo</th>
                         <th>Copy Right</th>
                         <th>Versi</th>
-                        <th>Tahun</th>
+             
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -40,7 +40,7 @@
                             <td width="auto"><?php echo e($a->logo); ?></td>
                             <td width="auto"><?php echo e($a->copy_right); ?></td>
                             <td width="auto"><?php echo e($a->versi); ?></td>
-                            <td width="auto"><?php echo e($a->tahun); ?></td>
+                         
                             
                             <td>
                                 <a href="/aplikasi/edit/<?php echo e($a->id); ?>" type="button" class="btn btn-success">Edit</a>

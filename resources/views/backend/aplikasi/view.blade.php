@@ -21,7 +21,7 @@
                         <th>Logo</th>
                         <th>Copy Right</th>
                         <th>Versi</th>
-                        <th>Tahun</th>
+             
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -40,13 +40,9 @@
                             <td width="auto">{{ $a->logo }}</td>
                             <td width="auto">{{ $a->copy_right }}</td>
                             <td width="auto">{{ $a->versi }}</td>
-                            <td width="auto">{{ $a->tahun }}</td>
-                            
                             <td>
-                                <a href="/aplikasi/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a>
-                                
+                                <a href="/aplikasi/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a> 
                             </td>
-                            
                         </tr>
                     @endforeach
                 </tbody>

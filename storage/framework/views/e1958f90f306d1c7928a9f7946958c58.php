@@ -19,6 +19,7 @@
                                         value="<?php echo e($aplikasi->nama_owner); ?>" placeholder="Masukan Pemilik" required />
                                 </div>
                             </div>
+                            
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label" for="tlp">Telephone</label>
@@ -69,6 +70,13 @@
                                     <label class="form-label" for="tahun">Tahun</label>
                                     <input type="text" class="form-control" id="tahun" name="tahun"
                                         value="<?php echo e($aplikasi->tahun); ?>" placeholder="Masukan tahun" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label" for="Alamat">Alamat</label>
+                                    <textarea type="text" class="form-control" id="alamat" name="alamat"
+                                         placeholder="Masukan Alamat" required><?php echo e($aplikasi->alamat); ?> </textArea>
                                 </div>
                             </div>
 

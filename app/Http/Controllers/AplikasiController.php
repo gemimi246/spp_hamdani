@@ -25,14 +25,11 @@ class AplikasiController extends Controller
     }
     public function editProses(Request  $request)
     {
-        // dd($request->all());
         try {
-            // dd($request->all());
             if ($request->has('image') != null) {
                 $file_path = public_path() . '/storage/images/logo/' . $request->image;
                 File::delete($file_path);
                 $image = $request->file('image');
-                // dd($image);
                 $filename = $image->getClientOriginalName();
                 $image->move(public_path('storage/images/logo'), $filename);
                 $data = [
@@ -40,6 +37,7 @@ class AplikasiController extends Controller
                     'nama_owner' => $request->nama_owner,
                     'alamat' => $request->alamat,
                     'tlp' => $request->tlp,
+                    'nama_aplikasi' => $request->nama_aplikasi,
                     'copy_right' => $request->copy_right,
                     'versi' => $request->versi,
                     'logo' => $request->file('image')->getClientOriginalName(),
@@ -50,11 +48,11 @@ class AplikasiController extends Controller
                     'nama_owner' => $request->nama_owner,
                     'alamat' => $request->alamat,
                     'tlp' => $request->tlp,
+                    'nama_aplikasi' => $request->nama_aplikasi,
                     'copy_right' => $request->copy_right,
                     'versi' => $request->versi,
                 ];
             }
-            // dd($data);
             DB::table('aplikasi')->where('id', $request->id)->update($data);
             Alert::success('Aplikasi Sukses diupdate!');
             return redirect()->route('aplikasi');
