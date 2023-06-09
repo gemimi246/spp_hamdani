@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AplikasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
@@ -88,6 +89,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::post('/kelas/editProses', [KelasController::class, 'editProses'])->name('kelas.editProses');
     Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
+
+    //Aplikasi
+    Route::get('/aplikasi', [AplikasiController::class, 'view'])->name('aplikasi');
+    Route::get('/aplikasi/edit/{id}', [AplikasiController::class, 'edit'])->name('aplikasi.edit');
+    Route::post('/aplikasi/editProses', [AplikasiController::class, 'editProses'])->name('aplikasi.editProses');
 
 });
 
