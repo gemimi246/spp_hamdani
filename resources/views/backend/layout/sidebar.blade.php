@@ -64,13 +64,13 @@
                             <div data-i18n="Aplikasi">Aplikasi</div>
                         </a>
                     </li>
-                
+
                     <li class="menu-item">
                         <a href="/tahun" class="menu-link">
                             <div data-i18n="Tahun Ajaran">Tahun Ajaran</div>
                         </a>
                     </li>
-                
+
                     <li class="menu-item">
                         <a href="/tagihan" class="menu-link">
                             <div data-i18n="Tagihan">Tagihan</div>
@@ -87,16 +87,26 @@
                     <div>Dashboards</div>
                 </a>
             </li>
-        </ul>
-    @else
-        <ul class="menu-inner py-1">
+
+
             <li class="menu-item">
-                <a href="/dashboard" class="menu-link ">
-                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                    <div>Laporan</div>
+                <a href="/pembayaran/search?&kelas_id={{ request()->user()->kelas_id }}&nis={{ request()->user()->nis }}" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bx-money"></i>
+                    <div>Pembayaran</div>
                 </a>
             </li>
         </ul>
+    @else
+        <li>
+            <ul class="menu-inner py-1">
+                <li class="menu-item">
+                    <a href="/dashboard" class="menu-link ">
+                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                        <div>Laporan</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
     @endif
 
 </aside>

@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="container mt-4 ">
-                    <table id="datatable" class="table table-striped ">
+                    <table id="data" class="table table-striped ">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -37,19 +37,20 @@
                                     <td width="auto">{{ $a->status }}</td>
                                     <td width="auto">
                                         @if ($a->status == 'Pending')
-                                            <a href="{{ $a->pdf_url }}" class="btn btn-success" target="_blank">Invoice</a>
-                                            @elseif ($a->status == "Lunas")
+                                            <a href="{{ $a->pdf_url }}" class="btn btn-success"
+                                                target="_blank">Invoice</a>
+                                        @elseif ($a->status == 'Lunas')
                                             <a href="#" class="btn btn-danger" target="_blank">Cetak</a>
                                         @endif
                                     </td>
                                     <td width="auto">{{ $a->created_at }}</td>
                                     <td>
-
-                                        <button type="button" class="btn rounded-pill btn-icon btn-outline-danger"
-                                            data-bs-toggle="modal" data-bs-target="#delete{{ $a->id }}">
-                                            <span class="fa fa-trash"></span>
-                                        </button>
-
+                                        @if ($a->status == 'Pending')
+                                            <button type="button" class="btn rounded-pill btn-icon btn-outline-danger"
+                                                data-bs-toggle="modal" data-bs-target="#delete{{ $a->id }}">
+                                                <span class="fa fa-trash"></span>
+                                            </button>
+                                        @endif
                                     </td>
                                     <div class="modal fade" id="delete{{ $a->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="deletemodal" aria-hidden="true">
@@ -125,8 +126,12 @@
                                 <label>Pembayaran</label>
                                 <select id="metode_pembayaran" class="form-control" name="metode_pembayaran" required>
                                     <option value="">Pilih Metode Pembayaran</option>
-                                    <option value="Online">Online</option>
-                                    <option value="Manual">Manual</option>
+                                    @if (request()->user()->role != 1)
+                                        <option value="Online">Online</option>
+                                    @else
+                                        <option value="Manual">Manual</option>
+                                    @endif
+
                                 </select>
                             </div>
                             <div class="col-md-12">
@@ -155,6 +160,7 @@
                 $("#total").val('Rp. ' + ribuan);
             })
         })
+    
     </script>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="SB-Mid-client-a3XBeF6t11TJ5LWQ"></script>

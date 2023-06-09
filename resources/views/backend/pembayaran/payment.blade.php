@@ -61,18 +61,22 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="full_name">Metode Pembayaran</label>
-                                        <select name="metode_pembayaran" id="metode_pembayaran" class="form-control"
+                                        <select id="metode_pembayaran" class="form-control" name="metode_pembayaran"
                                             required>
-                                            <option value="">-- Pilih --</option>
-                                            <option value="Online">Online</option>
-                                            <option value="Manual">Manual</option>
+                                            <option value="">Pilih Metode Pembayaran</option>
+                                            @if (request()->user()->role != 1)
+                                                <option value="Online">Online</option>
+                                            @else
+                                                <option value="Manual">Manual</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <br>
                                     <button type="submit" id="pay-button" class="btn btn-primary">Bayar</button>
-                                    <a href="/pembayaran/search?&kelas_id={{$p->kelas_id}}&nis={{ $p->nis }}" type="button" class="btn btn-success">Kembali</a>
+                                    <a href="/pembayaran/search?&kelas_id={{ $p->kelas_id }}&nis={{ $p->nis }}"
+                                        type="button" class="btn btn-success">Kembali</a>
                                 </div>
                         </form>
                     </div>

@@ -149,10 +149,10 @@ class SnapController extends Controller
         $shipping_address = [
             'first_name' => request()->user()->nama_lengkap,
             'last_name' => 'Supriadi',
-            'address' => 'Manggis 90',
-            'city' => 'Jakarta',
-            'postal_code' => '16601',
-            'phone' => '08113366345',
+            'address' => request()->user()->alamat,
+            'city' => '',
+            'postal_code' => '',
+            'phone' => request()->user()->no_tlp,
             'country_code' => 'IDN',
         ];
 
@@ -161,7 +161,7 @@ class SnapController extends Controller
             'first_name' => request()->user()->nama_lengkap,
             'last_name' => '',
             'email' => request()->user()->email,
-            'phone' => request()->user()->no_ortu,
+            'phone' => request()->user()->no_tlp,
             'billing_address' => $billing_address,
             'shipping_address' => $shipping_address,
         ];

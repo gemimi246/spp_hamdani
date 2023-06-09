@@ -79,7 +79,38 @@ class PembayaranController extends Controller
         
     public function spp($id_tagihan)
     {
-        $data['title'] = "Spp";
+        // $this->load->helper('url');
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $getOrderId = DB::select("select p.*, u.nis, u.nama_lengkap from users u left join payment p on p.user_id=u.id where u.nis = '" . request()->user()->nis . "' ORDER BY p.created_at DESC");
+        foreach ($getOrderId as $ord) {
+            if ($ord->order_id != null) {
+                $getDataMidtrans = \Midtrans\Transaction::status($ord->order_id);
+                if ($getDataMidtrans->status_code == 200) {
+                    $data = [
+                        'status' => "Lunas"
+                    ];
+                } elseif ($getDataMidtrans->status_code == 201) {
+                    $data = [
+                        'status' => "Pending"
+                    ];
+                } else {
+                    $data = [
+                        'status' => "Failed"
+                    ];
+                }
+                DB::table('payment')->where('order_id', $ord->order_id)->update($data);
+            }
+
+            // dd($status);
+        }
+        $data['title'] = "Riwayat Pembayaran Spp";
         // $data['id_tagihan'] = $id_tagihan;
 
         $getDataUser[0] = DB::select("select user_id, thajaran_id, t.kelas_id, u.nis from tagihan t left join users u on t.user_id=u.id where t.id = '$id_tagihan'");
