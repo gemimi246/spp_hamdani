@@ -46,15 +46,15 @@
             <div class="card mb-4">
                 @if ($siswa != null)
                     <div class="card-body">
-                        <div class="card shadow mb-4 border-bottom-success" id="infosantri" value="0">
+                        <div class="card shadow mb-4 border-bottom-success" id="infosiswa" value="0">
                             <!-- Card Header - Accordion -->
-                            <a href="#informasisantri" class="d-block bg-success border border-success card-header py-3"
+                            <a href="#informasisiswa" class="d-block bg-success border border-success card-header py-3"
                                 data-toggle="collapse" role="button" aria-expanded="true"
                                 aria-controls="collapseCardExample">
                                 <h6 class="m-0 font-weight-bold text-white">Informasi Siswa</h6>
                             </a>
                             <!-- Card Content - Collapse -->
-                            <div class="collapse show" id="informasisantri">
+                            <div class="collapse show" id="informasisiswa">
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <tbody>
@@ -65,7 +65,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Nama Lengkap</td>
-                                                <td>: <span id="nm-santri"><?php echo $siswa->nama_lengkap; ?></span></td>
+                                                <td>: <span id="nm-siswa"><?php echo $siswa->nama_lengkap; ?></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Kelas</td>
@@ -95,9 +95,9 @@
                             </div>
                         </div>
                     </div>
-                @else
+            
                 @endif
-                @if ($pembayaran_bulanan != null)
+                @if ($pembayaran_bulanan || $pembayaran_lainya != null)
                     <div class="card-body">
                         <div class="card shadow mb-4 border-bottom-warning" id="tagihanbulanan" value="0">
                             <!-- Card Header - Accordion -->
@@ -119,8 +119,8 @@
                                                     <th>Tahun Ajaran</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
-                                                    <th>Status Bayar</th>
-                                                    <th>Bayar</th>
+                                                    <th class="text-center">Status Bayar</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -133,12 +133,24 @@
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
-                                                    <td></td>
-                                                    <td>
+                                                    <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                                    <td class="text-center">
+                                                        @if ($u->status_bayar == 'Belum Lunas')
+                                                            <button class="btn btn-danger" style="width: 57%;">Belum Lunas</button>
+                                                        @else
+                                                            <button class="btn btn-success" style="width: 57%;">Lunas</button>
+                                                        @endif
+                                                    </td>
+
 
                                                     <td>
-                                                        <a href="/pembayaran/spp/{{ $u->id }}"
-                                                            class="btn btn-primary">Bayar</a>
+                                                        @if ($u->status_bayar == 'Belum Lunas')
+                                                            <a href="/pembayaran/spp/{{ $u->id }}"
+                                                                class="btn btn-primary">Bayar</a>
+                                                        @else
+                                                            <a href="#"
+                                                                class="btn btn-warning">Cetak</a>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -194,10 +206,10 @@
                                                             <a href="#" class="btn btn-danger"
                                                                 target="_blank">Cetak</a>
                                                         @else
-                                                        <a href="/pembayaran/payment/{{ $u->id }}"
-                                                            class="btn btn-primary">Bayar</a>
+                                                            <a href="/pembayaran/payment/{{ $u->id }}"
+                                                                class="btn btn-primary">Bayar</a>
                                                         @endif
-                                                        
+
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

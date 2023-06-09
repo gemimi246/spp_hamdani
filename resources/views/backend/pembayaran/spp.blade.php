@@ -93,6 +93,7 @@
                         <input type="text" name="tagihan_id" id="" value="{{ $tagihan_id }}" hidden>
                         <input type="text" name="getNilai" id="" value="{{ $getNilai }}" hidden>
                         <input type="text" name="kelas_id" id="" value="{{ $kelas_id }}" hidden>
+                        <input type="text" name="user_id" id="" value="{{ $user_id }}" hidden>
                         {{-- midtrans --}}
                         <input type="hidden" name="_token" id="_token" value="{!! csrf_token() !!}">
                         <input type="hidden" name="result_type" id="result-type" value="">

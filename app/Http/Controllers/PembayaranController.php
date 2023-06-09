@@ -59,16 +59,17 @@ class PembayaranController extends Controller
         $data['thajaran'] = DB::select("select * from tahun_ajaran where active = 'ON'");
         $data['kelas'] = DB::select("select * from kelas");
         $data['siswa'] = DB::table('users')->join('tagihan', 'users.id', '=', 'tagihan.user_id')->join('kelas', 'kelas.id', '=', 'tagihan.kelas_id')->where('users.nis', $request->nis)->where('users.kelas_id', $request->kelas_id)->first();
-        $data['pembayaran_bulanan'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, (SELECT CASE WHEN COUNT(p.bulan_id) < 12 THEN 'Belum Lunas' ELSE 'Lunas' END AS status_payment_all FROM payment p WHERE p.tagihan_id = 24 AND p.status = 'Lunas') as status_payment_all, (SELECT SUM(p.nilai) as total FROM payment p WHERE p.tagihan_id = 24 AND p.status = 'Lunas') AS total from tagihan  t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.user_id=u.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran = '1'");
+        $data['pembayaran_bulanan'] = DB::select("SELECT IF(COUNT(p.bulan_id) = 12, 'Lunas', 'Belum Lunas') as status_bayar, SUM(p.nilai) as total_bayar, t.thajaran_id, u.nis, ta.tahun, jp.pembayaran, t.id FROM tagihan t  LEFT JOIN payment p on p.tagihan_id=t.id  LEFT JOIN tahun_ajaran ta on ta.id=t.thajaran_id LEFT JOIN jenis_pembayaran jp on jp.id=t.jenis_pembayaran LEFT JOIN users u on u.id=t.user_id WHERE u.nis = '$request->nis' AND t.kelas_id = '$request->kelas_id' and t.jenis_pembayaran = '1' GROUP BY t.thajaran_id, u.nis, ta.tahun, jp.pembayaran, t.id");
         // dd($data['pembayaran_bulanan']);
         $data['pembayaran_lainya'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.order_id, p.pdf_url, p.metode_pembayaran, p.status as status_payment from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.tagihan_id=t.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran != '1'");
-        
-        
-        
-        if ($data['pembayaran_bulanan'] == null) {
-            Alert::warning('Peringatan', 'SISWA BELUM ADA TAGIHAN');
+
+
+
+        if ($data['pembayaran_bulanan'] || $data['pembayaran_lainya'] == true) {
+            
             return view('backend.pembayaran.view', $data);
         } else {
+            Alert::warning('Peringatan', 'SISWA BELUM ADA TAGIHAN');
             return view('backend.pembayaran.view', $data);
         }
     }
@@ -100,7 +101,7 @@ class PembayaranController extends Controller
         foreach ($request->bulan as $key => $bu) {
             $data[] = [
                 'bulan_id' => $bu,
-                'user_id' => request()->user()->id,
+                'user_id' => $request->user_id,
                 'tagihan_id' => $request->tagihan_id,
                 'kelas_id' => $request->kelas_id,
                 'nilai' => $request->getNilai,
