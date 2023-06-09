@@ -149,7 +149,7 @@
                                                             <a href="/pembayaran/spp/{{ $u->id }}"
                                                                 class="btn btn-primary">Bayar</a>
                                                         @else
-                                                            <a href="#" class="btn btn-warning">Cetak</a>
+                                                            <a href="#" class="btn btn-danger">Cetak</a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -210,7 +210,7 @@
                                                             <span class="badge bg-label-danger" style="width: 57%;">Belum
                                                                 Lunas</span>
                                                         @elseif ($u->status_payment == "Pending")
-                                                        <span class="badge bg-label-info"
+                                                        <span class="badge bg-label-warning"
                                                                 style="width: 57%;">Pending</span>
                                                         @else
                                                             <span class="badge bg-label-primary"
