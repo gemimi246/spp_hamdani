@@ -102,6 +102,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/laporan/load_data', [LaporanController::class, 'load_data'])->name('laporan.load_data');
     //excel
     Route::get('/cetakExcel', [LaporanController::class, 'cetakExcel'])->name('laporan.cetakExcel');
+    Route::get('/cetakExcelById', [LaporanController::class, 'cetakExcelById'])->name('laporan.cetakExcelById');
 });
 
 Route::get('/route-cache', function () {

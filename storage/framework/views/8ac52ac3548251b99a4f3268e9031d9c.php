@@ -108,6 +108,12 @@
                 <li class="menu-item">
                     <a href="/dashboard" class="menu-link ">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                        <div>Dashboards</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/laporan" class="menu-link ">
+                        <i class="menu-icon tf-icons bx bx-printer"></i>
                         <div>Laporan</div>
                     </a>
                 </li>
