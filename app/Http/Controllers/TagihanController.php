@@ -52,7 +52,7 @@ class TagihanController extends Controller
     {
         $data['title'] = "Tambah Tagihan";
         $data['siswa'] = DB::select("SELECT a.id, a.nama_lengkap, a.kelas_id FROM users a
-WHERE role = 2 and a.kelas_id = '$request->kelas_id'
+WHERE role = '2' and a.kelas_id = '$request->kelas_id'
 AND a.id NOT IN (
     SELECT b.user_id FROM tagihan b
     WHERE b.thajaran_id = '$request->thajaran_id' AND b.jenis_pembayaran = '$request->jenis_pembayaran'

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
     <div class="card table-responsive">
         <div class="card-header d-flex justify-content-between align-items-center">

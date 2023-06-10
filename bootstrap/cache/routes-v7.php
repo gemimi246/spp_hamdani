@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0PH3eF3Q1vRypv5E',
+            '_route' => 'generated::wymEUmArj0nE3bv2',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::hG5X6qUy1FCAnpS1',
+            '_route' => 'generated::TfXiRaN8FH8gGzD5',
           ),
           1 => NULL,
           2 => 
@@ -798,13 +798,73 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/laporan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'laporan',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/laporan/load_data' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'laporan.load_data',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/cetakExcel' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'laporan.cetakExcel',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/route-cache' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::xxSMox5Zs8vC9j0F',
+            '_route' => 'generated::3gJ9coi2P98XYq8n',
           ),
           1 => NULL,
           2 => 
@@ -824,7 +884,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::UQA8rbci6IkSqAcf',
+            '_route' => 'generated::mkNRDVaN7EjmfX3G',
           ),
           1 => NULL,
           2 => 
@@ -844,7 +904,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::GiduZ0NBg0l3Zbpc',
+            '_route' => 'generated::5a77X0Xy1iP4HC0t',
           ),
           1 => NULL,
           2 => 
@@ -864,7 +924,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3M7S64k1hATlGgYi',
+            '_route' => 'generated::dZqjKk15zJlQeqhF',
           ),
           1 => NULL,
           2 => 
@@ -884,7 +944,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ure3qdxEaGZ2TIhp',
+            '_route' => 'generated::rAB2jfZnE45nHdQL',
           ),
           1 => NULL,
           2 => 
@@ -1365,7 +1425,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0PH3eF3Q1vRypv5E' => 
+    'generated::wymEUmArj0nE3bv2' => 
     array (
       'methods' => 
       array (
@@ -1388,7 +1448,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0PH3eF3Q1vRypv5E',
+        'as' => 'generated::wymEUmArj0nE3bv2',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1404,7 +1464,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::hG5X6qUy1FCAnpS1' => 
+    'generated::TfXiRaN8FH8gGzD5' => 
     array (
       'methods' => 
       array (
@@ -1426,7 +1486,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::hG5X6qUy1FCAnpS1',
+        'as' => 'generated::TfXiRaN8FH8gGzD5',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3211,7 +3271,121 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::xxSMox5Zs8vC9j0F' => 
+    'laporan' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'laporan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\LaporanController@view',
+        'controller' => 'App\\Http\\Controllers\\LaporanController@view',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'laporan',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'laporan.load_data' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'laporan/load_data',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\LaporanController@load_data',
+        'controller' => 'App\\Http\\Controllers\\LaporanController@load_data',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'laporan.load_data',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'laporan.cetakExcel' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'cetakExcel',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\LaporanController@cetakExcel',
+        'controller' => 'App\\Http\\Controllers\\LaporanController@cetakExcel',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'laporan.cetakExcel',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::3gJ9coi2P98XYq8n' => 
     array (
       'methods' => 
       array (
@@ -3234,7 +3408,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::xxSMox5Zs8vC9j0F',
+        'as' => 'generated::3gJ9coi2P98XYq8n',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3250,7 +3424,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::UQA8rbci6IkSqAcf' => 
+    'generated::mkNRDVaN7EjmfX3G' => 
     array (
       'methods' => 
       array (
@@ -3267,13 +3441,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:113:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'config:cache\');
     return \'Config cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005560000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005590000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::UQA8rbci6IkSqAcf',
+        'as' => 'generated::mkNRDVaN7EjmfX3G',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3289,7 +3463,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::GiduZ0NBg0l3Zbpc' => 
+    'generated::5a77X0Xy1iP4HC0t' => 
     array (
       'methods' => 
       array (
@@ -3306,13 +3480,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:117:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'cache:clear\');
     return \'Application cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005580000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055b0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::GiduZ0NBg0l3Zbpc',
+        'as' => 'generated::5a77X0Xy1iP4HC0t',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3328,7 +3502,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3M7S64k1hATlGgYi' => 
+    'generated::dZqjKk15zJlQeqhF' => 
     array (
       'methods' => 
       array (
@@ -3345,13 +3519,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:109:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'view:clear\');
     return \'View cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055a0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055d0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::3M7S64k1hATlGgYi',
+        'as' => 'generated::dZqjKk15zJlQeqhF',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3367,7 +3541,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ure3qdxEaGZ2TIhp' => 
+    'generated::rAB2jfZnE45nHdQL' => 
     array (
       'methods' => 
       array (
@@ -3384,13 +3558,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:109:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'optimize\');
     return \'Routes cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055c0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055f0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::ure3qdxEaGZ2TIhp',
+        'as' => 'generated::rAB2jfZnE45nHdQL',
       ),
       'fallback' => false,
       'defaults' => 

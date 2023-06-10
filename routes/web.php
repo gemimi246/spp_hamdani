@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SnapController;
@@ -95,6 +96,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/aplikasi/edit/{id}', [AplikasiController::class, 'edit'])->name('aplikasi.edit');
     Route::post('/aplikasi/editProses', [AplikasiController::class, 'editProses'])->name('aplikasi.editProses');
 
+    //Laporan
+    Route::get('/laporan', [LaporanController::class, 'view'])->name('laporan');
+
+    Route::get('/laporan/load_data', [LaporanController::class, 'load_data'])->name('laporan.load_data');
+    //excel
+    Route::get('/cetakExcel', [LaporanController::class, 'cetakExcel'])->name('laporan.cetakExcel');
 });
 
 Route::get('/route-cache', function () {
