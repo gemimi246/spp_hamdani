@@ -52,7 +52,7 @@
                         <div class="col-md-3">
                             <br>
                             <button class="btn btn-success" onclick="printExcel()">Excel</button>
-                            <button class="btn btn-danger">Pdf</button>
+                            {{-- <button class="btn btn-danger">Pdf</button> --}}
                         </div>
 
 
@@ -81,6 +81,7 @@
             </div>
         </div>
         <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             // $('#datatables').dataTable();
 
@@ -124,12 +125,15 @@
             }
 
             function printExcel() {
-                if ($("#thajaran_id").val() == "" || $("#kelas_id").val() == "") {
-                    alert("Masukan Tanggal Awal dan Tanggal Akhir");
+                if ($("#thajaran_id").val() == "" || $("#kelas_id").val() && $("#jenis_pembayaran").val() == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Masukan Tahun Ajaran, Kelas dan Jenis Pembayaran',
+                    })
                 } else {
                     $.ajax({
                         type: "GET",
-                        
                         dataType: 'json',
                         url: "{{ url('cetakExcel') }}/",
                         data: {
@@ -139,10 +143,8 @@
                         },
 
                         success: function(response) {
-                            console.log(response);
-                            window.open(this.url, '_blank');
-                            // document.getElementById("total_items").value = response;
-                            // document.getElementById("disp").innerHTML = response;
+                            console.log(response.file);
+                            window.open('storage/excel/' + response.file, '_blank');
                         },
                         error: function() {
                             alert("error");

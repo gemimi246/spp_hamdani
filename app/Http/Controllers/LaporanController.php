@@ -44,7 +44,7 @@ class LaporanController extends Controller
         // dd($data);
         echo json_encode($data);
     }
-    
+
     public function cetakExcel(Request $request)
     {
         // dd(request()->user()->name);
@@ -85,7 +85,7 @@ class LaporanController extends Controller
         );
         $sheet->setCellValue(
             'A2',
-            ' Laporan PADA TANGGAL ' .now() . ''
+            ' Laporan PADA TANGGAL ' . now() . ''
         );
 
         $sheet = $spreadsheet->getActiveSheet();
@@ -109,41 +109,39 @@ class LaporanController extends Controller
             $rows++;
         }
         $Sheet = $spreadsheet->getActiveSheet();
-            $lABC1 = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
-            $lABC2 = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        $lABC1 = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        $lABC2 = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+
+        for ($I = 0; $I < count($lABC1); $I++) :
+            $Sheet->getColumnDimension($lABC1[$I])->setAutoSize(true);
+            for ($J = 0; $J < 6; $J++) {
+                $Sheet->getColumnDimension($lABC2[$J] . $lABC1[$I])->setAutoSize(true);
+            }
+        endfor;
         $fileName = "" . request()->user()->nama_lengkap . "";
-        for (
-                    $I = 0;
-                    $I < count($lABC1);
-                    $I++
-                ) :
-                    $Sheet->getColumnDimension($lABC1[$I])->setAutoSize(true);
-                    for ($J = 0; $J < 6; $J++) {
-                        $Sheet->getColumnDimension($lABC2[$J] . $lABC1[$I])->setAutoSize(true);
-                    }
-                endfor;
-        
-                header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-                header('Content-Disposition: attachment;filename="Laporan ' . $fileName . '.xlsx"');
-                header('Cache-Control: max-age=0');
-        
-                $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
-                // $writer->save('php://output');
-        
-        
-                ob_start();
-                $writer->save("php://output");
-                $xlsData = ob_get_contents();
-                ob_end_clean();
-        
-                $response =  array(
-                    'op' => 'ok',
-                    'file' => "data:application/vnd.ms-excel;base64," . base64_encode($xlsData)
-                );
-                // dd(response());
-                die(json_encode($response));
-        
-                // dd(response());
-                // die(json_encode($response));
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="Laporan ' . $fileName . '.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+        // $writer->save('php://output');
+
+
+        ob_start();
+        $writer->save(public_path('storage/excel/'.$fileName.'.xlsx'));
+
+        // public_path('storage/excel/'.$fileName.'.xlsx') ;
+        // $xlsData = ob_get_contents();
+        ob_end_clean();
+
+        $response =  array(
+            'op' => 'ok',
+            'file' => ''.$fileName.'.xlsx'
+        );
+        // dd(response());
+        die(json_encode($response));
+
+        // dd(response());
+        // die(json_encode($response));
     }
 }
