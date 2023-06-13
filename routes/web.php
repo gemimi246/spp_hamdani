@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AplikasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KelasController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SnapController;
-use App\Http\Controllers\TagihanController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\TagihanController;
+use App\Http\Controllers\AplikasiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TunggakanController;
+use App\Http\Controllers\PembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,10 @@ Route::middleware(['auth'])->group(function () {
     //excel
     Route::get('/cetakExcel', [LaporanController::class, 'cetakExcel'])->name('laporan.cetakExcel');
     Route::get('/cetakExcelById', [LaporanController::class, 'cetakExcelById'])->name('laporan.cetakExcelById');
+
+     //Tunggakan
+     Route::get('/tunggakan', [TunggakanController::class, 'view'])->name('tunggakan');
+     Route::get('/tunggakan/load_data', [TunggakanController::class, 'load_data'])->name('tunggakan.load_data');
 });
 
 Route::get('/route-cache', function () {
