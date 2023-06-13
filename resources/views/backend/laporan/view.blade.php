@@ -84,7 +84,12 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             // $('#datatables').dataTable();
+            function formatNumber(val) {
+                let round = (val.toString() / 1).toFixed(0);
+                let value = round.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
+                return "Rp. " + value;
+            };
             tampil_data();
             // $('#datatables').DataTable();
             function tampil_data() {
@@ -110,7 +115,7 @@
                                 '<td>' + data[i].nama_lengkap + '</td>' +
                                 '<td>' + data[i].tahun + '</td>' +
                                 '<td>' + data[i].pembayaran + '</td>' +
-                                '<td>' + data[i].nilai + '</td>' +
+                                '<td>' + formatNumber(data[i].nilai) + '</td>' +
                                 '<td>' + data[i].metode_pembayaran + '</td>' +
                                 '<td>' + data[i].status + '</td>' +
                                 '<td>' + data[i].created_at + '</td>' +
