@@ -54,7 +54,7 @@
             </li>
             <li class="menu-item">
                 <a href="/tunggakan" class="menu-link ">
-                    <i class="menu-icon tf-icons bx bx-money"></i>
+                    <i class="menu-icon tf-icons bx bx-analyse"></i>
                     <div>Tunggakan</div>
                 </a>
             </li>
