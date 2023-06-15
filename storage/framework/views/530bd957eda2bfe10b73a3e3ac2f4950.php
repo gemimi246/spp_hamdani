@@ -4,19 +4,22 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title><?php echo e(Helper::apk()->title); ?> | <?php echo e(request()->user()->nama_lengkap); ?>
 
     </title>
-    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
+    <meta name="description"
+        content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- laravel CRUD token -->
     <meta name="csrf-token" content="i2HWRWyDabBBwEl2JbGgCPhEDvo2kaNlGZWN1jPp">
     <!-- Canonical SEO -->
     
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('')); ?>storage/images/logo/<?php echo e(Helper::apk()->logo); ?>">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="<?php echo e(asset('')); ?>storage/images/logo/<?php echo e(Helper::apk()->logo); ?>">
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -32,7 +35,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/fonts/boxicons.css')); ?>" />
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/fonts/fontawesome.css')); ?>" />
@@ -40,7 +45,8 @@
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/css/rtl/core.css')); ?>" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/css/rtl/theme-default.css')); ?>" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/css/rtl/theme-default.css')); ?>"
+        class="template-customizer-theme-css" />
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/demo.css')); ?>" />
 
 
@@ -60,7 +66,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css')); ?>" />
     <script rel="stylesheet" href="<?php echo e(asset('assets/css/datatables.css')); ?>"></script>
 
-
+    <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/libs/apex-charts/apex-charts.css')); ?> " />
     <!-- Page Styles -->
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/libs/quill/typography.css')); ?>" />
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/libs/quill/katex.css')); ?>" />
@@ -68,8 +74,9 @@
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- laravel style -->
     <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/css/core.css')); ?>" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/css/theme-default.css')); ?>" class="template-customizer-theme-css" />
-     <link rel="stylesheet" href="<?php echo e(asset('assets/css/demo.css')); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('assets/vendor/css/theme-default.css')); ?>"
+        class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/demo.css')); ?>" />
 
     <script src="<?php echo e(asset('assets/vendor/js/helpers.js')); ?>"></script>
     <!-- beautify ignore:start -->
@@ -213,4 +220,5 @@
 
 </body>
 
-</html><?php /**PATH D:\laravel\spp_hamdani\resources\views/backend/layout/base.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH D:\laravel\spp_hamdani\resources\views/backend/layout/base.blade.php ENDPATH**/ ?>

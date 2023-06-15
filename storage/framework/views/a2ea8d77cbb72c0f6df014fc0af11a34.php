@@ -32,7 +32,7 @@
                             </h6>
                             <small class="d-block mb-3 text-nowrap">Total Pembayaran</small>
                             <h5 class="card-title text-primary mb-1">Rp. <?php echo e(number_format($totalById)); ?></h5>
-                            <small class="d-block mb-4 pb-1 text-muted">78% of target</small>
+                            
                             <a href="javascript:;" class="btn btn-sm btn-primary">View profile</a>
                         </div>
                     </div>
@@ -45,34 +45,47 @@
         </div>
         <!-- New Visitors & Activity -->
         <div class="col-lg-8 mb-4">
-            <div class="card">
-                <div class="card-body row g-4">
-                    <div class="col-md-6 pe-md-4 card-separator">
-                        <div class="card-title d-flex align-items-start justify-content-between">
-                            <h5 class="mb-0">New Visitors</h5>
-                            <small>Last Week</small>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="mt-auto">
-                                <h2 class="mb-2">23%</h2>
-                                <small class="text-danger text-nowrap fw-semibold"><i class='bx bx-down-arrow-alt'></i>
-                                    -13.24%</small>
+            <div class="row">
+
+
+                <div class="col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                                    <div class="card-title">
+                                        <h5 class="text-nowrap mb-2">Pembayaran Bulanan</h5>
+                                        
+                                    </div>
+                                    <div class="mt-sm-auto">
+                                        
+                                        <h3 class="mb-0">Rp. <?php echo e(number_format($totalBulanan)); ?></h3>
+                                    </div>
+                                </div>
+                                
+                                <div id="profileReportChart"></div>
                             </div>
-                            <div id="visitorsChart"></div>
                         </div>
                     </div>
-                    <div class="col-md-6 ps-md-4">
-                        <div class="card-title d-flex align-items-start justify-content-between">
-                            <h5 class="mb-0">Activity</h5>
-                            <small>Last Week</small>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="mt-auto">
-                                <h2 class="mb-2">82%</h2>
-                                <small class="text-success text-nowrap fw-semibold"><i class='bx bx-up-arrow-alt'></i>
-                                    24.8%</small>
+                </div>
+
+                <div class="col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                                    <div class="card-title">
+                                        <h5 class="text-nowrap mb-2">Pembayaran Lainya</h5>
+                                        
+                                    </div>
+                                    <div class="mt-sm-auto">
+                                        
+                                            
+                                        <h3 class="mb-0">Rp. <?php echo e(number_format($totalLainya)); ?></h3>
+                                    </div>
+                                </div>
+                                <div id="profileReportChart"></div>
                             </div>
-                            <div id="activityChart"></div>
                         </div>
                     </div>
                 </div>
@@ -124,7 +137,8 @@
                                             <?php echo e($rp->alamat); ?>
 
                                         </td>
-                                        <td class="text-center"><span class="badge bg-label-primary "><?php echo e($rank++); ?></span></td>
+                                        <td class="text-center"><span
+                                                class="badge bg-label-primary "><?php echo e($rank++); ?></span></td>
 
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

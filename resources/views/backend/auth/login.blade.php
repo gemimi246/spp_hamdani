@@ -21,7 +21,7 @@
                     <form id="formAuthentication" method="POST" action="{{ route('login.action') }}">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email or Username</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control @error('email') is-invalid @enderror"
                                 value="{{ old('email') }}" required id="email" name="email"
                                 placeholder="Enter your email" autofocus>

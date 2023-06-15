@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::WdjC34yBnCOjKg4r',
+            '_route' => 'generated::ZdzGFvSIXloXkOLP',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ziqQG8a7Xvb3FVge',
+            '_route' => 'generated::YPN3XeA75g0wGPYm',
           ),
           1 => NULL,
           2 => 
@@ -918,13 +918,71 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/jenisPembayaranAdd' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'jenisPembayaran.add',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/jenisPembayaran/add' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'jenisPembayaran.addproses',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/jenisPembayaran/editProses' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'jenisPembayaran.editProses',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/route-cache' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::MomxIBxO1MYcA01C',
+            '_route' => 'generated::enVsKPCrBKRbPSam',
           ),
           1 => NULL,
           2 => 
@@ -944,7 +1002,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::hJ2oUdbRYjWkzE8d',
+            '_route' => 'generated::LkszGc3u97881Dcu',
           ),
           1 => NULL,
           2 => 
@@ -964,7 +1022,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::eiJXXFf3vybbjUgJ',
+            '_route' => 'generated::VzTd4LVHgM18ZzWx',
           ),
           1 => NULL,
           2 => 
@@ -984,7 +1042,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::5cpZPnYiJ6cDiUis',
+            '_route' => 'generated::upJcehVcIUSzWKan',
           ),
           1 => NULL,
           2 => 
@@ -1004,7 +1062,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3RxM5upTgf0OsyMo',
+            '_route' => 'generated::40mAGFA8RzNmMAbU',
           ),
           1 => NULL,
           2 => 
@@ -1021,7 +1079,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/a(?|dmin/(?|edit/([^/]++)(*:33)|delete/([^/]++)(*:55))|plikasi/edit/([^/]++)(*:84))|/siswa(?|/(?|edit/([^/]++)(*:118)|delete/([^/]++)(*:141))|ByKelas/([^/]++)(*:166))|/ta(?|hun/(?|edit/([^/]++)(*:201)|delete/([^/]++)(*:224))|gihan/delete/([^/]++)(*:254))|/pembayaran/(?|spp/([^/]++)(*:290)|payment/([^/]++)(*:314))|/kelas/(?|edit/([^/]++)(*:346)|delete/([^/]++)(*:369)))/?$}sDu',
+      0 => '{^(?|/a(?|dmin/(?|edit/([^/]++)(*:33)|delete/([^/]++)(*:55))|plikasi/edit/([^/]++)(*:84))|/siswa(?|/(?|edit/([^/]++)(*:118)|delete/([^/]++)(*:141))|ByKelas/([^/]++)(*:166))|/ta(?|hun/(?|edit/([^/]++)(*:201)|delete/([^/]++)(*:224))|gihan/delete/([^/]++)(*:254))|/pembayaran/(?|spp/([^/]++)(*:290)|payment/([^/]++)(*:314))|/kelas/(?|edit/([^/]++)(*:346)|delete/([^/]++)(*:369))|/jenisPembayaran/(?|edit/([^/]++)(*:411)|delete/([^/]++)(*:434)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1323,6 +1381,52 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
+      ),
+      411 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'jenisPembayaran.edit',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      434 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'jenisPembayaran.delete',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
         1 => 
         array (
           0 => NULL,
@@ -1485,7 +1589,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::WdjC34yBnCOjKg4r' => 
+    'generated::ZdzGFvSIXloXkOLP' => 
     array (
       'methods' => 
       array (
@@ -1508,7 +1612,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::WdjC34yBnCOjKg4r',
+        'as' => 'generated::ZdzGFvSIXloXkOLP',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1524,7 +1628,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ziqQG8a7Xvb3FVge' => 
+    'generated::YPN3XeA75g0wGPYm' => 
     array (
       'methods' => 
       array (
@@ -1546,7 +1650,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ziqQG8a7Xvb3FVge',
+        'as' => 'generated::YPN3XeA75g0wGPYm',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2555,8 +2659,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\TagihanController@jenisPembayaran',
-        'controller' => 'App\\Http\\Controllers\\TagihanController@jenisPembayaran',
+        'uses' => 'App\\Http\\Controllers\\JenisPembayaranController@view',
+        'controller' => 'App\\Http\\Controllers\\JenisPembayaranController@view',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -3559,7 +3663,195 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::MomxIBxO1MYcA01C' => 
+    'jenisPembayaran.add' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'jenisPembayaranAdd',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\JenisPembayaranController@add',
+        'controller' => 'App\\Http\\Controllers\\JenisPembayaranController@add',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'jenisPembayaran.add',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'jenisPembayaran.addproses' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'jenisPembayaran/add',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\JenisPembayaranController@addProses',
+        'controller' => 'App\\Http\\Controllers\\JenisPembayaranController@addProses',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'jenisPembayaran.addproses',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'jenisPembayaran.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'jenisPembayaran/edit/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\JenisPembayaranController@edit',
+        'controller' => 'App\\Http\\Controllers\\JenisPembayaranController@edit',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'jenisPembayaran.edit',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'jenisPembayaran.editProses' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'jenisPembayaran/editProses',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\JenisPembayaranController@editProses',
+        'controller' => 'App\\Http\\Controllers\\JenisPembayaranController@editProses',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'jenisPembayaran.editProses',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'jenisPembayaran.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'jenisPembayaran/delete/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\JenisPembayaranController@delete',
+        'controller' => 'App\\Http\\Controllers\\JenisPembayaranController@delete',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'jenisPembayaran.delete',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::enVsKPCrBKRbPSam' => 
     array (
       'methods' => 
       array (
@@ -3582,7 +3874,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::MomxIBxO1MYcA01C',
+        'as' => 'generated::enVsKPCrBKRbPSam',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3598,7 +3890,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::hJ2oUdbRYjWkzE8d' => 
+    'generated::LkszGc3u97881Dcu' => 
     array (
       'methods' => 
       array (
@@ -3615,13 +3907,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:113:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'config:cache\');
     return \'Config cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055c0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005620000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::hJ2oUdbRYjWkzE8d',
+        'as' => 'generated::LkszGc3u97881Dcu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3637,7 +3929,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::eiJXXFf3vybbjUgJ' => 
+    'generated::VzTd4LVHgM18ZzWx' => 
     array (
       'methods' => 
       array (
@@ -3654,13 +3946,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:117:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'cache:clear\');
     return \'Application cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000055e0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005640000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::eiJXXFf3vybbjUgJ',
+        'as' => 'generated::VzTd4LVHgM18ZzWx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3676,7 +3968,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::5cpZPnYiJ6cDiUis' => 
+    'generated::upJcehVcIUSzWKan' => 
     array (
       'methods' => 
       array (
@@ -3693,13 +3985,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:109:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'view:clear\');
     return \'View cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005600000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005660000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::5cpZPnYiJ6cDiUis',
+        'as' => 'generated::upJcehVcIUSzWKan',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3715,7 +4007,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3RxM5upTgf0OsyMo' => 
+    'generated::40mAGFA8RzNmMAbU' => 
     array (
       'methods' => 
       array (
@@ -3732,13 +4024,13 @@ app('router')->setCompiledRoutes(
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:109:"function () {
     \\Illuminate\\Support\\Facades\\Artisan::call(\'optimize\');
     return \'Routes cache cleared\';
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005620000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005680000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::3RxM5upTgf0OsyMo',
+        'as' => 'generated::40mAGFA8RzNmMAbU',
       ),
       'fallback' => false,
       'defaults' => 

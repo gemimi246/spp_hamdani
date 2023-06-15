@@ -4,18 +4,21 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>{{ Helper::apk()->title }} | {{ request()->user()->nama_lengkap }}
     </title>
-    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
+    <meta name="description"
+        content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- laravel CRUD token -->
     <meta name="csrf-token" content="i2HWRWyDabBBwEl2JbGgCPhEDvo2kaNlGZWN1jPp">
     <!-- Canonical SEO -->
     {{-- <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-laravel-admin-template/"> --}}
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('') }}storage/images/logo/{{ Helper::apk()->logo }}">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="{{ asset('') }}storage/images/logo/{{ Helper::apk()->logo }}">
     {{-- <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/') }}'{{Helper::apk()->logo}}'" /> --}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -46,7 +49,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/boxicons.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" />
@@ -54,7 +59,8 @@
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}"
+        class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
 
@@ -74,16 +80,17 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
     <script rel="stylesheet" href="{{ asset('assets/css/datatables.css') }}"></script>
 
-
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }} " />
     <!-- Page Styles -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/quill/typography.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/quill/katex.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/quill/editor.css') }}" />
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- laravel style -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
-     <link rel="stylesheet" href="{{ asset('assets/css/demo.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css') }}"
+        class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
     <!-- beautify ignore:start -->
@@ -258,7 +265,7 @@
 
     <script src="{{ asset('assets/js/forms-editors.js') }}"></script>
 
-    <script src="{{ asset('assets/js/form-basic-inputs.js')}}"></script>
+    <script src="{{ asset('assets/js/form-basic-inputs.js') }}"></script>
 
 
 </body>

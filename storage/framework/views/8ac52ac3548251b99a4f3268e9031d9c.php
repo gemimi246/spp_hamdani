@@ -88,6 +88,11 @@
                             <div data-i18n="Tagihan">Tagihan</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="/jenisPembayaran" class="menu-link">
+                            <div data-i18n="jenisPembayaran">Jenis Pembayaran</div>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

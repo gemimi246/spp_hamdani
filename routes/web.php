@@ -14,6 +14,7 @@ use App\Http\Controllers\AplikasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TunggakanController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\JenisPembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +109,14 @@ Route::middleware(['auth'])->group(function () {
      //Tunggakan
      Route::get('/tunggakan', [TunggakanController::class, 'view'])->name('tunggakan');
      Route::get('/tunggakan/load_data', [TunggakanController::class, 'load_data'])->name('tunggakan.load_data');
+
+    //Jenis Pembayaran
+    Route::get('/jenisPembayaran', [JenisPembayaranController::class, 'view'])->name('jenisPembayaran');
+    Route::get('/jenisPembayaranAdd', [JenisPembayaranController::class, 'add'])->name('jenisPembayaran.add');
+    Route::post('/jenisPembayaran/add', [JenisPembayaranController::class, 'addProses'])->name('jenisPembayaran.addproses');
+    Route::get('/jenisPembayaran/edit/{id}', [JenisPembayaranController::class, 'edit'])->name('jenisPembayaran.edit');
+    Route::post('/jenisPembayaran/editProses', [JenisPembayaranController::class, 'editProses'])->name('jenisPembayaran.editProses');
+    Route::get('/jenisPembayaran/delete/{id}', [JenisPembayaranController::class, 'delete'])->name('jenisPembayaran.delete');
 });
 
 Route::get('/route-cache', function () {
