@@ -102,7 +102,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item"
-                            href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/profile-user">
+                            href="/profile">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

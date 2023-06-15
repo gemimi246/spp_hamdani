@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TunggakanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\JenisPembayaranController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,6 +118,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jenisPembayaran/edit/{id}', [JenisPembayaranController::class, 'edit'])->name('jenisPembayaran.edit');
     Route::post('/jenisPembayaran/editProses', [JenisPembayaranController::class, 'editProses'])->name('jenisPembayaran.editProses');
     Route::get('/jenisPembayaran/delete/{id}', [JenisPembayaranController::class, 'delete'])->name('jenisPembayaran.delete');
+
+    //Profile
+    Route::get('/profile', [ProfileController::class, 'view'])->name('profile');
 });
 
 Route::get('/route-cache', function () {
