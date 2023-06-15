@@ -14,42 +14,42 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="full_name">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="{{ old('nama_lengkap') }}"
                                         placeholder="Masukan Nama Lengkap" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"
                                         placeholder="Masukan Email" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="no_tlp">Nomor Telepon</label>
-                                    <input type="nomor" class="form-control" id="no_tlp" name="no_tlp"
+                                    <input type="nomor" class="form-control" id="no_tlp" name="no_tlp" value="{{ old('no_tlp') }}"
                                         placeholder="Masukan Nomor Telepon" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="tgl_lahir">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir"
+                                    <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}"
                                         placeholder="Masukan Tanggal Lahir" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
+                                    <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}"
                                         placeholder="Masukan Password" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="role">Role</label>
-                                    <select class="form-control" name="role" id="role" required>
+                                    <select class="form-control" name="role" id="role" value="{{ old('role') }}" required>
                                         <option value="">-- Pilih --</option>
 
                                         <option value="1">Admin</option>
@@ -58,17 +58,24 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}"
+                                        placeholder="Masukan Image" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                    <input type="text" class="form-control" id="alamat" name="alamat" value="{{ old('alamat') }}"
                                         placeholder="Masukan Alamat" required />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
+                                <a href="/admin" type="button" class="btn btn-success">Kembali</a>
                             </div>
                     </form>
                 </div>

@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Image</th>
                         <th>Nis</th>
                         <th>Nama Lengkap</th>
                         <th>Email</th>
@@ -29,6 +30,15 @@
                     @foreach ($siswa as $a)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td width="auto">
+                                @if ($a->image != null)
+                                    <img src="{{ asset('') }}storage/images/users/{{ $a->image }}"
+                                        style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
+                                @else
+                                    <img src="{{ asset('') }}storage/images/users/user.png"
+                                        style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
+                                @endif
+                            </td>
                             <td width="auto">{{ $a->nis }}</td>
                             <td width="auto">{{ $a->nama_lengkap }}</td>
                             <td width="auto">{{ $a->email }}</td>

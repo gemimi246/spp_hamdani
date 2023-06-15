@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-
+                        <th>Image</th>
                         <th>Nama Lengkap</th>
                         <th>Email</th>
                         <th>Nomor Telepon</th>
@@ -28,6 +28,11 @@
                     <?php $__currentLoopData = $admin; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td><?php echo e($no++); ?></td>
+                            <td width="auto"><?php if($a->image != null): ?>
+                                <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($a->image); ?>" style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
+                                <?php else: ?>
+                                <img src="<?php echo e(asset('')); ?>storage/images/users/user.png" style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
+                            <?php endif; ?></td>
                             <td width="auto"><?php echo e($a->nama_lengkap); ?></td>
                             <td width="auto"><?php echo e($a->email); ?></td>
                             <td width="auto"><?php echo e($a->no_tlp); ?></td>

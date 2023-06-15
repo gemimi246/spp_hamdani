@@ -6,6 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0" style="font-size: 40px">{{ $title }}</h5>
+                    <img src="{{ asset('') }}storage/images/users/{{ $siswa->image }}" style="width: 100px; height: 100px;border-radius: 10%; margin-right: 4%;" alt="Gambar Kosong">
                 </div>
                 <div class="card-body">
                     <form action="/siswa/editProses" method="POST" enctype="multipart/form-data">
@@ -85,17 +86,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Masukan Password" />
+                                    <label class="form-label" for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image"
+                                         placeholder="Masukan Gambar" />
+                                        
                                 </div>
+                                 
                             </div>
+                          
 
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat"
-                                        value="{{ $siswa->alamat }}" placeholder="Masukan Alamat" required />
+                                    <textarea type="text" class="form-control" id="alamat" name="alamat"
+                                         placeholder="Masukan Alamat" required>{{ $siswa->alamat }} </textarea>
                                 </div>
                             </div>
 

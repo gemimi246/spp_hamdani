@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -22,6 +24,11 @@ class AdminController extends Controller
     }
     public function addProses(Request  $request)
     {
+        $file_path = public_path() . '/storage/images/users/' . $request->image;
+        File::delete($file_path);
+        $image = $request->file('image');
+        $filename = $image->getClientOriginalName();
+        $image->move(public_path('storage/images/users'), $filename);
         $data = [
             'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
@@ -30,10 +37,18 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'alamat' => $request->alamat,
             'role' => $request->role,
+            'image' => $request->file('image')->getClientOriginalName(),
             'created_at' => now()
         ];
         // dd($data);
+        $cekUsers = DB::table('users')->where('email', $request->email)->first();
+        // dd($cekUsers);
+        if ($cekUsers != null) {
+            Alert::error('Email sudah terdaftar!');
+            return redirect()->back()->withInput();
+        }
         DB::table('users')->insert($data);
+        Alert::success('Admin berhasil ditambah');
         return redirect('admin');
     }
     public function edit(Request $request)
@@ -45,15 +60,22 @@ class AdminController extends Controller
     }
     public function editProses(Request  $request)
     {
-        if ($request->password == true) {
+        if ($request->has('image') != null) {
+            $getImage = DB::table('users')->where('id', $request->id)->first();
+            $file_path = public_path() . '/storage/images/users/' . $getImage->image;
+            File::delete($file_path);
+            $image = $request->file('image');
+            // dd($getImage->image);
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('storage/images/users'), $filename);
             $data = [
                 'nama_lengkap' => $request->nama_lengkap,
                 'email' => $request->email,
                 'no_tlp' => $request->no_tlp,
                 'tgl_lahir' => $request->tgl_lahir,
-                'password' => Hash::make($request->password),
                 'alamat' => $request->alamat,
                 'role' => $request->role,
+                'image' => $request->file('image')->getClientOriginalName(),
                 'updated_at' => now()
             ];
         } else {
@@ -62,7 +84,6 @@ class AdminController extends Controller
                 'email' => $request->email,
                 'no_tlp' => $request->no_tlp,
                 'tgl_lahir' => $request->tgl_lahir,
-                'password' => Hash::make($request->password),
                 'alamat' => $request->alamat,
                 'role' => $request->role,
                 'updated_at' => now()
@@ -71,12 +92,15 @@ class AdminController extends Controller
 
         // dd($data);
         DB::table('users')->where('id', $request->id)->update($data);
+        Alert::success('Admin berhasil diubah');
         return redirect('admin');
     }
     public function delete($id)
     {
         try {
-            // dd($id);
+            $getImage = DB::table('users')->where('id', $id)->first();
+            $file_path = public_path() . '/storage/images/users/' . $getImage->image;
+            File::delete($file_path);
             DB::table('users')->where('id', $id)->delete();
             // Alert::success('Category was successful deleted!');
             return redirect()->route('admin');

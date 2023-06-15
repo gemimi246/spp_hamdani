@@ -84,12 +84,19 @@
                                         placeholder="Masukan Password" required />
                                 </div>
                             </div>
+                              <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="image">Foto</label>
+                                    <input type="file" class="form-control" id="image" name="image"
+                                        placeholder="Masukan Image" required />
+                                </div>
+                            </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat"
-                                        placeholder="Masukan Alamat" required />
+                                    <textarea type="text" class="form-control" id="alamat" name="alamat"
+                                        placeholder="Masukan Alamat" required> </textarea>
                                 </div>
                             </div>
 

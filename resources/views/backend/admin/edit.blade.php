@@ -6,6 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0" style="font-size: 40px">{{ $title }}</h5>
+                     <img src="{{ asset('') }}storage/images/users/{{ $admin->image }}" style="width: 100px; height: 100px;border-radius: 10%; margin-right: 4%;" alt="Gambar Kosong">
                 </div>
                 <div class="card-body">
                     <form action="/admin/editProses" method="POST" enctype="multipart/form-data">
@@ -42,13 +43,7 @@
                             </div>
 
 
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Masukan Password" />
-                                </div>
-                            </div>
+                         
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="role">Role</label>
@@ -66,6 +61,13 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image"
+                                        value="{{ $admin->image }}" placeholder="Masukan Gambar" />
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
@@ -77,7 +79,7 @@
                             <div class="col-md-12">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
+                                <a href="/admin" type="button" class="btn btn-success">Kembali</a>
                             </div>
                     </form>
                 </div>
