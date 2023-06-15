@@ -63,12 +63,25 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label class="form-label" for="status">Status</label>
+                                    <select class="form-control" name="status" id="status" required>
+                                        <option value="">-- Pilih --</option>
+                                        @foreach ($status as $s)
+                                            <option value="{{ $s }}" {{ $s == $admin->status ? 'selected' : '' }}>
+                                                {{ $s }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
                                     <label class="form-label" for="image">Image</label>
                                     <input type="file" class="form-control" id="image" name="image"
                                         value="{{ $admin->image }}" placeholder="Masukan Gambar" />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
                                     <input type="text" class="form-control" id="alamat" name="alamat"

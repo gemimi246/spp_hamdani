@@ -19,7 +19,7 @@
                         <th>Email</th>
                         <th>Nomor Telepon</th>
                         <th>Role</th>
-
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -39,6 +39,7 @@
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 @endif
                             </td>
+
                             <td width="auto">{{ $a->nama_lengkap }}</td>
                             <td width="auto">{{ $a->email }}</td>
                             <td width="auto">{{ $a->no_tlp }}</td>
@@ -48,6 +49,27 @@
                                 @else
                                     Kepala Sekolah
                                 @endif
+                            </td>
+                            <td width="auto">
+                                <label class="switch switch-primary">
+                                    @if ($a->status == 'ON')
+                                        <input type="checkbox" readonly
+                                            class="switch-input" checked />
+                                    @else
+                                        <input type="checkbox" readonly
+                                            class="switch-input" />
+                                    @endif
+
+                                    <span class="switch-toggle-slider">
+                                        <span class="switch-on">
+                                            <i class="bx bx-check"></i>
+                                        </span>
+                                        <span class="switch-off">
+                                            <i class="bx bx-x"></i>
+                                        </span>
+                                    </span>
+
+                                </label>
                             </td>
                             <td>
                                 <a href="/admin/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a>
@@ -84,4 +106,26 @@
             </table>
         </div>
     </div>
+    {{-- <script>
+        function setStatus(params) {
+
+            console.log(params);
+            $.ajax({
+                
+                type: "post",
+          
+                url: "{{ url('admin/changeStatus') }}/"+ params,
+              
+                
+
+                success: function(response) {
+
+                },
+                error: function() {
+                    alert("error");
+                }
+            });
+            
+        }
+    </script> --}}
 @endsection

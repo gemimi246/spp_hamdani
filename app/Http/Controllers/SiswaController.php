@@ -130,4 +130,5 @@ class SiswaController extends Controller
             ]);
         }
     }
+ 
 }

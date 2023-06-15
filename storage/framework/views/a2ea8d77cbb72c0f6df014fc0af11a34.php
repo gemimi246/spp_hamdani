@@ -62,7 +62,7 @@
                                         <h3 class="mb-0">Rp. <?php echo e(number_format($totalBulanan)); ?></h3>
                                     </div>
                                 </div>
-                                
+
                                 <div id="profileReportChart"></div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="mt-sm-auto">
                                         
-                                            
+                                        
                                         <h3 class="mb-0">Rp. <?php echo e(number_format($totalLainya)); ?></h3>
                                     </div>
                                 </div>
@@ -91,22 +91,174 @@
                 </div>
             </div>
         </div>
-        <!--/ New Visitors & Activity -->
-
-
-
-        <!-- Total Income -->
-
-        <!--/ Total Income -->
+    </div>
+    <div class="row g-4">
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h6 class="fw-normal">Total 4 users</h6>
+                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Vinnie Mostowy" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/5.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Allen Rieske" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/12.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Julee Rossignol" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/6.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Kaith D'souza" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/15.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="John Doe" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/1.png" alt="Avatar">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-end">
+                        <div class="role-heading">
+                            <h4 class="mb-1">Administrator</h4>
+                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                                class="role-edit-modal"><small>Edit Role</small></a>
+                        </div>
+                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h6 class="fw-normal">Total 7 users</h6>
+                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Jimmy Ressula" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/4.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="John Doe" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/1.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Kristi Lawker" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/2.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Kaith D'souza" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/15.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Danny Paul" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/7.png" alt="Avatar">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-end">
+                        <div class="role-heading">
+                            <h4 class="mb-1">Manager</h4>
+                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                                class="role-edit-modal"><small>Edit Role</small></a>
+                        </div>
+                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h6 class="fw-normal">Total 5 users</h6>
+                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Andrew Tye" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/6.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Rishi Swaat" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/9.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Rossie Kim" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/12.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Kim Merchent" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/10.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Sam D'souza" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/13.png" alt="Avatar">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-end">
+                        <div class="role-heading">
+                            <h4 class="mb-1">Users</h4>
+                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                                class="role-edit-modal"><small>Edit Role</small></a>
+                        </div>
+                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h6 class="fw-normal">Total 3 users</h6>
+                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Kim Karlos" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/3.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Katy Turner" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/9.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Peter Adward" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/15.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="Kaith D'souza" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/10.png" alt="Avatar">
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                title="John Parker" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="../../assets/img/avatars/11.png" alt="Avatar">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-end">
+                        <div class="role-heading">
+                            <h4 class="mb-1">Support</h4>
+                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                                class="role-edit-modal"><small>Edit Role</small></a>
+                        </div>
+                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="report-list-item rounded-2">
+    <br>
+    <div class="report-list-item rounded-2 ">
 
 
         <!--/ Conversion rate -->
 
         <div class="row">
-            <div class="col-md-6 col-lg-8 mb-4 mb-md-0">
+            <div class="col-md-12 col-lg-12 mb-4 mb-md-0">
                 <div class="card">
                     <div class="table-responsive text-nowrap">
                         <table class="table text-nowrap">
@@ -148,59 +300,8 @@
                 </div>
             </div>
             <!-- Total Balance -->
-            <div class="col-md- col-lg-4">
-                <div class="card h-100">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="card-title m-0 me-2">Total Balance</h5>
-                        <div class="dropdown">
-                            <button class="btn p-0" type="button" id="totalBalance" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="totalBalance">
-                                <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-start">
-                            <div class="d-flex pe-4">
-                                <div class="me-3">
-                                    <span class="badge bg-label-warning p-2"><i
-                                            class="bx bx-wallet text-warning"></i></span>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">$2.54k</h6>
-                                    <small>Wallet</small>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="me-3">
-                                    <span class="badge bg-label-secondary p-2"><i
-                                            class="bx bx-dollar text-secondary"></i></span>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">$4.2k</h6>
-                                    <small>Paypal</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="totalBalanceChart" class="border-bottom mb-3"></div>
-                        <div class="d-flex justify-content-between">
-                            <small class="text-muted">You have done <span class="fw-bold">57.6%</span> more
-                                sales.<br>Check your new badge in your profile.</small>
-                            <div>
-                                <span class="badge bg-label-warning p-2"><i
-                                        class="bx bx-chevron-right text-warning"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
-    </div>
-<?php $__env->stopSection(); ?>
+    <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('backend.layout.base', ['title' => 'Dashboard - Administrator - Laravel 9'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laravel\spp_hamdani\resources\views/backend/dashboard/index.blade.php ENDPATH**/ ?>

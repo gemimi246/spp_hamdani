@@ -17,7 +17,7 @@
                         <th>Email</th>
                         <th>Nomor Telepon</th>
                         <th>Role</th>
-
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -28,11 +28,16 @@
                     <?php $__currentLoopData = $admin; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td><?php echo e($no++); ?></td>
-                            <td width="auto"><?php if($a->image != null): ?>
-                                <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($a->image); ?>" style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
+                            <td width="auto">
+                                <?php if($a->image != null): ?>
+                                    <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($a->image); ?>"
+                                        style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 <?php else: ?>
-                                <img src="<?php echo e(asset('')); ?>storage/images/users/user.png" style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
-                            <?php endif; ?></td>
+                                    <img src="<?php echo e(asset('')); ?>storage/images/users/user.png"
+                                        style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
+                                <?php endif; ?>
+                            </td>
+
                             <td width="auto"><?php echo e($a->nama_lengkap); ?></td>
                             <td width="auto"><?php echo e($a->email); ?></td>
                             <td width="auto"><?php echo e($a->no_tlp); ?></td>
@@ -42,6 +47,27 @@
                                 <?php else: ?>
                                     Kepala Sekolah
                                 <?php endif; ?>
+                            </td>
+                            <td width="auto">
+                                <label class="switch switch-primary">
+                                    <?php if($a->status == 'ON'): ?>
+                                        <input type="checkbox" readonly
+                                            class="switch-input" checked />
+                                    <?php else: ?>
+                                        <input type="checkbox" readonly
+                                            class="switch-input" />
+                                    <?php endif; ?>
+
+                                    <span class="switch-toggle-slider">
+                                        <span class="switch-on">
+                                            <i class="bx bx-check"></i>
+                                        </span>
+                                        <span class="switch-off">
+                                            <i class="bx bx-x"></i>
+                                        </span>
+                                    </span>
+
+                                </label>
                             </td>
                             <td>
                                 <a href="/admin/edit/<?php echo e($a->id); ?>" type="button" class="btn btn-success">Edit</a>
@@ -78,6 +104,7 @@
             </table>
         </div>
     </div>
+    
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('backend.layout.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laravel\spp_hamdani\resources\views/backend/admin/index.blade.php ENDPATH**/ ?>
