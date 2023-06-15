@@ -46,8 +46,6 @@
         <!-- New Visitors & Activity -->
         <div class="col-lg-8 mb-4">
             <div class="row">
-
-
                 <div class="col-6 mb-4">
                     <div class="card">
                         <div class="card-body">
@@ -92,22 +90,16 @@
             </div>
         </div>
     </div>
+    <?php if(request()->user()->role != 2): ?>
+        
+    
     <div class="row g-4">
         <div class="col-xl-3 col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total <b><?php echo e($kepalasekolah); ?></b> </h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            <?php $__currentLoopData = $kepalasekolahimage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ksi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                            
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>" alt="Avatar">
-                            </li>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -125,16 +117,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total <?php echo e($admintotal); ?></h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            <?php $__currentLoopData = $adminimg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aim): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                           
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>"  alt="Avatar">
-                            </li>
-                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </ul>
+                       
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -152,16 +135,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total <?php echo e($siswatotal); ?></h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            <?php $__currentLoopData = $siswaimg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aim): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                           
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>"  alt="Avatar">
-                            </li>
-                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -179,14 +153,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total All <?php echo e($alluserstotal); ?> Users</h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            <?php $__currentLoopData = $allusersimg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aim): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>"  alt="Avatar">
-                            </li>
-                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -200,7 +167,7 @@
             </div>
         </div>
     </div>
-
+    <?php endif; ?>
     <br>
     <div class="report-list-item rounded-2 ">
 

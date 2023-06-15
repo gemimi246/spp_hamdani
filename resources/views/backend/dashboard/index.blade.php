@@ -46,8 +46,6 @@
         <!-- New Visitors & Activity -->
         <div class="col-lg-8 mb-4">
             <div class="row">
-
-
                 <div class="col-6 mb-4">
                     <div class="card">
                         <div class="card-body">
@@ -93,22 +91,16 @@
             </div>
         </div>
     </div>
+    @if (request()->user()->role != 2)
+        
+    
     <div class="row g-4">
         <div class="col-xl-3 col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total <b>{{$kepalasekolah}}</b> </h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            @foreach ($kepalasekolahimage as $ksi)
-                                
-                            
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="{{ $ksi->nama_lengkap }}" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="{{ asset('') }}storage/images/users/{{ $ksi->image }}" alt="Avatar">
-                            </li>
-                            @endforeach
-                        </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -126,16 +118,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total {{$admintotal}}</h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            @foreach ($adminimg as $aim)
-                                
-                           
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="{{ $ksi->nama_lengkap }}" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="{{ asset('') }}storage/images/users/{{ $ksi->image }}"  alt="Avatar">
-                            </li>
-                             @endforeach
-                        </ul>
+                       
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -153,16 +136,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total {{$siswatotal}}</h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            @foreach ($siswaimg as $aim)
-                                
-                           
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="{{ $ksi->nama_lengkap }}" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="{{ asset('') }}storage/images/users/{{ $ksi->image }}"  alt="Avatar">
-                            </li>
-                             @endforeach
-                        </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -180,14 +154,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h6 class="fw-normal">Total All {{$alluserstotal}} Users</h6>
-                        <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                            @foreach ($allusersimg as $aim)
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="{{ $ksi->nama_lengkap }}" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="{{ asset('') }}storage/images/users/{{ $ksi->image }}"  alt="Avatar">
-                            </li>
-                             @endforeach
-                        </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
@@ -201,7 +168,7 @@
             </div>
         </div>
     </div>
-
+    @endif
     <br>
     <div class="report-list-item rounded-2 ">
 
