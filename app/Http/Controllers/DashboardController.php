@@ -23,8 +23,15 @@ class DashboardController extends Controller
         $data['totalLainya'] = request()->user()->role != 1 ?
         DB::table('payment')->where('user_id', request()->user()->id)->where('bulan_id', '=', null)->where('status', 'Lunas')->sum('nilai') :
         DB::table('payment')->where('bulan_id', '=', null)->where('status', 'Lunas')->sum('nilai');
-        $data['kepalasekolah'] = DB::table('users')->where('role', '=', 1)->where('status', 'ON')->count('id');
-        // dd($data['kepalasekolah']);
+        $data['kepalasekolah'] = DB::table('users')->where('role', 3)->where('status', 'ON')->count('id');
+        $data['kepalasekolahimage'] = DB::table('users')->where('role', 3)->where('status', 'ON')->get();
+        $data['admintotal'] = DB::table('users')->where('role', 1)->where('status', 'ON')->count('role');
+        $data['adminimg'] = DB::table('users')->where('role', 1)->where('status', 'ON')->get();
+        $data['siswatotal'] = DB::table('users')->where('role', 2)->where('status', 'ON')->count('role');
+        $data['siswaimg'] = DB::table('users')->where('role', 2)->where('status', 'ON')->get();
+        $data['alluserstotal'] = DB::table('users')->where('status', 'ON')->count('role');
+        $data['allusersimg'] = DB::table('users')->where('status', 'ON')->get();
+        // dd($data['adminimg']);
         return view('backend.dashboard.index', $data);
     }
 }

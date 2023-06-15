@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-4 pt-3 ps-0">
-                        <img src="<?php echo e(asset('storage/images/user/user.png')); ?>" width="120" height="100"
+                        <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e(request()->user()->image); ?>" width="120" height="100"
                             style="margin-bottom: 30%;" class="rounded-start" alt="">
                     </div>
                 </div>
@@ -97,34 +97,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total 4 users</h6>
+                        <h6 class="fw-normal">Total <b><?php echo e($kepalasekolah); ?></b> </h6>
                         <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <?php $__currentLoopData = $kepalasekolahimage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ksi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                
+                            
                             <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Vinnie Mostowy" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/5.png" alt="Avatar">
+                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>" alt="Avatar">
                             </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Allen Rieske" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/12.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Julee Rossignol" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/6.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Kaith D'souza" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/15.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="John Doe" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/1.png" alt="Avatar">
-                            </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
-                            <h4 class="mb-1">Administrator</h4>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                            <h4 class="mb-1">Super Admin</h4>
+                            <a href="/admin" 
                                 class="role-edit-modal"><small>Edit Role</small></a>
                         </div>
                         <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
@@ -136,34 +124,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total 7 users</h6>
+                        <h6 class="fw-normal">Total <?php echo e($admintotal); ?></h6>
                         <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <?php $__currentLoopData = $adminimg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aim): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                
+                           
                             <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Jimmy Ressula" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/4.png" alt="Avatar">
+                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>"  alt="Avatar">
                             </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="John Doe" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/1.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Kristi Lawker" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/2.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Kaith D'souza" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/15.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Danny Paul" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/7.png" alt="Avatar">
-                            </li>
+                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
-                            <h4 class="mb-1">Manager</h4>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                            <h4 class="mb-1">Admin</h4>
+                            <a href="/admin" 
                                 class="role-edit-modal"><small>Edit Role</small></a>
                         </div>
                         <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
@@ -175,34 +151,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total 5 users</h6>
+                        <h6 class="fw-normal">Total <?php echo e($siswatotal); ?></h6>
                         <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <?php $__currentLoopData = $siswaimg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aim): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                
+                           
                             <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Andrew Tye" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/6.png" alt="Avatar">
+                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>"  alt="Avatar">
                             </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Rishi Swaat" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/9.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Rossie Kim" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/12.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Kim Merchent" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/10.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Sam D'souza" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/13.png" alt="Avatar">
-                            </li>
+                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
-                            <h4 class="mb-1">Users</h4>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                            <h4 class="mb-1">Siswa</h4>
+                            <a href="/siswa" 
                                 class="role-edit-modal"><small>Edit Role</small></a>
                         </div>
                         <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
@@ -214,34 +178,20 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total 3 users</h6>
+                        <h6 class="fw-normal">Total All <?php echo e($alluserstotal); ?> Users</h6>
                         <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                            <?php $__currentLoopData = $allusersimg; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aim): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Kim Karlos" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/3.png" alt="Avatar">
+                                title="<?php echo e($ksi->nama_lengkap); ?>" class="avatar avatar-sm pull-up">
+                                <img class="rounded-circle" src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($ksi->image); ?>"  alt="Avatar">
                             </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Katy Turner" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/9.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Peter Adward" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/15.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="Kaith D'souza" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/10.png" alt="Avatar">
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                title="John Parker" class="avatar avatar-sm pull-up">
-                                <img class="rounded-circle" src="../../assets/img/avatars/11.png" alt="Avatar">
-                            </li>
+                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <div class="role-heading">
-                            <h4 class="mb-1">Support</h4>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                            <h4 class="mb-1">User ALL</h4>
+                            <a href="#" 
                                 class="role-edit-modal"><small>Edit Role</small></a>
                         </div>
                         <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
