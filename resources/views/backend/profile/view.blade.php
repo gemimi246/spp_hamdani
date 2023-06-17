@@ -5,35 +5,37 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="user-profile-header-banner">
-                    <img src="{{ asset('assets/img/pages/profile-banner.png') }}" style="width: 100%;" alt="Banner image"
-                        class="rounded-top">
+                <div class="user-profile-header-banner" style="margin-bottom: -20%;">
+                    <img src="{{ asset('') }}storage/images/logo/{{ Helper::apk()->logo }}"
+                        style="width: 100%; height: 40%;" alt="Banner image" class="rounded-top">
                 </div>
+                <hr>
                 <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
-                    <div class="flex-shrink-12 mt-n2" style="margin-right: -80%;">
-                        <img src="{{ asset('') }}storage/images/users/{{ request()->user()->image }}" style="width: 10%;" alt="user image"
+                    <div class="flex-shrink-12 mt-n2" style="  margin-right: -178%;">
+                        <img src="{{ asset('') }}storage/images/users/{{ request()->user()->image }}"
+                            style="max-width: 6%;" alt="user image"
                             class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                     </div>
-                    <div class="flex-grow-1 mt-3 mt-sm-5">
+                    <div class="flex-grow-1 mt-5 mt-sm-5">
                         <div
                             class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
-                            <div class="user-profile-info">
-                                <h4>{{$profile->nama_lengkap}}</h4>
+                            <div class="user-profile-info" style="margin-top: 7%;">
+                                <h4>{{ $profile->nama_lengkap }}</h4>
                                 <ul
                                     class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                     <li class="list-inline-item fw-semibold">
-                                        <i class='bx bx-mail-send'></i> {{$profile->email}}
+                                        <i class='bx bx-mail-send'></i> {{ $profile->email }}
                                     </li>
                                     <li class="list-inline-item fw-semibold">
-                                        <i class='bx bx-map'></i> {{$profile->alamat}}
+                                        <i class='bx bx-map'></i> {{ $profile->alamat }}
                                     </li>
                                     <li class="list-inline-item fw-semibold">
-                                        <i class='bx bx-calendar-alt'></i> {{$profile->tgl_lahir}}
+                                        <i class='bx bx-calendar-alt'></i> {{ $profile->tgl_lahir }}
                                     </li>
                                 </ul>
                             </div>
                             <a href="javascript:void(0)" class="btn btn-primary text-nowrap">
-                                <i class='bx bx-user-check me-1'></i>{{$profile->status}}
+                                <i class='bx bx-user-check me-1'></i>{{ $profile->status }}
                             </a>
                         </div>
                     </div>
@@ -51,9 +53,9 @@
                         Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="pages-profile-teams.html"><i class='bx bx-edit me-1'></i>
                         Edit</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages-profile-projects.html"><i
-                            class='bx bx-trash me-1'></i> Delete</a></li>
-                
+                <li class="nav-item"><a class="nav-link" href="pages-profile-projects.html"><i class='bx bx-trash me-1'></i>
+                        Delete</a></li>
+
             </ul>
         </div>
     </div>
@@ -68,36 +70,40 @@
                     <small class="text-muted text-uppercase">About</small>
                     <ul class="list-unstyled mb-4 mt-3">
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span
-                                class="fw-semibold mx-2">Full Name:</span> <span>John Doe</span></li>
+                                class="fw-semibold mx-2">Nama Lengkap:</span> <span>{{ $profile->nama_lengkap }}</span></li>
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span
-                                class="fw-semibold mx-2">Status:</span> <span>Active</span></li>
+                                class="fw-semibold mx-2">Status:</span> <span>{{ $profile->status }}</span></li>
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-star"></i><span
-                                class="fw-semibold mx-2">Role:</span> <span>Developer</span></li>
+                                class="fw-semibold mx-2">Role:</span> <span>
+                                @if ($profile->role == 1)
+                                    Admin
+                                @elseif ($profile->role == 2)
+                                    Siswa
+                                @else
+                                    Kepala Sekolah
+                                @endif
+                            </span></li>
+
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span
-                                class="fw-semibold mx-2">Country:</span> <span>USA</span></li>
-                        <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span
-                                class="fw-semibold mx-2">Languages:</span> <span>English</span></li>
+                                class="fw-semibold mx-2">Negara:</span> <span>IDN</span></li>
                     </ul>
                     <small class="text-muted text-uppercase">Contacts</small>
                     <ul class="list-unstyled mb-4 mt-3">
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span
-                                class="fw-semibold mx-2">Contact:</span> <span>(123) 456-7890</span></li>
-                        <li class="d-flex align-items-center mb-3"><i class="bx bx-chat"></i><span
-                                class="fw-semibold mx-2">Skype:</span> <span>john.doe</span></li>
+                                class="fw-semibold mx-2">Telephone:</span> <span>{{ $profile->no_tlp }}</span></li>
+
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-envelope"></i><span
-                                class="fw-semibold mx-2">Email:</span> <span>john.doe@example.com</span></li>
+                                class="fw-semibold mx-2">Email:</span> <span>{{ $profile->email }}</span></li>
                     </ul>
-                    <small class="text-muted text-uppercase">Teams</small>
-                    <ul class="list-unstyled mt-3 mb-0">
-                        <li class="d-flex align-items-center mb-3"><i class="bx bxl-github text-primary me-2"></i>
-                            <div class="d-flex flex-wrap"><span class="fw-semibold me-2">Backend Developer</span><span>(126
-                                    Members)</span></div>
-                        </li>
-                        <li class="d-flex align-items-center"><i class="bx bxl-react text-info me-2"></i>
-                            <div class="d-flex flex-wrap"><span class="fw-semibold me-2">React Developer</span><span>(98
-                                    Members)</span></div>
-                        </li>
-                    </ul>
+                    @if ($profile->role == 2)
+                        <small class="text-muted text-uppercase">Teams</small>
+                        <ul class="list-unstyled mt-3 mb-0">
+                            <li class="d-flex align-items-center mb-3"><i class="bx bx-home"></i><span
+                                    class="fw-semibold mx-2">Kelas:</span> <span>{{ $profile->nama_kelas }}</span></li>
+                            <li class="d-flex align-items-center mb-3"><i class="bx bx-building-house"></i><span
+                                    class="fw-semibold mx-2">Kelas:</span> <span>{{ $profile->nama_jurusan }}</span></li>
+                        </ul>
+                    @endif
                 </div>
             </div>
             <!--/ About User -->
@@ -107,11 +113,11 @@
                     <small class="text-muted text-uppercase">Overview</small>
                     <ul class="list-unstyled mt-3 mb-0">
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span
-                                class="fw-semibold mx-2">Task Compiled:</span> <span>13.5k</span></li>
+                                class="fw-semibold mx-2">Total Siswa:</span> <span>{{ $totalsiswa }}</span></li>
                         <li class="d-flex align-items-center mb-3"><i class='bx bx-customize'></i><span
-                                class="fw-semibold mx-2">Projects Compiled:</span> <span>146</span></li>
-                        <li class="d-flex align-items-center"><i class="bx bx-user"></i><span
-                                class="fw-semibold mx-2">Connections:</span> <span>897</span></li>
+                                class="fw-semibold mx-2">Total Kelas:</span> <span>{{ $totalkelas }}</span></li>
+                        <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Total
+                                Jurusan:</span> <span>{{ $totaljurusan }}</span></li>
                     </ul>
                 </div>
             </div>
@@ -214,9 +220,9 @@
                 <div class="col-lg-12 col-xl-6">
                     <div class="card card-action mb-4">
                         <div class="card-header align-items-center">
-                            <h5 class="card-action-title mb-0">Connections</h5>
+                            <h5 class="card-action-title mb-0">Teman Kelas</h5>
                             <div class="card-action-element">
-                                <div class="dropdown">
+                                {{-- <div class="dropdown">
                                     <button type="button" class="btn dropdown-toggle hide-arrow p-0"
                                         data-bs-toggle="dropdown" aria-expanded="false"><i
                                             class="bx bx-dots-vertical-rounded"></i></button>
@@ -228,103 +234,47 @@
                                         </li>
                                         <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-start">
+                                @foreach ($temankelas as $tk)
+                                    <li class="mb-3">
+
                                         <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/avatars/2.png" alt="Avatar"
-                                                    class="rounded-circle" />
+
+                                            <div class="d-flex align-items-start">
+
+
+
+                                                <div class="avatar me-3">
+                                                    @if ($tk->image != "")
+                                                        <img src="{{ asset('') }}storage/images/users/{{ $tk->image }}"
+                                                            class="rounded-circle" alt="img">
+                                                    @else
+                                                        <img src="{{ asset('') }}storage/images/users/users.png"
+                                                            class="rounded-circle" alt="img">
+                                                    @endif
+
+                                                </div>
+                                                <div class="me-2">
+                                                    <h6 class="mb-0">{{ $tk->nama_lengkap }}</h6>
+                                                    <small class="text-muted">45 Connections</small>
+                                                </div>
+
                                             </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Cecilia Payne</h6>
-                                                <small class="text-muted">45 Connections</small>
+
+                                            <div class="ms-auto">
+                                                <button class="btn btn-label-primary btn-icon btn-sm"><i
+                                                        class="bx bx-user"></i></button>
                                             </div>
+
                                         </div>
-                                        <div class="ms-auto">
-                                            <button class="btn btn-label-primary btn-icon btn-sm"><i
-                                                    class="bx bx-user"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-start">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/avatars/3.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Curtis Fletcher</h6>
-                                                <small class="text-muted">1.32k Connections</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <button class="btn btn-primary btn-icon btn-sm"><i
-                                                    class="bx bx-user"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-start">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/avatars/10.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Alice Stone</h6>
-                                                <small class="text-muted">125 Connections</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <button class="btn btn-primary btn-icon btn-sm"><i
-                                                    class="bx bx-user"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-start">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/avatars/7.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Darrell Barnes</h6>
-                                                <small class="text-muted">456 Connections</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <button class="btn btn-label-primary btn-icon btn-sm"><i
-                                                    class="bx bx-user"></i></button>
-                                        </div>
-                                    </div>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-start">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/avatars/12.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Eugenia Moore</h6>
-                                                <small class="text-muted">1.2k Connections</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <button class="btn btn-label-primary btn-icon btn-sm"><i
-                                                    class="bx bx-user"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="text-center">
-                                    <a href="javascript:;">View all connections</a>
-                                </li>
+                                    </li>
+                                @endforeach
+
+
                             </ul>
                         </div>
                     </div>

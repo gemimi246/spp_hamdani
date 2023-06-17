@@ -33,7 +33,7 @@
                                     <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($a->image); ?>"
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 <?php else: ?>
-                                    <img src="<?php echo e(asset('')); ?>storage/images/users/user.png"
+                                    <img src="<?php echo e(asset('')); ?>storage/images/users/users.png"
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 <?php endif; ?>
                             </td>

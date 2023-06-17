@@ -33,7 +33,7 @@
                             <small class="d-block mb-3 text-nowrap">Total Pembayaran</small>
                             <h5 class="card-title text-primary mb-1">Rp. <?php echo e(number_format($totalById)); ?></h5>
                             
-                            <a href="javascript:;" class="btn btn-sm btn-primary">View profile</a>
+                            <a href="/profile" class="btn btn-sm btn-primary">View profile</a>
                         </div>
                     </div>
                     <div class="col-4 pt-3 ps-0">

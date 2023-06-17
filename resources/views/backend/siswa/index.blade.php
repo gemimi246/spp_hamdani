@@ -35,7 +35,7 @@
                                     <img src="{{ asset('') }}storage/images/users/{{ $a->image }}"
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 @else
-                                    <img src="{{ asset('') }}storage/images/users/user.png"
+                                    <img src="{{ asset('') }}storage/images/users/users.png"
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 @endif
                             </td>
