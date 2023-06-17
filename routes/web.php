@@ -11,6 +11,7 @@ use App\Http\Controllers\TahunController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\AplikasiController;
+use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TunggakanController;
 use App\Http\Controllers\PembayaranController;
@@ -126,6 +127,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Profile
     Route::get('/profile', [ProfileController::class, 'view'])->name('profile');
+
+    //Brodcast Wa
+    Route::get('/broadcast', [BroadcastController::class, 'view'])->name('broadcast');
+    Route::get('/broadcast/sendMessage', [BroadcastController::class, 'sendMessage'])->name('broadcast.sendMessage');
 
     
 });

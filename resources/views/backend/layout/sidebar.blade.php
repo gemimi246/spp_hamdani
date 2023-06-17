@@ -47,6 +47,13 @@
                 </ul>
             </li>
             <li class="menu-item">
+                <a href="/broadcast" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bxl-whatsapp"></i>
+                 
+                    <div>Brodcast</div>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="/pembayaran" class="menu-link ">
                     <i class="menu-icon tf-icons bx bx-money"></i>
                     <div>Pembayaran</div>

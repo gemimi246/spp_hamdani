@@ -14,7 +14,7 @@
             <div class="col-md-5 ">
 
                 <div class="row justify-content-end">
-
+                    <label for="" style="margin-right: -17%;">From</label>
 
                     <div class="col-md-5">
 
@@ -43,9 +43,6 @@
 
             <div class="col-md-2 mb-3">
                 <div id="open" class="position-absolute top-0 start-50 translate-middle" style="margin-top: 5%">
-                    {{-- <div id="loading-image" class="spinner-border spinner-border-lg text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div> --}}
                     <div id="loading-image" class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
@@ -60,8 +57,9 @@
             </div>
             <div class="col-md-5">
                 <div class="row">
-
+                    <label for="">To </label>
                     <div class="col-md-5">
+                        
                         {{-- <label class="form-label" for="kelas_id">Kelas</label> --}}
                         <select class="form-control" name="kelas_id_to" id="kelas_id_to" onchange="tampil_data_to()"
                             >
@@ -93,7 +91,6 @@
             <div class="col-md-6">
 
                 <div class="container mt-4 ">
-                    <h5 for="">From </h5>
                     <table class="table table-striped ">
                         <thead>
                             <tr>
@@ -112,7 +109,7 @@
 
             <div class="col-md-6 ">
                 <div class="container mt-4 float-end">
-                    <h5 for="">To </h5>
+                    
                     <table class="table table-striped ">
                         <thead>
                             <tr>
