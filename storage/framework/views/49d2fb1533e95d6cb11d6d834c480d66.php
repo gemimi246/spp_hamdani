@@ -4,7 +4,8 @@
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0" style="font-size: 40px"><?php echo e($title); ?></h5>
-                    <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($siswa->image); ?>" style="width: 100px; height: 100px;border-radius: 10%; margin-right: 4%;" alt="Gambar Kosong">
+                    <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e($siswa->image); ?>"
+                        style="width: 100px; height: 100px;border-radius: 10%; margin-right: 4%;" alt="Gambar Kosong">
                 </div>
                 <div class="card-body">
                     <form action="/siswa/editProses" method="POST" enctype="multipart/form-data">
@@ -88,25 +89,29 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="image">Image</label>
                                     <input type="file" class="form-control" id="image" name="image"
-                                         placeholder="Masukan Gambar" />
-                                        
+                                        placeholder="Masukan Gambar" />
+
                                 </div>
-                                 
+
                             </div>
-                          
+
 
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
-                                    <textarea type="text" class="form-control" id="alamat" name="alamat"
-                                         placeholder="Masukan Alamat" required><?php echo e($siswa->alamat); ?> </textarea>
+                                    <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat" required><?php echo e($siswa->alamat); ?> </textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
+                                <?php if($siswa->role == 2): ?>
+                                    <a href="/profile" type="button" class="btn btn-success">Kembali</a>
+                                    <?php else: ?>
+                                    <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
+                                <?php endif; ?>
+
                             </div>
                     </form>
                 </div>

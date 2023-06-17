@@ -15,6 +15,7 @@ class ProfileController extends Controller
         $data['totalkelas'] = DB::table('kelas')->count('id');
         $data['totaljurusan'] = DB::table('jurusan')->count('id');
         $data['temankelas'] = DB::table('users')->where('role', 2)->where('kelas_id', request()->user()->kelas_id)->get();
+        $data['temanjurusan'] = DB::table('users')->where('role', 2)->where('jurusan_id', request()->user()->jurusan_id)->get();
         return view('backend.profile.view', $data);
     }
 }

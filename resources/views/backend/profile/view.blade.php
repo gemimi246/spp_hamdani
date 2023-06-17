@@ -11,15 +11,22 @@
                 </div>
                 <hr>
                 <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
-                    <div class="flex-shrink-12 mt-n2" style="  margin-right: -178%;">
-                        <img src="{{ asset('') }}storage/images/users/{{ request()->user()->image }}"
-                            style="max-width: 6%;" alt="user image"
-                            class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                    <div class="flex-shrink-12 mt-n2" style="  margin-right: -7%;">
+                        @if (request()->user()->image != null)
+                            <img src="{{ asset('') }}storage/images/users/{{ request()->user()->image }}"
+                                style="max-width: 20%;" alt="image"
+                                class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                        @else
+                            <img src="{{ asset('') }}storage/images/users/users.png" style="max-width: 50%;"
+                                alt="image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                        @endif
                     </div>
                     <div class="flex-grow-1 mt-5 mt-sm-5">
                         <div
                             class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
-                            <div class="user-profile-info" style="margin-top: 7%;">
+                            <div class="user-profile-info"
+                                style="@if (request()->user()->image != null) margin-top: 37%;
+                                margin-left: -174%; @else  margin-top: 5%; @endif">
                                 <h4>{{ $profile->nama_lengkap }}</h4>
                                 <ul
                                     class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
@@ -51,10 +58,11 @@
             <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                 <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class='bx bx-user me-1'></i>
                         Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages-profile-teams.html"><i class='bx bx-edit me-1'></i>
+                <li class="nav-item"><a class="nav-link" href="/siswa/edit/{{ $profile->id }}"><i
+                            class='bx bx-edit me-1'></i>
                         Edit</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages-profile-projects.html"><i class='bx bx-trash me-1'></i>
-                        Delete</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="pages-profile-projects.html"><i class='bx bx-trash me-1'></i>
+                        Delete</a></li> --}}
 
             </ul>
         </div>
@@ -70,7 +78,8 @@
                     <small class="text-muted text-uppercase">About</small>
                     <ul class="list-unstyled mb-4 mt-3">
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span
-                                class="fw-semibold mx-2">Nama Lengkap:</span> <span>{{ $profile->nama_lengkap }}</span></li>
+                                class="fw-semibold mx-2">Nama Lengkap:</span> <span>{{ $profile->nama_lengkap }}</span>
+                        </li>
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span
                                 class="fw-semibold mx-2">Status:</span> <span>{{ $profile->status }}</span></li>
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-star"></i><span
@@ -238,33 +247,27 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <ul class="list-unstyled mb-0">
+                            <ul class="list-unstyled mb-0"
+                                style="height:310px;
+                            overflow-y: scroll;">
                                 @foreach ($temankelas as $tk)
                                     <li class="mb-3">
-
                                         <div class="d-flex align-items-start">
-
                                             <div class="d-flex align-items-start">
-
-
-
                                                 <div class="avatar me-3">
-                                                    @if ($tk->image != "")
+                                                    @if ($tk->image != '')
                                                         <img src="{{ asset('') }}storage/images/users/{{ $tk->image }}"
                                                             class="rounded-circle" alt="img">
                                                     @else
                                                         <img src="{{ asset('') }}storage/images/users/users.png"
                                                             class="rounded-circle" alt="img">
                                                     @endif
-
                                                 </div>
                                                 <div class="me-2">
                                                     <h6 class="mb-0">{{ $tk->nama_lengkap }}</h6>
-                                                    <small class="text-muted">45 Connections</small>
+                                                    <small class="text-muted">{{ $tk->email }}</small>
                                                 </div>
-
                                             </div>
-
                                             <div class="ms-auto">
                                                 <button class="btn btn-label-primary btn-icon btn-sm"><i
                                                         class="bx bx-user"></i></button>
@@ -273,8 +276,6 @@
                                         </div>
                                     </li>
                                 @endforeach
-
-
                             </ul>
                         </div>
                     </div>
@@ -284,9 +285,9 @@
                 <div class="col-lg-12 col-xl-6">
                     <div class="card card-action mb-4">
                         <div class="card-header align-items-center">
-                            <h5 class="card-action-title mb-0">Teams</h5>
+                            <h5 class="card-action-title mb-0">Teman Jurusan</h5>
                             <div class="card-action-element">
-                                <div class="dropdown">
+                                {{-- <div class="dropdown">
                                     <button type="button" class="btn dropdown-toggle hide-arrow p-0"
                                         data-bs-toggle="dropdown" aria-expanded="false"><i
                                             class="bx bx-dots-vertical-rounded"></i></button>
@@ -298,102 +299,39 @@
                                         </li>
                                         <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body">
-                            <ul class="list-unstyled mb-0">
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-center">
+                            <ul class="list-unstyled mb-0"
+                                style="height:310px;
+                            overflow-y: scroll;">
+                                @foreach ($temanjurusan as $tk)
+                                    <li class="mb-3">
                                         <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/icons/brands/react-label.png" alt="Avatar"
-                                                    class="rounded-circle" />
+                                            <div class="d-flex align-items-start">
+                                                <div class="avatar me-3">
+                                                    @if ($tk->image != '')
+                                                        <img src="{{ asset('') }}storage/images/users/{{ $tk->image }}"
+                                                            class="rounded-circle" alt="img">
+                                                    @else
+                                                        <img src="{{ asset('') }}storage/images/users/users.png"
+                                                            class="rounded-circle" alt="img">
+                                                    @endif
+                                                </div>
+                                                <div class="me-2">
+                                                    <h6 class="mb-0">{{ $tk->nama_lengkap }}</h6>
+                                                    <small class="text-muted">{{ $tk->email }}</small>
+                                                </div>
                                             </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">React Developers</h6>
-                                                <small class="text-muted">72 Members</small>
+                                            <div class="ms-auto">
+                                                <button class="btn btn-label-primary btn-icon btn-sm"><i
+                                                        class="bx bx-user"></i></button>
                                             </div>
+
                                         </div>
-                                        <div class="ms-auto">
-                                            <a href="javascript:;"><span
-                                                    class="badge bg-label-danger">Developer</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/icons/brands/support-label.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Support Team</h6>
-                                                <small class="text-muted">122 Members</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <a href="javascript:;"><span class="badge bg-label-primary">Support</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/icons/brands/figma-label.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">UI Designers</h6>
-                                                <small class="text-muted">7 Members</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <a href="javascript:;"><span class="badge bg-label-info">Designer</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/icons/brands/vue-label.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Vue.js Developers</h6>
-                                                <small class="text-muted">289 Members</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <a href="javascript:;"><span
-                                                    class="badge bg-label-danger">Developer</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-3">
-                                                <img src="../../assets/img/icons/brands/twitter-label.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div class="me-w">
-                                                <h6 class="mb-0">Digital Marketing</h6>
-                                                <small class="text-muted">24 Members</small>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <a href="javascript:;"><span
-                                                    class="badge bg-label-secondary">Marketing</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="text-center">
-                                    <a href="javascript:;">View all teams</a>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

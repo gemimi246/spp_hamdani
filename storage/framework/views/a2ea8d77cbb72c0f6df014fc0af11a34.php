@@ -37,8 +37,13 @@
                         </div>
                     </div>
                     <div class="col-4 pt-3 ps-0">
-                        <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e(request()->user()->image); ?>" width="120" height="100"
-                            style="margin-bottom: 30%;" class="rounded-start" alt="">
+                        <?php if(request()->user()->image != null): ?>
+                            <img src="<?php echo e(asset('')); ?>storage/images/users/<?php echo e(request()->user()->image); ?>" width="120"
+                                height="100" style="margin-bottom: 30%;" class="rounded-start" alt="">
+                        <?php else: ?>
+                            <img src="<?php echo e(asset('')); ?>storage/images/users/users.png" width="120"
+                                height="100" style="margin-bottom: 30%;" class="rounded-start" alt="">
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -91,82 +96,76 @@
         </div>
     </div>
     <?php if(request()->user()->role != 2): ?>
-        
-    
-    <div class="row g-4">
-        <div class="col-xl-3 col-lg-3 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total <b><?php echo e($kepalasekolah); ?></b> </h6>
-                        
-                    </div>
-                    <div class="d-flex justify-content-between align-items-end">
-                        <div class="role-heading">
-                            <h4 class="mb-1">Super Admin</h4>
-                            <a href="/admin" 
-                                class="role-edit-modal"><small>Edit Role</small></a>
+        <div class="row g-4">
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6 class="fw-normal">Total <b><?php echo e($kepalasekolah); ?></b> </h6>
+
                         </div>
-                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="role-heading">
+                                <h4 class="mb-1">Super Admin</h4>
+                                <a href="/admin" class="role-edit-modal"><small>Edit Role</small></a>
+                            </div>
+                            <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6 class="fw-normal">Total <?php echo e($admintotal); ?></h6>
+
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="role-heading">
+                                <h4 class="mb-1">Admin</h4>
+                                <a href="/admin" class="role-edit-modal"><small>Edit Role</small></a>
+                            </div>
+                            <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6 class="fw-normal">Total <?php echo e($siswatotal); ?></h6>
+
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="role-heading">
+                                <h4 class="mb-1">Siswa</h4>
+                                <a href="/siswa" class="role-edit-modal"><small>Edit Role</small></a>
+                            </div>
+                            <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6 class="fw-normal">Total All <?php echo e($alluserstotal); ?> Users</h6>
+
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="role-heading">
+                                <h4 class="mb-1">User ALL</h4>
+                                <a href="#" class="role-edit-modal"><small>Edit Role</small></a>
+                            </div>
+                            <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total <?php echo e($admintotal); ?></h6>
-                       
-                    </div>
-                    <div class="d-flex justify-content-between align-items-end">
-                        <div class="role-heading">
-                            <h4 class="mb-1">Admin</h4>
-                            <a href="/admin" 
-                                class="role-edit-modal"><small>Edit Role</small></a>
-                        </div>
-                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total <?php echo e($siswatotal); ?></h6>
-                        
-                    </div>
-                    <div class="d-flex justify-content-between align-items-end">
-                        <div class="role-heading">
-                            <h4 class="mb-1">Siswa</h4>
-                            <a href="/siswa" 
-                                class="role-edit-modal"><small>Edit Role</small></a>
-                        </div>
-                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between mb-2">
-                        <h6 class="fw-normal">Total All <?php echo e($alluserstotal); ?> Users</h6>
-                        
-                    </div>
-                    <div class="d-flex justify-content-between align-items-end">
-                        <div class="role-heading">
-                            <h4 class="mb-1">User ALL</h4>
-                            <a href="#" 
-                                class="role-edit-modal"><small>Edit Role</small></a>
-                        </div>
-                        <a href="javascript:void(0);" class="text-muted"><i class="bx bx-copy"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php endif; ?>
     <br>
     <div class="report-list-item rounded-2 ">
