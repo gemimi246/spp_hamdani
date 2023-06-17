@@ -93,6 +93,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::post('/kelas/editProses', [KelasController::class, 'editProses'])->name('kelas.editProses');
     Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
+    Route::get('/kelas/move', [KelasController::class, 'movekelas'])->name('kelas.movekelas');
+    Route::get('/load_data_moveKelas', [KelasController::class, 'load_data_moveKelas'])->name('kelas.load_data_moveKelas');
+    Route::post('/kelas/moveproses', [KelasController::class, 'moveproses'])->name('kelas.moveproses');
 
     //Aplikasi
     Route::get('/aplikasi', [AplikasiController::class, 'view'])->name('aplikasi');
@@ -121,6 +124,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Profile
     Route::get('/profile', [ProfileController::class, 'view'])->name('profile');
+
+    
 });
 
 Route::get('/route-cache', function () {

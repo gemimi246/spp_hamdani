@@ -93,6 +93,11 @@
                             <div data-i18n="jenisPembayaran">Jenis Pembayaran</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="/kelas/move" class="menu-link">
+                            <div data-i18n="Pindah Kelas">Pindah Kelas</div>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
