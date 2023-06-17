@@ -94,7 +94,7 @@ class PembayaranController extends Controller
         \Midtrans\Config::$is3ds = true;
 
         $getOrderId = DB::select("select p.*, u.nis, u.nama_lengkap, u.no_tlp, b.nama_bulan from users u left join payment p on p.user_id=u.id left join bulan b on b.id=p.bulan_id where u.nis = '" . request()->user()->nis . "' and p.status != 'Lunas' ORDER BY p.created_at DESC");
-        dd($getOrderId);
+        // dd($getOrderId);
         foreach ($getOrderId as $ord) {
             if ($ord->order_id != null) {
                 $getDataMidtrans = \Midtrans\Transaction::status($ord->order_id);
