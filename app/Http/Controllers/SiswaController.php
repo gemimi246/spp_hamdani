@@ -44,6 +44,7 @@ class SiswaController extends Controller
             'no_ortu' => $request->no_ortu,
             'password' => Hash::make($request->password),
             'alamat' => $request->alamat,
+            'status' => "ON",
             'image' => $request->file('image')->getClientOriginalName(),
             'role' => 2,
             'created_at' => now()
@@ -62,6 +63,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $data['title'] = "Edit Siswa";
+        $data['status'] = ['ON', 'OFF'];
         $data['siswa'] = DB::table('users')->where('id', $id)->first();
         $data['kelas'] = DB::select("select * from kelas");
         $data['jurusan'] = DB::select("select * from jurusan");
@@ -87,6 +89,7 @@ class SiswaController extends Controller
                 'tgl_lahir' => $request->tgl_lahir,
                 'no_ortu' => $request->no_ortu,
                 'alamat' => $request->alamat,
+                'status' => $request->status,
                 'image' => $request->file('image')->getClientOriginalName(),
                 'role' => 2,
                 'updated_at' => now()
@@ -102,6 +105,7 @@ class SiswaController extends Controller
                 'tgl_lahir' => $request->tgl_lahir,
                 'no_ortu' => $request->no_ortu,
                 'alamat' => $request->alamat,
+                'status' => $request->status,
                 'role' => 2,
                 'updated_at' => now()
             ];

@@ -95,8 +95,21 @@
 
                             </div>
 
-
                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="status">Status</label>
+                                    <select class="form-control" name="status" id="status" required>
+                                        <option value="">-- Pilih --</option>
+                                        @foreach ($status as $s)
+                                            <option value="{{ $s }}"
+                                                {{ $s == $siswa->status ? 'selected' : '' }}>
+                                                {{ $s }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
                                     <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat" required>{{ $siswa->alamat }} </textarea>
@@ -106,9 +119,9 @@
                             <div class="col-md-12">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                @if ($siswa->role == 2)
+                                @if (request()->user()->role == 2)
                                     <a href="/profile" type="button" class="btn btn-success">Kembali</a>
-                                    @else
+                                @else
                                     <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
                                 @endif
 

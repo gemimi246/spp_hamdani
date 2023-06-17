@@ -18,6 +18,7 @@
                         <th>Email</th>
                         <th>Kelas</th>
                         <th>Jurusan</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -42,6 +43,27 @@
                             <td width="auto"><?php echo e($a->email); ?></td>
                             <td width="auto"><?php echo e($a->nama_kelas); ?></td>
                             <td width="auto"><?php echo e($a->nama_jurusan); ?></td>
+                            <td width="auto">
+                                <label class="switch switch-primary">
+                                    <?php if($a->status == 'ON'): ?>
+                                        <input type="checkbox" readonly
+                                            class="switch-input" checked />
+                                    <?php else: ?>
+                                        <input type="checkbox" readonly
+                                            class="switch-input" />
+                                    <?php endif; ?>
+
+                                    <span class="switch-toggle-slider">
+                                        <span class="switch-on">
+                                            <i class="bx bx-check"></i>
+                                        </span>
+                                        <span class="switch-off">
+                                            <i class="bx bx-x"></i>
+                                        </span>
+                                    </span>
+
+                                </label>
+                            </td>
                             <td>
 
                                 <a href="/siswa/edit/<?php echo e($a->id); ?>" type="button" class="btn btn-success">Edit</a>

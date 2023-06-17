@@ -95,8 +95,22 @@
 
                             </div>
 
-
                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="status">Status</label>
+                                    <select class="form-control" name="status" id="status" required>
+                                        <option value="">-- Pilih --</option>
+                                        <?php $__currentLoopData = $status; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($s); ?>"
+                                                <?php echo e($s == $siswa->status ? 'selected' : ''); ?>>
+                                                <?php echo e($s); ?>
+
+                                            </option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Alamat</label>
                                     <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat" required><?php echo e($siswa->alamat); ?> </textarea>
@@ -106,9 +120,9 @@
                             <div class="col-md-12">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <?php if($siswa->role == 2): ?>
+                                <?php if(request()->user()->role == 2): ?>
                                     <a href="/profile" type="button" class="btn btn-success">Kembali</a>
-                                    <?php else: ?>
+                                <?php else: ?>
                                     <a href="/siswa" type="button" class="btn btn-success">Kembali</a>
                                 <?php endif; ?>
 

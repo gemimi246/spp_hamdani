@@ -99,7 +99,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item"
-                            href="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/app/invoice/list">
+                            href="/pembayaran">
                             <i class="bx bx-credit-card me-2"></i>
                             <span class="align-middle">Billing</span>
                         </a>
