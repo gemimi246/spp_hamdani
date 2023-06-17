@@ -1,7 +1,6 @@
 @extends('backend.layout.base')
 
 @section('content')
-
     <div class="card table-responsive">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0" style="font-size: 40px">
@@ -49,13 +48,15 @@
                     </div> --}}
                     <div id="loading-image" class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
-                      </div>
+                    </div>
                 </div>
-                <button class="btn btn-primary" id="movekelasbyId" style="width: 100%;"><i class='bx bxs-chevron-right-circle' ></i> Move </button>
+                <button class="btn btn-primary" id="movekelasbyId" style="width: 100%;"><i
+                        class='bx bxs-chevron-right-circle'></i> Move </button>
                 <br>
                 <br>
 
-                <button class="btn btn-warning" id="backkelasbyId" style="width: 100%;"><i class='bx bx-rotate-right'></i> Back</button>
+                <button class="btn btn-warning" id="backkelasbyId" style="width: 100%;"><i class='bx bx-rotate-right'></i>
+                    Back</button>
             </div>
             <div class="col-md-5">
                 <div class="row">
@@ -63,7 +64,7 @@
                     <div class="col-md-5">
                         {{-- <label class="form-label" for="kelas_id">Kelas</label> --}}
                         <select class="form-control" name="kelas_id_to" id="kelas_id_to" onchange="tampil_data_to()"
-                            required>
+                            >
                             <option value="" selected>-- Pilih Kelas --</option>
                             @foreach ($kelas as $s)
                                 <option value="{{ $s->id }}">{{ $s->nama_kelas }}</option>
@@ -130,8 +131,8 @@
         </div>
 
     </div>
-   
-    
+
+
     <script>
         tampil_data_from();
         $("#loading-image").hide();
@@ -168,6 +169,7 @@
                     }
                     $('#show_data_from').html(html);
                     $("#loading-image").hide();
+                    $('#movekelasbyId').removeAttr('disabled');
                     // $('#datatable').DataTable();
 
                 }
@@ -204,12 +206,13 @@
                     }
                     $('#show_data_to').html(html);
                     $("#loading-image").hide();
+                    $('#backkelasbyId').removeAttr('disabled');
                 }
             });
         }
         $(document).ready(function() {
             $('#checkAllFrom').on('click', function(e) {
-                console.log($(this).is(':checked', true));
+                // console.log($(this).is(':checked', true));
                 if ($(this).is(':checked', true)) {
                     $(".checkboxfrom").prop('checked', true);
                 } else {
@@ -217,7 +220,7 @@
                 }
             });
             $('#checkAllTo').on('click', function(e) {
-                console.log($(this).is(':checked', true));
+                // console.log($(this).is(':checked', true));
                 if ($(this).is(':checked', true)) {
                     $(".checkboxto").prop('checked', true);
                 } else {
@@ -226,38 +229,58 @@
             });
 
             $('#movekelasbyId').on('click', function(e) {
-                // console.log(e);
-                var checkboxes_value = [];
+                // console.log($('.checkboxfrom:checked').val());
+                if ($('#kelas_id_to').val() == "" || $('#jurusan_id_to').val() == "" || $('.checkboxfrom:checked').val() == undefined) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Kelas, Siswa dan Jurusan tidak boleh kosong',
+                    })
+                } else {
+                    $('#movekelasbyId').attr('disabled', true)
+                    var checkboxes_value = [];
 
-                $('.checkboxfrom').each(function() {
-                    //if($(this).is(":checked")) { 
-                    if (this.checked) {
-                        checkboxes_value.push($(this).val());
-                    }
-                });
-                checkboxes_value = checkboxes_value.toString();
-                // console.log(checkboxes_value);
-                $.ajax({
+                    $('.checkboxfrom').each(function() {
+                        //if($(this).is(":checked")) { 
+                        if (this.checked) {
+                            checkboxes_value.push($(this).val());
+                        }
+                    });
+                    checkboxes_value = checkboxes_value.toString();
+                    // console.log(checkboxes_value);
+                    $.ajax({
 
-                    type: 'POST',
-                    url: '{{ route('kelas.moveproses') }}',
-                    async: true,
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        user_id: checkboxes_value,
-                        kelas_id_to: $('#kelas_id_to').val(),
-                        jurusan_id_to: $('#jurusan_id_to').val(),
-                    },
-                    dataType: 'json',
-                    success: function(data) {
-                        tampil_data_from();
-                        tampil_data_to();
-                    }
-                });
+                        type: 'POST',
+                        url: '{{ route('kelas.moveproses') }}',
+                        async: true,
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            user_id: checkboxes_value,
+                            kelas_id_to: $('#kelas_id_to').val(),
+                            jurusan_id_to: $('#jurusan_id_to').val(),
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            tampil_data_from();
+                            tampil_data_to();
+                           
+                        }
+                    });
+                }
+
             });
             $('#backkelasbyId').on('click', function(e) {
-                // console.log(e);
-                var checkboxes_value = [];
+                // console.log( $('.checkboxto:checked').val());
+               
+                if ($('#kelas_id_from').val() == "" || $('#jurusan_id_from').val() == "" || $('.checkboxto:checked').val() == undefined) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Kelas, Siswa dan Jurusan tidak boleh kosong',
+                    })
+                } else {
+                    $('#backkelasbyId').attr('disabled', true)
+                    var checkboxes_value = [];
 
                 $('.checkboxto').each(function() {
                     //if($(this).is(":checked")) { 
@@ -281,10 +304,14 @@
                     },
                     dataType: 'json',
                     success: function(data) {
+                        
                         tampil_data_from();
                         tampil_data_to();
+                  
                     }
                 });
+                }
+                
             });
         })
     </script>
