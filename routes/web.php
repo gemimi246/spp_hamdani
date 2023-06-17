@@ -94,8 +94,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/kelas/editProses', [KelasController::class, 'editProses'])->name('kelas.editProses');
     Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
     Route::get('/kelas/move', [KelasController::class, 'movekelas'])->name('kelas.movekelas');
-    Route::get('/load_data_moveKelas', [KelasController::class, 'load_data_moveKelas'])->name('kelas.load_data_moveKelas');
+    Route::get('/load_data_moveKelasFrom', [KelasController::class, 'load_data_moveKelasFrom'])->name('kelas.load_data_moveKelasFrom');
+    Route::get('/load_data_moveKelasTo', [KelasController::class, 'load_data_moveKelasTo'])->name('kelas.load_data_moveKelasTo');
     Route::post('/kelas/moveproses', [KelasController::class, 'moveproses'])->name('kelas.moveproses');
+    Route::post('/kelas/backproses', [KelasController::class, 'backproses'])->name('kelas.backproses');
 
     //Aplikasi
     Route::get('/aplikasi', [AplikasiController::class, 'view'])->name('aplikasi');

@@ -72,16 +72,40 @@ class KelasController extends Controller
         $data['jurusan'] = DB::select("select * from jurusan");
         return view('backend.kelas.movekelas', $data);
     }
-    public function load_data_moveKelas(Request $request)
-    {
-        // dd($request->)
-        // $and = "";
-
+    public function load_data_moveKelasFrom(Request $request)
+    { 
         $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_from' and u.jurusan_id = '$request->jurusan_id_from'");
-        // dd($data);
+        echo json_encode($data);
+    }
+    public function load_data_moveKelasTo(Request $request)
+    {
+        $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_to' and u.jurusan_id = '$request->jurusan_id_to'");
         echo json_encode($data);
     }
     function moveproses(Request $request) {
-        // dd($request->all());
+        // dd();
+        foreach (explode(',', $request->user_id) as $uid) {
+            $data = [
+                'kelas_id' => $request->kelas_id_to,
+                'jurusan_id' => $request->jurusan_id_to,
+            ];
+            // dd($uid);
+            DB::table('users')->where('id', $uid)->update($data);
+           
+        }
+        echo json_encode($data);
+    }
+    function backproses(Request $request) {
+        // dd();
+        foreach (explode(',', $request->user_id) as $uid) {
+            $data = [
+                'kelas_id' => $request->kelas_id_from,
+                'jurusan_id' => $request->jurusan_id_from,
+            ];
+            // dd($data);
+            DB::table('users')->where('id', $uid)->update($data);
+           
+        }
+        echo json_encode($data);
     }
 }
