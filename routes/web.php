@@ -35,6 +35,11 @@ Route::get('/', function () {
 });
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'login_action'])->name('login.action');
+Route::get('/forgetPassword', [AuthController::class, 'forgetPassword'])->name('forgetPassword');
+Route::post('/forgetPassword/action', [AuthController::class, 'forgetPasswordAction'])->name('forgetPasswordAction');
+Route::get('/resetPassword/{token}', [AuthController::class, 'resetPassword'])->name('resetPassword');
+Route::post('/resetPassword/action', [AuthController::class, 'resetPasswordAction'])->name('resetPasswordAction');
+
 
 
 Route::middleware(['auth'])->group(function () {
