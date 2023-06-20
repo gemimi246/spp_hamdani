@@ -36,12 +36,7 @@
         </div>
         <div class="card col-mb-12">
             <div class="card table-responsive">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0" style="font-size: 40px">
-                        <b>{{ $title }}</b>
-                    </h5>
-
-                </div>
+                
                 <div class="container mt-4 ">
                     <table id="datatable" class="table table-striped ">
                         <thead>
