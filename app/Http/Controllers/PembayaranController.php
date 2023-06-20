@@ -55,10 +55,25 @@ class PembayaranController extends Controller
                 }
                 DB::table('payment')->where('order_id', $ord->order_id)->update($data);
             }
-
-            // dd($status);
         }
-        // dd($request->all());
+        $cekBulanan = DB::select("SELECT p.tagihan_id, COUNT(p.status) as total FROM payment p LEFT JOIN users u on u.id=p.user_id WHERE u.nis = '$request->nis' AND p.status = 'Lunas' AND bulan_id is not null GROUP BY p.tagihan_id");
+        foreach ($cekBulanan as $cb) {
+            $data = [
+                'status' => 'Lunas'
+            ];
+            if ($cb->total >= 12) {
+                DB::table('tagihan')->where('id', $cb->tagihan_id)->update($data);
+            }
+        }
+        $cekLainya = DB::select("SELECT p.tagihan_id, COUNT(p.status) as total, p.status FROM payment p LEFT JOIN users u on u.id=p.user_id WHERE u.nis = '$request->nis' AND p.status = 'Lunas' AND bulan_id is null GROUP BY p.tagihan_id, p.status");
+        foreach ($cekLainya as $cb) {
+            $data = [
+                'status' => 'Lunas'
+            ];
+            if ($cb->total >= 1) {
+                DB::table('tagihan')->where('id', $cb->tagihan_id)->update($data);
+            }
+        }
         $data['title'] = "Pembayaran";
         $data['getSiswa'] = DB::select("select * from users where role = '2'");
         $data['thajaran'] = DB::select("select * from tahun_ajaran where active = 'ON'");
@@ -121,6 +136,9 @@ class PembayaranController extends Controller
 
             // dd($status);
         }
+        
+       
+        
         $data['title'] = "Riwayat Pembayaran Spp";
         // $data['id_tagihan'] = $id_tagihan;
 
