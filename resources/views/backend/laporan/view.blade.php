@@ -24,6 +24,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
+
                             <div class="mb-3">
                                 <label class="form-label" for="kelas_id">Kelas</label>
                                 <select class="form-control" name="kelas_id" id="kelas_id" onchange="tampil_data()"
@@ -34,8 +35,14 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div id="open" class="position-absolute top-0 start-50 translate-middle"
+                                style="margin-top: 5%">
+                                <div id="loading-image" class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="mb-3">
                                 <label class="form-label" for="jenis_pembayaran">Jenis Pembayaran</label>
                                 <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran"
@@ -49,9 +56,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <br>
-                            <button class="btn btn-success" onclick="printExcel()">Excel</button>
+                            <button class="btn btn-success" id="cetakexcel" onclick="printExcel()">Excel</button>
                             {{-- <button class="btn btn-danger">Pdf</button> --}}
                         </div>
 
@@ -80,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 
         <script>
             // $('#datatables').dataTable();
@@ -90,8 +97,10 @@
 
                 return "Rp. " + value;
             };
+
             tampil_data();
-            // $('#datatables').DataTable();
+            $("#loading-image").hide();
+            // $('#datatable').DataTable();
             function tampil_data() {
 
                 // console.log($("#thajaran_id").val());
@@ -105,6 +114,10 @@
                         jenis_pembayaran: $("#jenis_pembayaran").val(),
                     },
                     dataType: 'json',
+                    beforeSend: function() {
+                        $("#loading-image").show();
+                        $('#cetakexcel').attr('disabled', true)
+                    },
                     success: function(data) {
                         var html = '';
                         var i;
@@ -122,8 +135,10 @@
                                 '</tr>';
                         }
                         $('#show_data').html(html);
-
-                        $('#datatable').DataTable();
+                        $("#loading-image").hide();
+                        $('#cetakexcel').removeAttr('disabled');
+                        // $('#datatable').DataTable();
+                       
 
                     }
                 });

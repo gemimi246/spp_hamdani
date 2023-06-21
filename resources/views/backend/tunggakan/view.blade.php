@@ -14,13 +14,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="mb-3">
-                                <label class="form-label" for="blok">Siswa</label>
+                                <label class="form-label" for="blok">Siswa / Nis</label>
                                 <select class="form-control selectpicker" data-actions-box="true"
                                     data-virtual-scroll="false" data-live-search="true" name="user_id" id="user_id"
                                     onchange="tampil_data()">
                                     <option value="" selected>-- Pilih --</option>
                                     @foreach ($siswa as $s)
-                                        <option value="{{ $s->id }}">{{ $s->nama_lengkap }}
+                                        <option value="{{ $s->id }}">{{ $s->nama_lengkap }} - {{ $s->nis }}
                                         </option>
                                     @endforeach
                                 </select>
