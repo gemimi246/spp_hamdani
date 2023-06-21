@@ -73,13 +73,13 @@ class KelasController extends Controller
         return view('backend.kelas.movekelas', $data);
     }
     public function load_data_moveKelasFrom(Request $request)
-    { 
-        $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_from' and u.jurusan_id = '$request->jurusan_id_from'");
+    {
+        $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_from' and u.jurusan_id = '$request->jurusan_id_from' and u.status != 'Lulus'");
         echo json_encode($data);
     }
     public function load_data_moveKelasTo(Request $request)
     {
-        $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_to' and u.jurusan_id = '$request->jurusan_id_to'");
+        $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_to' and u.jurusan_id = '$request->jurusan_id_to' and u.status != 'Lulus'");
         echo json_encode($data);
     }
     function moveproses(Request $request) {
