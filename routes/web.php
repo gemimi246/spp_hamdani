@@ -128,6 +128,7 @@ Route::middleware(['auth'])->group(function () {
      //Tunggakan
      Route::get('/tunggakan', [TunggakanController::class, 'view'])->name('tunggakan');
      Route::get('/tunggakan/load_data', [TunggakanController::class, 'load_data'])->name('tunggakan.load_data');
+    Route::get('/cetakTunggakan', [TunggakanController::class, 'cetakTunggakan'])->name('tunggakan.cetakTunggakan');
 
     //Jenis Pembayaran
     Route::get('/jenisPembayaran', [JenisPembayaranController::class, 'view'])->name('jenisPembayaran');

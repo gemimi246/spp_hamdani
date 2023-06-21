@@ -36,7 +36,7 @@
                             </div>
                             <br>
                             <button onclick="printTunggakan()" id="cetakexcel" class="btn btn-success">Excel</button>
-                            <a href="/pembayaran" type="button" class="btn btn-danger">refresh</a>
+                            <a href="/tunggakan" type="button" class="btn btn-danger">refresh</a>
                         </div>
 
                     </div>
