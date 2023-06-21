@@ -59,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
     Route::post('/siswa/editProses', [SiswaController::class, 'editProses'])->name('siswa.editProses');
     Route::get('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete');
+    Route::get('/alumni', [SiswaController::class, 'alumni'])->name('alumni');
+    Route::get('/siswa/tunggakan/{id}', [SiswaController::class, 'tunggakan'])->name('siswa.tunggakan');
     //Tahun AJaran
     Route::get('/tahun', [TahunController::class, 'view'])->name('tahun');
     Route::get('/tahunAdd', [TahunController::class, 'add'])->name('tahun.add');

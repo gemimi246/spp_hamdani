@@ -43,7 +43,7 @@ class PembayaranController extends Controller
                     $data = [
                         'status' => "Lunas"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $no . '&message=Terima kasih, pembayaran anda berhasil pada bulan ');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran anda berhasil pada bulan ');
                 } elseif ($getDataMidtrans->status_code == 201) {
                     $data = [
                         'status' => "Pending"
@@ -118,27 +118,26 @@ class PembayaranController extends Controller
                     $data = [
                         'status' => "Lunas"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran Bulan '.$ord->nama_bulan.' berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran '.$ord->pdf_url.'');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran Bulan ' . $ord->nama_bulan . ' berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
                 } elseif ($getDataMidtrans->status_code == 201) {
                     $data = [
                         'status' => "Pending"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan '.$ord->nama_bulan.' Belum berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran '.$ord->pdf_url.'');
-                   
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan ' . $ord->nama_bulan . ' Belum berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
                 } else {
                     $data = [
                         'status' => "Failed"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan '.$ord->nama_bulan.' Gagal dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran '.$ord->pdf_url.'');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan ' . $ord->nama_bulan . ' Gagal dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
                 }
                 DB::table('payment')->where('order_id', $ord->order_id)->update($data);
             }
 
             // dd($status);
         }
-        
-       
-        
+
+
+
         $data['title'] = "Riwayat Pembayaran Spp";
         // $data['id_tagihan'] = $id_tagihan;
 
@@ -215,8 +214,19 @@ class PembayaranController extends Controller
     }
     function siswaByKelas($kelas_id)
     {
-        $query = DB::table('users')->where('kelas_id', $kelas_id)->where('role', 2)->get();
 
+        // dd($kelas_id);
+
+        // $query = DB::table('users')->where('kelas_id', $kelas_id)->where('role', 2)->where('status', '!=', 'Lulus')->get();
+        if ($kelas_id != "Lulus") {
+            $and = $kelas_id != "Lulus" ? "and kelas_id = '$kelas_id'" : "";
+            $query = DB::select("select * from users where 1=1 and status != 'Lulus' and role = '2' $and");
+        } elseif ($kelas_id = "Lulus") {
+            $and2 = $kelas_id = "Lulus" ? "and status = '$kelas_id'" : "";
+            $query = DB::select("select nama_lengkap, status from users where 1=1 and role = '2' $and2");
+        }
+
+        // dd($query);
         return response()->json($query);
     }
 }

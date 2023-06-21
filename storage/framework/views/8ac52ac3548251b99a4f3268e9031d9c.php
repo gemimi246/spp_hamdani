@@ -43,6 +43,11 @@
                             <div>Kelas</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="/alumni" class="menu-link">
+                            <div>Alumni</div>
+                        </a>
+                    </li>
 
                 </ul>
             </li>

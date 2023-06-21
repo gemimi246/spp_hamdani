@@ -16,7 +16,7 @@ class SiswaController extends Controller
     public function index()
     {
         $data['title'] = "Siswa";
-        $data['siswa'] = DB::select("select u.*, k.nama_kelas, j.nama_jurusan from users u left join kelas k on u.kelas_id=k.id left join jurusan j on u.jurusan_id=j.id where role = '2'");
+        $data['siswa'] = DB::select("select u.*, k.nama_kelas, j.nama_jurusan from users u left join kelas k on u.kelas_id=k.id left join jurusan j on u.jurusan_id=j.id where role = '2' and u.status != 'Lulus'");
         return view('backend.siswa.index', $data);
     }
     public function add()
@@ -123,7 +123,7 @@ class SiswaController extends Controller
             $getImage = DB::table('users')->where('id', $id)->first();
             $file_path = public_path() . '/storage/images/users/' . $getImage->image;
             File::delete($file_path);
-            
+
             DB::table('users')->where('id', $id)->delete();
             Alert::success('Siswa berhasil dihapus');
             return redirect()->route('siswa');
@@ -134,5 +134,30 @@ class SiswaController extends Controller
             ]);
         }
     }
- 
+    public function alumni()
+    {
+        $data['title'] = "Alumni Siswa";
+        $data['alumni'] = DB::select("select u.*, k.nama_kelas, j.nama_jurusan from users u left join kelas k on u.kelas_id=k.id left join jurusan j on u.jurusan_id=j.id where role = '2' and u.status = 'Lulus'");
+        // $data['tunggakan'] = DB::table('tagihan')->where('status', 'Belum Lunas')->first();
+        return view('backend.siswa.alumni', $data);
+    }
+    public function tunggakan($user_id)
+    {
+        $data['title'] = "Tunggakan Siswa";
+        $data['tunggakan'] = DB::select("SELECT z.*, z.tagihan - z.bayar AS tunggakan FROM (
+  SELECT t.user_id, u.nama_lengkap, ta.tahun, jp.pembayaran,
+  CASE
+    WHEN t.jenis_pembayaran = 1 THEN t.nilai * 12
+    ELSE t.nilai
+    END AS tagihan, SUM(IFNULL(p.nilai, 0)) AS bayar
+  FROM tagihan t
+  LEFT JOIN payment p on p.tagihan_id=t.id
+  LEFT JOIN tahun_ajaran ta on ta.id=t.thajaran_id
+  LEFT JOIN jenis_pembayaran jp on jp.id=t.jenis_pembayaran
+  INNER JOIN users u on u.id = t.user_id
+  GROUP BY t.user_id, jp.pembayaran, ta.tahun, t.jenis_pembayaran, t.nilai
+) z
+WHERE z.user_id = '$user_id' ORDER BY tunggakan DESC");
+        return view('backend.siswa.tunggakan', $data);
+    }
 }
