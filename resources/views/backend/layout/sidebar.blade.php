@@ -101,6 +101,11 @@
                         </a>
                     </li>
                     <li class="menu-item">
+                        <a href="/kelas/lulus" class="menu-link">
+                            <div data-i18n="Pindah Kelas">Kelulusan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
                         <a href="/kelas/move" class="menu-link">
                             <div data-i18n="Pindah Kelas">kenaikan Kelas</div>
                         </a>

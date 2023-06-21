@@ -66,7 +66,7 @@ class KelasController extends Controller
     }
     public function movekelas()
     {
-        $data['title'] = "Naik Kelas";
+        $data['title'] = "Kenaikan Kelas";
         
         $data['kelas'] = DB::select("select * from kelas");
         $data['jurusan'] = DB::select("select * from jurusan");
@@ -104,7 +104,32 @@ class KelasController extends Controller
             ];
             // dd($data);
             DB::table('users')->where('id', $uid)->update($data);
-           
+        }
+        echo json_encode($data);
+    }
+    public function lulus()
+    {
+        $data['title'] = "Kelulusan";
+
+        $data['kelas'] = DB::select("select * from kelas ORDER BY nama_kelas DESC LIMIT 1");
+        $data['jurusan'] = DB::select("select * from jurusan");
+        return view('backend.kelas.lulus', $data);
+    }
+    public function load_data_lulus(Request $request)
+    {
+        $data = DB::select("select u.id, u.nama_lengkap, k.nama_kelas, j.nama_jurusan from users u left join kelas k on k.id=u.kelas_id left join jurusan j on j.id=u.jurusan_id where u.kelas_id = '$request->kelas_id_from' and u.jurusan_id = '$request->jurusan_id_from' and u.status != 'Lulus'");
+        echo json_encode($data);
+    }
+    function lulusproses(Request $request)
+    {
+        // dd();
+        foreach (explode(',', $request->user_id) as $uid) {
+            $data = [
+                'status' => "Lulus",
+            ];
+            // dd($uid);
+
+            DB::table('users')->where('id', $uid)->update($data);
         }
         echo json_encode($data);
     }
