@@ -102,7 +102,7 @@
                     </li>
                     <li class="menu-item">
                         <a href="/kelas/move" class="menu-link">
-                            <div data-i18n="Pindah Kelas">Pindah Kelas</div>
+                            <div data-i18n="Pindah Kelas">kenaikan Kelas</div>
                         </a>
                     </li>
                 </ul>
