@@ -22,6 +22,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5">
+                                    <div id="open" class="position-absolute top-0 start-50 translate-middle"
+                                        style="margin-top: 5%">
+                                        <div id="loading-image" class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="">Nis / Siswa</label>
                                         <select class="form-select" name="nis" id="nis"
@@ -197,7 +203,7 @@
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
-                                                    
+
                                                     <td>
                                                         <?php if($u->status_payment == null): ?>
                                                             Rp. 0
@@ -225,8 +231,8 @@
                                                             <a href="<?php echo e($u->pdf_url); ?>" class="btn btn-success"
                                                                 target="_blank">Invoice</a>
                                                         <?php elseif($u->status_payment == 'Lunas'): ?>
-                                                            <button onclick="printExcelByIdLainya()" class="btn btn-success"
-                                                                target="_blank">Excel</button>
+                                                            <button onclick="printExcelByIdLainya()"
+                                                                class="btn btn-success" target="_blank">Excel</button>
                                                         <?php else: ?>
                                                             <a href="/pembayaran/payment/<?php echo e($u->id); ?>"
                                                                 class="btn btn-primary">Bayar</a>
@@ -247,6 +253,7 @@
         </div>
     </div>
     <script>
+        $("#loading-image").hide();
         $('#kelas_id').change(function() {
             var klsid = $(this).val();
             if (klsid) {
@@ -254,6 +261,10 @@
                     type: "GET",
                     url: "/siswaByKelas/" + klsid,
                     dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#loading-image").show();
+                        
+                    },
                     success: function(res) {
                         if (res) {
                             $("#nis").empty();
@@ -266,6 +277,7 @@
                         } else {
                             $("#nis").empty();
                         }
+                        $("#loading-image").hide();
                     }
                 });
             } else {
@@ -277,7 +289,7 @@
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: "<?php echo e(url('cetakExcelById')); ?>/" ,
+                url: "<?php echo e(url('cetakExcelById')); ?>/",
                 data: {
                     tagihan_id: $("#getidtagihan").text(),
                 },
@@ -292,11 +304,12 @@
             });
             return false;
         }
+
         function printExcelByIdLainya() {
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: "<?php echo e(url('cetakExcelById')); ?>/" ,
+                url: "<?php echo e(url('cetakExcelById')); ?>/",
                 data: {
                     tagihan_id: $("#getIdLainya").text(),
                 },

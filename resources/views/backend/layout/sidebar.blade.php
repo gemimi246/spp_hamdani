@@ -126,8 +126,6 @@
                     <div>Dashboards</div>
                 </a>
             </li>
-
-
             <li class="menu-item">
                 <a href="/pembayaran/search?&kelas_id={{ request()->user()->kelas_id }}&nis={{ request()->user()->nis }}" class="menu-link ">
                     <i class="menu-icon tf-icons bx bx-money"></i>

@@ -126,8 +126,6 @@
                     <div>Dashboards</div>
                 </a>
             </li>
-
-
             <li class="menu-item">
                 <a href="/pembayaran/search?&kelas_id=<?php echo e(request()->user()->kelas_id); ?>&nis=<?php echo e(request()->user()->nis); ?>" class="menu-link ">
                     <i class="menu-icon tf-icons bx bx-money"></i>

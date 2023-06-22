@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Providers\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -43,7 +45,7 @@ class PembayaranController extends Controller
                     $data = [
                         'status' => "Lunas"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran anda berhasil pada bulan ');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran anda berhasil pada bulan ');
                 } elseif ($getDataMidtrans->status_code == 201) {
                     $data = [
                         'status' => "Pending"
@@ -84,7 +86,9 @@ class PembayaranController extends Controller
         $data['pembayaran_lainya'] = DB::select("select t.*, u.nama_lengkap, ta.tahun, jp.pembayaran, u.nis, p.order_id, p.pdf_url, p.metode_pembayaran, p.status as status_payment from tagihan t left join users u on t.user_id=u.id left join tahun_ajaran ta on ta.id=t.thajaran_id left join jenis_pembayaran jp on jp.id=t.jenis_pembayaran left join payment p on p.tagihan_id=t.id where u.nis = '$request->nis' and u.kelas_id = '$request->kelas_id' and t.jenis_pembayaran != '1'");
 
 
-
+        $params['activity']    = "Search Pembayaran";
+        $params['detail']    = "Search Pembayaran Nis '$request->nis' dan kelas Id '$request->kelas_id'";
+        Helper::log_transaction($params);
         // dd($data['pembayaran_lainya']);
         if ($data['pembayaran_bulanan'] || $data['pembayaran_lainya'] == true) {
 
@@ -118,17 +122,17 @@ class PembayaranController extends Controller
                     $data = [
                         'status' => "Lunas"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran Bulan ' . $ord->nama_bulan . ' berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran Bulan ' . $ord->nama_bulan . ' berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
                 } elseif ($getDataMidtrans->status_code == 201) {
                     $data = [
                         'status' => "Pending"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan ' . $ord->nama_bulan . ' Belum berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan ' . $ord->nama_bulan . ' Belum berhasil dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
                 } else {
                     $data = [
                         'status' => "Failed"
                     ];
-                    Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan ' . $ord->nama_bulan . ' Gagal dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
+                    Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $ord->no_tlp . '&message=Mohon Maaf, pembayaran Bulan ' . $ord->nama_bulan . ' Gagal dengan nama siswa ' . $ord->nama_lengkap . ' nis ' . $ord->nis . '. Cara melakukan pembayaran ' . $ord->pdf_url . '');
                 }
                 DB::table('payment')->where('order_id', $ord->order_id)->update($data);
             }
@@ -175,8 +179,11 @@ class PembayaranController extends Controller
             // dd($key);
         }
         // dd($data);
+        $params['activity']    = "Tambah Pembayaran Spp";
+        $params['detail']    = "Tambah Pembayaran Spp dengan ID Tagihan '$request->tagihan_id' dan kelas Id '$request->kelas_id'";
+        Helper::log_transaction($params);
         $getusers = DB::table('users')->where('id', $request->user_id)->first();
-        Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $getusers->no_tlp . '&message=Terima kasih, pembayaran Bulanan anda berhasil dengan nama siswa ' . $getusers->nama_lengkap . ' dengan nis ' . $getusers->nis . '. Silahkan cek tagihan anda di dashboard siswa');
+        Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $getusers->no_tlp . '&message=Terima kasih, pembayaran Bulanan anda berhasil dengan nama siswa ' . $getusers->nama_lengkap . ' dengan nis ' . $getusers->nis . '. Silahkan cek tagihan anda di dashboard siswa');
         DB::table('payment')->insert($data);
         $request->metode_pembayaran == "Manual" ? Alert::success('Success', 'Pembayaran Berhasil') : Alert::warning('Peringatan', 'Segera melakukan pembayaran!!!');
         return redirect("/pembayaran/spp/$request->tagihan_id");
@@ -207,7 +214,7 @@ class PembayaranController extends Controller
         ];
         // dd($data);
         $getusers = DB::table('users')->where('id', $request->user_id)->first();
-        Http::get('https://wa.dlhcode.com/send-message?api_key=hZdj1cXOBd9kKEln6dIhE0SOhrUtg9sa&sender=6289636337580&number=' . $getusers->no_tlp . '&message=Terima kasih, pembayaran dengan jumlah ' . $request->nilai . ' dengan nama siswa ' . $getusers->nama_lengkap . ' dengan nis ' . $getusers->nis . ' Berhasil. Silahkan cek tagihan anda di dashboard siswa');
+        Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $getusers->no_tlp . '&message=Terima kasih, pembayaran dengan jumlah ' . $request->nilai . ' dengan nama siswa ' . $getusers->nama_lengkap . ' dengan nis ' . $getusers->nis . ' Berhasil. Silahkan cek tagihan anda di dashboard siswa');
         DB::table('payment')->insert($data);
         $request->metode_pembayaran == "Manual" ? Alert::success('Success', 'Pembayaran Berhasil') : Alert::warning('Peringatan', 'Segera melakukan pembayaran!!!');
         return redirect("/pembayaran/search?&kelas_id=$request->kelas_id&nis=$request->nis");
