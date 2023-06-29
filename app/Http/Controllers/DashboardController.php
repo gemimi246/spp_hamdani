@@ -11,8 +11,11 @@ class DashboardController extends Controller
     {
         $data['rankpayment'] = DB::select(
             "SELECT u.nama_lengkap, p.user_id, k.nama_kelas, u.alamat,  SUM(p.nilai) as total 
-        FROM payment p LEFT JOIN users u on u.id=p.user_id LEFT JOIN kelas k on k.id=p.kelas_id 
-        WHERE p.status = 'Lunas' GROUP BY p.user_id, u.nama_lengkap, p.user_id, k.nama_kelas, u.alamat ORDER BY total DESC LIMIT 7"
+        FROM payment p 
+        LEFT JOIN users u on u.id=p.user_id 
+        LEFT JOIN kelas k on k.id=u.kelas_id 
+        WHERE p.status = 'Lunas' GROUP BY p.user_id, u.nama_lengkap, p.user_id, u.kelas_id, u.alamat 
+        ORDER BY total DESC LIMIT 7"
         );
         $data['totalById'] = request()->user()->role != 1 ?
         DB::table('payment')->where('user_id', request()->user()->id)->sum('nilai') :

@@ -122,6 +122,7 @@
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>Tahun Ajaran</th>
+                                                    <th>Kelas</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
                                                     <th class="text-center">Status Bayar</th>
@@ -137,6 +138,7 @@
                                                 <tr>
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
+                                                    <td><?php echo $u->nama_kelas; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
                                                     <td>Rp. {{ number_format($u->total_bayar) }}</td>
                                                     <td class="text-center">
@@ -188,6 +190,7 @@
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>Tahun Ajaran</th>
+                                                    <th>Kelas</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
                                                     <th class="text-center">Status Bayar</th>
@@ -204,6 +207,7 @@
                                                     <td hidden id="getIdLainya">{{ $u->id }}</td>
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
+                                                    <td><?php echo $u->nama_kelas; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
 
                                                     <td>
@@ -264,7 +268,7 @@
                     dataType: 'JSON',
                     beforeSend: function() {
                         $("#loading-image").show();
-                        
+
                     },
                     success: function(res) {
                         if (res) {

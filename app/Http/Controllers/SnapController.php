@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Midtrans\Snap;
 use Midtrans\Config;
+use App\Providers\Helper;
 use App\Veritrans\Veritrans;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,7 +15,7 @@ class SnapController extends Controller
     public function token(Request $request)
     {
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
+        \Midtrans\Config::$serverKey = Helper::apk()->serverKey;
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
@@ -104,7 +105,7 @@ class SnapController extends Controller
     public function payment(Request $request)
     {
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-z5T9WhivZDuXrJxC7w-civ_k';
+        \Midtrans\Config::$serverKey = Helper::apk()->serverKey;
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
