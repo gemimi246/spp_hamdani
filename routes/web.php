@@ -114,7 +114,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Aplikasi
     Route::get('/aplikasi', [AplikasiController::class, 'view'])->name('aplikasi');
-    Route::get('/aplikasi/edit/{id}', [AplikasiController::class, 'edit'])->name('aplikasi.edit');
+    // Route::get('/aplikasi', [AplikasiController::class, 'edit'])->name('aplikasi.edit');
     Route::post('/aplikasi/editProses', [AplikasiController::class, 'editProses'])->name('aplikasi.editProses');
 
     //Laporan

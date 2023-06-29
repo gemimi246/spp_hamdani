@@ -10,16 +10,11 @@ use Illuminate\Support\Facades\File;
 
 class AplikasiController extends Controller
 {
+
     public function view()
     {
         $data['title'] = "Aplikasi";
-        $data['aplikasi'] = DB::select("select * from aplikasi");
-        return view('backend.aplikasi.view', $data);
-    }
-    public function edit($id)
-    {
-        $data['title'] = "Edit Siswa";
-        $data['aplikasi'] = DB::table('aplikasi')->where('id', $id)->first();
+        $data['aplikasi'] = DB::table('aplikasi')->first();
 
         return view('backend.aplikasi.edit', $data);
     }
