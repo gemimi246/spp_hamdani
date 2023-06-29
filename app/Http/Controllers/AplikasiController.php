@@ -35,6 +35,9 @@ class AplikasiController extends Controller
                     'nama_aplikasi' => $request->nama_aplikasi,
                     'copy_right' => $request->copy_right,
                     'versi' => $request->versi,
+                    'token_whatsapp' => $request->token_whatsapp,
+                    'serverKey' => $request->serverKey,
+                    'clientKey' => $request->clientKey,
                     'logo' => $request->file('image')->getClientOriginalName(),
                 ];
             } else {
@@ -46,6 +49,9 @@ class AplikasiController extends Controller
                     'nama_aplikasi' => $request->nama_aplikasi,
                     'copy_right' => $request->copy_right,
                     'versi' => $request->versi,
+                    'token_whatsapp' => $request->token_whatsapp,
+                    'serverKey' => $request->serverKey,
+                    'clientKey' => $request->clientKey,
                 ];
             }
             DB::table('aplikasi')->where('id', $request->id)->update($data);
