@@ -38,7 +38,8 @@
                                             <a href="<?php echo e($a->pdf_url); ?>" class="btn btn-success"
                                                 target="_blank">Invoice</a>
                                         <?php elseif($a->status == 'Lunas'): ?>
-                                            <a href="#" class="btn btn-danger" target="_blank">Cetak</a>
+                                            <a href="/bulananPdfById/<?php echo e($a->id); ?>" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
                                         <?php endif; ?>
                                     </td>
                                     <td width="auto"><?php echo e($a->created_at); ?></td>
@@ -161,7 +162,7 @@
     
     </script>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-a3XBeF6t11TJ5LWQ"></script>
+        data-client-key="<?php echo e(Helper::apk()->clientKey); ?>"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript">
         $('#pay-button').click(function(event) {

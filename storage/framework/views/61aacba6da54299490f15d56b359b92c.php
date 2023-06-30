@@ -84,7 +84,7 @@
         </div>
     </div>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-a3XBeF6t11TJ5LWQ"></script>
+        data-client-key="<?php echo e(Helper::apk()->clientKey); ?>"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript">
         $('#pay-button').click(function(event) {

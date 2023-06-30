@@ -764,6 +764,53 @@
     ),
     'compiled' => 'D:\\laravel\\spp_hamdani\\storage\\framework\\views',
   ),
+  'dompdf' => 
+  array (
+    'show_warnings' => false,
+    'public_path' => NULL,
+    'convert_entities' => true,
+    'options' => 
+    array (
+      'font_dir' => 'D:\\laravel\\spp_hamdani\\storage\\fonts',
+      'font_cache' => 'D:\\laravel\\spp_hamdani\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\ITMBS\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\laravel\\spp_hamdani',
+      'allowed_protocols' => 
+      array (
+        'file://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'http://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+        'https://' => 
+        array (
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'log_output_file' => NULL,
+      'enable_font_subsetting' => false,
+      'pdf_backend' => 'CPDF',
+      'default_media_type' => 'screen',
+      'default_paper_size' => 'a4',
+      'default_paper_orientation' => 'portrait',
+      'default_font' => 'serif',
+      'dpi' => 96,
+      'enable_php' => false,
+      'enable_javascript' => true,
+      'enable_remote' => true,
+      'font_height_ratio' => 1.1,
+      'enable_html5_parser' => true,
+    ),
+  ),
   'flare' => 
   array (
     'key' => NULL,

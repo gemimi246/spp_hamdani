@@ -40,7 +40,8 @@
                                             <a href="{{ $a->pdf_url }}" class="btn btn-success"
                                                 target="_blank">Invoice</a>
                                         @elseif ($a->status == 'Lunas')
-                                            <a href="#" class="btn btn-danger" target="_blank">Cetak</a>
+                                            <a href="/bulananPdfById/{{$a->id}}" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
                                         @endif
                                     </td>
                                     <td width="auto">{{ $a->created_at }}</td>

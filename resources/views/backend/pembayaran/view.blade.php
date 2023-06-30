@@ -143,7 +143,7 @@
                                                     <td>Rp. {{ number_format($u->total_bayar) }}</td>
                                                     <td class="text-center">
                                                         @if ($u->status_bayar == 'Belum Lunas')
-                                                            <span class="badge bg-label-danger" style="width: 57%;">Belum
+                                                            <span class="badge bg-label-danger" >Belum
                                                                 Lunas</span>
                                                         @else
                                                             <span class="badge bg-label-primary"
@@ -156,9 +156,13 @@
                                                         @if ($u->status_bayar == 'Belum Lunas')
                                                             <a href="/pembayaran/spp/{{ $u->id }}"
                                                                 class="btn btn-primary">Bayar</a>
+                                                                <a href="/bulananPdf/{{$u->id}}" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
                                                         @else
                                                             <button onclick="printExcelById()"
                                                                 class="btn btn-success">Excel</button>
+                                                                <a href="/bulananPdf/{{$u->id}}" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -220,7 +224,7 @@
                                                     {{-- <td>Rp. {{ number_format($u->nilai) }}</td> --}}
                                                     <td class="text-center">
                                                         @if ($u->status_payment == null)
-                                                            <span class="badge bg-label-danger" style="width: 57%;">Belum
+                                                            <span class="badge bg-label-danger" >Belum
                                                                 Lunas</span>
                                                         @elseif ($u->status_payment == 'Pending')
                                                             <span class="badge bg-label-warning"
@@ -238,9 +242,13 @@
                                                         @elseif ($u->status_payment == 'Lunas')
                                                             <button onclick="printExcelByIdLainya()"
                                                                 class="btn btn-success" target="_blank">Excel</button>
+                                                                 <a href="/lainyaPdf/{{$u->id}}" 
+                                                                    class="btn btn-danger">PDF</a>
                                                         @else
                                                             <a href="/pembayaran/payment/{{ $u->id }}"
                                                                 class="btn btn-primary">Bayar</a>
+                                                                 <a href="/lainyaPdf/{{$u->id}}" 
+                                                                    class="btn btn-danger">PDF</a>
                                                         @endif
 
                                                     </td>

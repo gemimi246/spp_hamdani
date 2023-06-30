@@ -145,6 +145,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/broadcast', [BroadcastController::class, 'view'])->name('broadcast');
     Route::get('/broadcast/sendMessage', [BroadcastController::class, 'sendMessage'])->name('broadcast.sendMessage');
 
+    //Pdf
+    Route::get('/bulananPdf/{id}', [LaporanController::class, 'bulananPdf'])->name('laporan.bulananPdf');
+    Route::get('/bulananPdfById/{id}', [LaporanController::class, 'bulananPdfById'])->name('laporan.bulananPdfById');
+    Route::get('/lainyaPdf/{id}', [LaporanController::class, 'lainyaPdf'])->name('laporan.lainyaPdf');
     
 });
 

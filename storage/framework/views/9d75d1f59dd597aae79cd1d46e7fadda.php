@@ -120,6 +120,7 @@
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>Tahun Ajaran</th>
+                                                    <th>Kelas</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
                                                     <th class="text-center">Status Bayar</th>
@@ -135,11 +136,12 @@
                                                 <tr>
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
+                                                    <td><?php echo $u->nama_kelas; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
                                                     <td>Rp. <?php echo e(number_format($u->total_bayar)); ?></td>
                                                     <td class="text-center">
                                                         <?php if($u->status_bayar == 'Belum Lunas'): ?>
-                                                            <span class="badge bg-label-danger" style="width: 57%;">Belum
+                                                            <span class="badge bg-label-danger" >Belum
                                                                 Lunas</span>
                                                         <?php else: ?>
                                                             <span class="badge bg-label-primary"
@@ -152,9 +154,13 @@
                                                         <?php if($u->status_bayar == 'Belum Lunas'): ?>
                                                             <a href="/pembayaran/spp/<?php echo e($u->id); ?>"
                                                                 class="btn btn-primary">Bayar</a>
+                                                                <a href="/bulananPdf/<?php echo e($u->id); ?>" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
                                                         <?php else: ?>
                                                             <button onclick="printExcelById()"
                                                                 class="btn btn-success">Excel</button>
+                                                                <a href="/bulananPdf/<?php echo e($u->id); ?>" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
                                                         <?php endif; ?>
                                                     </td>
                                                 </tr>
@@ -186,6 +192,7 @@
                                                 <tr>
                                                     <th>NO</th>
                                                     <th>Tahun Ajaran</th>
+                                                    <th>Kelas</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
                                                     <th class="text-center">Status Bayar</th>
@@ -202,6 +209,7 @@
                                                     <td hidden id="getIdLainya"><?php echo e($u->id); ?></td>
                                                     <td><?php echo $id++; ?></td>
                                                     <td><?php echo $u->tahun; ?></td>
+                                                    <td><?php echo $u->nama_kelas; ?></td>
                                                     <td><?php echo $u->pembayaran; ?></td>
 
                                                     <td>
@@ -215,7 +223,7 @@
                                                     
                                                     <td class="text-center">
                                                         <?php if($u->status_payment == null): ?>
-                                                            <span class="badge bg-label-danger" style="width: 57%;">Belum
+                                                            <span class="badge bg-label-danger" >Belum
                                                                 Lunas</span>
                                                         <?php elseif($u->status_payment == 'Pending'): ?>
                                                             <span class="badge bg-label-warning"
@@ -233,9 +241,13 @@
                                                         <?php elseif($u->status_payment == 'Lunas'): ?>
                                                             <button onclick="printExcelByIdLainya()"
                                                                 class="btn btn-success" target="_blank">Excel</button>
+                                                                 <a href="/lainyaPdf/<?php echo e($u->id); ?>" 
+                                                                    class="btn btn-danger">PDF</a>
                                                         <?php else: ?>
                                                             <a href="/pembayaran/payment/<?php echo e($u->id); ?>"
                                                                 class="btn btn-primary">Bayar</a>
+                                                                 <a href="/lainyaPdf/<?php echo e($u->id); ?>" 
+                                                                    class="btn btn-danger">PDF</a>
                                                         <?php endif; ?>
 
                                                     </td>
@@ -263,7 +275,7 @@
                     dataType: 'JSON',
                     beforeSend: function() {
                         $("#loading-image").show();
-                        
+
                     },
                     success: function(res) {
                         if (res) {
