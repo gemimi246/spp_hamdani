@@ -199,7 +199,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\framework/cache/data',
+        'path' => 'D:\\laravel\\spp_hamdani\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -372,13 +372,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\data\\laravel\\spp_hamdani\\storage\\app',
+        'root' => 'D:\\laravel\\spp_hamdani\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\data\\laravel\\spp_hamdani\\storage\\app/public',
+        'root' => 'D:\\laravel\\spp_hamdani\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -398,7 +398,7 @@
     ),
     'links' => 
     array (
-      'D:\\data\\laravel\\spp_hamdani\\public\\storage' => 'D:\\data\\laravel\\spp_hamdani\\storage\\app/public',
+      'D:\\laravel\\spp_hamdani\\public\\storage' => 'D:\\laravel\\spp_hamdani\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -437,14 +437,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
+        'path' => 'D:\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
+        'path' => 'D:\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -509,7 +509,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
+        'path' => 'D:\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -576,7 +576,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\data\\laravel\\spp_hamdani\\resources\\views/vendor/mail',
+        0 => 'D:\\laravel\\spp_hamdani\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -687,7 +687,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\data\\laravel\\spp_hamdani\\storage\\framework/sessions',
+    'files' => 'D:\\laravel\\spp_hamdani\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -760,9 +760,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\data\\laravel\\spp_hamdani\\resources\\views',
+      0 => 'D:\\laravel\\spp_hamdani\\resources\\views',
     ),
-    'compiled' => 'D:\\data\\laravel\\spp_hamdani\\storage\\framework\\views',
+    'compiled' => 'D:\\laravel\\spp_hamdani\\storage\\framework\\views',
   ),
   'flare' => 
   array (
@@ -838,7 +838,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'D:\\data\\laravel\\spp_hamdani',
+    'remote_sites_path' => 'D:\\laravel\\spp_hamdani',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',
