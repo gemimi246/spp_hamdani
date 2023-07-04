@@ -117,6 +117,16 @@
                     </li>
                 </ul>
             </li>
+           
+
+            {{-- <li class="menu-item">
+                <a href="{{ route('aplikasi.download') }}" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bx-data"></i>
+                    <div>Backup</div>
+                    
+                </a>
+            </li> --}}
+           
         </ul>
     @elseif (request()->user()->role == 2)
         <ul class="menu-inner py-1">

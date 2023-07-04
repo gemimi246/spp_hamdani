@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-xl">
@@ -42,14 +40,14 @@
                                         required />
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="logo">Logo</label>
                                     <input type="file" class="form-control" id="image" name="image"
                                         value="<?php echo e($aplikasi->logo); ?>" placeholder="Masukan Logo" />
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="copy_right">Copy Right</label>
                                     <input type="text" class="form-control" id="copy_right" name="copy_right"
@@ -57,21 +55,36 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="versi">Versi</label>
                                     <input type="text" class="form-control" id="versi" name="versi"
                                         value="<?php echo e($aplikasi->versi); ?>" placeholder="Masukan versi" required />
                                 </div>
                             </div>
-
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label" for="tahun">Tahun</label>
-                                    <input type="text" class="form-control" id="tahun" name="tahun"
-                                        value="<?php echo e($aplikasi->tahun); ?>" placeholder="Masukan tahun" required />
+                                    <label class="form-label" for="token_whatsapp">Token Whatsapp</label>
+                                    <input type="text" class="form-control" id="token_whatsapp" name="token_whatsapp"
+                                        value="<?php echo e($aplikasi->token_whatsapp); ?>" placeholder="Masukan Token Whatsapp" required />
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label" for="serverKey">ServerKey</label>
+                                    <input type="text" class="form-control" id="serverKey" name="serverKey"
+                                        value="<?php echo e($aplikasi->serverKey); ?>" placeholder="Masukan ServerKey" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label" for="clientKey">ClientKey</label>
+                                    <input type="text" class="form-control" id="clientKey" name="clientKey"
+                                        value="<?php echo e($aplikasi->clientKey); ?>" placeholder="Masukan ClientKey" required />
+                                </div>
+                            </div>
+
+                           
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label" for="Alamat">Alamat</label>
