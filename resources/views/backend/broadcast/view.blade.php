@@ -66,7 +66,7 @@
                         $("#loading-image").show();
                     },
                     success: function(data) {
-
+                        $("#message").val('');
                         $("#loading-image").hide();
                         $('#sendBroadcast').removeAttr('disabled');
                         // $('#datatable').DataTable();
