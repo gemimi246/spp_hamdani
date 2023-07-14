@@ -198,7 +198,7 @@
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
                                                     <th class="text-center">Status Bayar</th>
-                                                    <th>Bayar</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

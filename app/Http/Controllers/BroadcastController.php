@@ -17,9 +17,11 @@ class BroadcastController extends Controller
     }
     function sendMessage(Request $request)
     {
+        
         foreach ($request->nomor as $no) {
-            $response = Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $no . '&message=' . $request->pesan . '');
+            $response = Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $no . '&message=' . $request->message . '');
         }
+       
         echo json_encode($response);
     }
 }

@@ -55,7 +55,7 @@
                 <a href="/broadcast" class="menu-link ">
                     <i class="menu-icon tf-icons bx bxl-whatsapp"></i>
                  
-                    <div>Brodcast</div>
+                    <div>Broadcast</div>
                 </a>
             </li>
             <li class="menu-item">

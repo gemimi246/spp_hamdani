@@ -199,7 +199,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\laravel\\spp_hamdani\\storage\\framework/cache/data',
+        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -372,13 +372,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laravel\\spp_hamdani\\storage\\app',
+        'root' => 'D:\\data\\laravel\\spp_hamdani\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laravel\\spp_hamdani\\storage\\app/public',
+        'root' => 'D:\\data\\laravel\\spp_hamdani\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -398,7 +398,7 @@
     ),
     'links' => 
     array (
-      'D:\\laravel\\spp_hamdani\\public\\storage' => 'D:\\laravel\\spp_hamdani\\storage\\app/public',
+      'D:\\data\\laravel\\spp_hamdani\\public\\storage' => 'D:\\data\\laravel\\spp_hamdani\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -437,14 +437,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
+        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
+        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -509,7 +509,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
+        'path' => 'D:\\data\\laravel\\spp_hamdani\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -576,7 +576,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\laravel\\spp_hamdani\\resources\\views/vendor/mail',
+        0 => 'D:\\data\\laravel\\spp_hamdani\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -687,7 +687,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\laravel\\spp_hamdani\\storage\\framework/sessions',
+    'files' => 'D:\\data\\laravel\\spp_hamdani\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -760,9 +760,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\laravel\\spp_hamdani\\resources\\views',
+      0 => 'D:\\data\\laravel\\spp_hamdani\\resources\\views',
     ),
-    'compiled' => 'D:\\laravel\\spp_hamdani\\storage\\framework\\views',
+    'compiled' => 'D:\\data\\laravel\\spp_hamdani\\storage\\framework\\views',
   ),
   'dompdf' => 
   array (
@@ -771,10 +771,10 @@
     'convert_entities' => true,
     'options' => 
     array (
-      'font_dir' => 'D:\\laravel\\spp_hamdani\\storage\\fonts',
-      'font_cache' => 'D:\\laravel\\spp_hamdani\\storage\\fonts',
-      'temp_dir' => 'C:\\Users\\ITMBS\\AppData\\Local\\Temp',
-      'chroot' => 'D:\\laravel\\spp_hamdani',
+      'font_dir' => 'D:\\data\\laravel\\spp_hamdani\\storage\\fonts',
+      'font_cache' => 'D:\\data\\laravel\\spp_hamdani\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\danil\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\data\\laravel\\spp_hamdani',
       'allowed_protocols' => 
       array (
         'file://' => 
@@ -885,7 +885,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'D:\\laravel\\spp_hamdani',
+    'remote_sites_path' => 'D:\\data\\laravel\\spp_hamdani',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',
@@ -897,6 +897,21 @@
       3 => 'Spatie\\LaravelIgnition\\Recorders\\QueryRecorder\\QueryRecorder',
     ),
     'open_ai_key' => NULL,
+    'with_stack_frame_arguments' => true,
+    'argument_reducers' => 
+    array (
+      0 => 'Spatie\\Backtrace\\Arguments\\Reducers\\BaseTypeArgumentReducer',
+      1 => 'Spatie\\Backtrace\\Arguments\\Reducers\\ArrayArgumentReducer',
+      2 => 'Spatie\\Backtrace\\Arguments\\Reducers\\StdClassArgumentReducer',
+      3 => 'Spatie\\Backtrace\\Arguments\\Reducers\\EnumArgumentReducer',
+      4 => 'Spatie\\Backtrace\\Arguments\\Reducers\\ClosureArgumentReducer',
+      5 => 'Spatie\\Backtrace\\Arguments\\Reducers\\DateTimeArgumentReducer',
+      6 => 'Spatie\\Backtrace\\Arguments\\Reducers\\DateTimeZoneArgumentReducer',
+      7 => 'Spatie\\Backtrace\\Arguments\\Reducers\\SymphonyRequestArgumentReducer',
+      8 => 'Spatie\\LaravelIgnition\\ArgumentReducers\\ModelArgumentReducer',
+      9 => 'Spatie\\LaravelIgnition\\ArgumentReducers\\CollectionArgumentReducer',
+      10 => 'Spatie\\Backtrace\\Arguments\\Reducers\\StringableArgumentReducer',
+    ),
   ),
   'tinker' => 
   array (
